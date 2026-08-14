@@ -1,0 +1,234 @@
+---
+import Base from "../layouts/Base.astro";
+import Picture from "../components/Picture.astro";
+import Cta from "../components/Cta.astro";
+import { cta, industries } from "../data/site";
+import { pillars } from "../data/services";
+import { pempelhome, startseiteTeaser } from "../data/cases";
+import { personLd, businessLd, websiteLd } from "../data/jsonld";
+
+// Die Reihenfolge der Abschnitte folgt dem Golden Circle (docs/Website-Story.md):
+// Why (Hero, Problem) → How (Arbeitsweise) → What (Leistungen, Arbeiten).
+// Wer von oben nach unten liest, trifft die Leistungsliste erst, wenn die
+// Haltung dahinter schon steht.
+---
+
+<Base
+  title="Tina Jocksch — Social Media & Creator Marketing"
+  description="Social-Media-Strategie, Content Creation und Influencer Marketing aus einer Hand — für Interior-, Hospitality- und Lifestyle-Marken aus Düsseldorf."
+  jsonLd={[personLd, businessLd, websiteLd]}
+>
+  <!-- ---------- Hero: Why ---------- -->
+  <section class="hero">
+    <div class="wrap hero__grid">
+      <div>
+        <p class="eyebrow">Social Media · Content · Creator Marketing</p>
+        <h1>
+          Sichtbar ist nicht genug.<br />Marken und Orte sollen erlebbar sein.
+        </h1>
+        <p class="lead">
+          Ich verbinde Social-Media-Strategie, eigene Content-Produktion und Creator
+          Marketing zu einem Auftritt, der die Atmosphäre einer Marke auf den
+          Bildschirm bringt — und ihre Wirkung in Zahlen sichtbar macht.
+        </p>
+        <div class="hero__actions">
+          <a class="btn" href={cta.href}>{cta.label}</a>
+          <a class="arrow" href="/portfolio/">Arbeiten ansehen</a>
+        </div>
+      </div>
+
+      <!-- Kein data-reveal: Das Heldenbild ist der LCP. Es soll sofort stehen und
+           nicht auf den IntersectionObserver warten. -->
+      <figure class="media media--34">
+        <Picture
+          name="tina-hero"
+          alt="Tina Jocksch sitzt auf einem modularen Sofa in einem hellen Studio"
+          sizes="(min-width: 900px) 42vw, 100vw"
+          loading="eager"
+          fetchpriority="high"
+        />
+      </figure>
+    </div>
+  </section>
+
+  <!-- ---------- Das Problem: die Zielgruppe in ihren eigenen Worten ---------- -->
+  <section class="section section--sand">
+    <div class="wrap split">
+      <div>
+        <p class="eyebrow">Das Problem</p>
+        <p class="pull">„Uns fehlt einfach die Zeit.“</p>
+      </div>
+      <div class="stack">
+        <p>
+          Sie wissen längst, dass mehr gehen würde. Es fehlt nicht an Ideen, sondern
+          an Kapazität: ein Team, das Social Media nebenbei mitmacht, ein Feed, der
+          unregelmäßig läuft, Reels, die niemand dreht — und eine Konkurrenz, die
+          online sichtbarer ist.
+        </p>
+        <p>
+          Was Sie suchen, ist keine weitere Agentur mit Zwischenebenen und
+          Ansprechpartnerwechsel. Sondern jemanden, der die operative Arbeit
+          übernimmt, <strong>ohne dass Sie die Kontrolle über Marke und Tonalität
+          abgeben.</strong>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- Die Antwort: How ---------- -->
+  <section class="section">
+    <div class="wrap">
+      <div class="split" style="margin-bottom:clamp(2.5rem,5vw,4rem)">
+        <div>
+          <p class="eyebrow">Der Ansatz</p>
+          <h2>Strategie, Content und Creator Marketing aus einer Hand.</h2>
+        </div>
+        <div class="stack">
+          <p>
+            Die meisten Marken arbeiten mit einer Agentur für die Strategie, einer
+            Fotografin für die Bilder und einer weiteren Adresse für
+            Influencer-Kampagnen. Dazwischen gehen Zeit, Budget und Tonalität
+            verloren.
+          </p>
+          <p>
+            Bei mir läuft alles über einen Tisch: ein Briefing, eine
+            Ansprechpartnerin, eine Handschrift — von der Strategie über die
+            Produktion bis zur Kampagne.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid grid--3">
+        <div class="card" data-reveal>
+          <span class="card__num">01</span>
+          <h3 class="card__title">Strategisch denken</h3>
+          <p class="card__text">
+            Zielgruppe, Formate, Kanäle und Kennzahlen stehen fest, bevor der erste
+            Beitrag entsteht. Nicht andersherum.
+          </p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="card__num">02</span>
+          <h3 class="card__title">Kreativ umsetzen</h3>
+          <p class="card__text">
+            Reels, Fotos und UGC produziere ich selbst — vor Ort, in Ihrer
+            Bildsprache, mit Schnitt und finaler Fassung aus einer Hand.
+          </p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="card__num">03</span>
+          <h3 class="card__title">Messbar weiterentwickeln</h3>
+          <p class="card__text">
+            Monatliches Reporting mit klaren Zahlen und Einordnung — auch dann, wenn
+            ein Monat schlechter lief als der davor.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- Leistungen: What ---------- -->
+  <section class="section section--sand">
+    <div class="wrap">
+      <div class="split" style="margin-bottom:clamp(2rem,4vw,3rem)">
+        <div>
+          <p class="eyebrow">Leistungen</p>
+          <h2>Vier Säulen, ein Auftritt</h2>
+        </div>
+        <p class="lead">
+          Einzeln buchbar — im Zusammenspiel am stärksten, weil Strategie, Content
+          und Creator-Kampagnen dann derselben Linie folgen.
+        </p>
+      </div>
+
+      <ol class="steps">
+        {
+          pillars.map((p) => (
+            <li>
+              <span class="steps__name">
+                <a
+                  href={`/leistungen/#${p.slug}`}
+                  style="text-decoration:none;border-bottom:1px solid var(--line-strong)"
+                >
+                  {p.name}
+                </a>
+              </span>
+              <span class="steps__text">{p.claim}</span>
+            </li>
+          ))
+        }
+      </ol>
+
+      <p style="margin-top:2.25rem">
+        <a class="arrow" href="/leistungen/">Leistungen und Preise im Detail</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ---------- Arbeiten: What, belegt ---------- -->
+  <section class="section">
+    <div class="wrap">
+      <div class="split" style="margin-bottom:clamp(2rem,4vw,3rem)">
+        <div>
+          <p class="eyebrow">Arbeiten</p>
+          <h2>Was dabei herauskommt</h2>
+        </div>
+        <p class="lead">
+          Interior-Content, Shortform-Video und Markenästhetik — konzipiert,
+          produziert, geschnitten und veröffentlicht.
+        </p>
+      </div>
+
+      <div class="grid grid--4">
+        {
+          startseiteTeaser.map((img) => (
+            <figure class="media media--45" data-reveal>
+              <Picture
+                name={img.file}
+                alt={img.alt}
+                sizes="(min-width: 900px) 23vw, (min-width: 600px) 45vw, 100vw"
+              />
+            </figure>
+          ))
+        }
+      </div>
+
+      <div class="split" style="margin-top:clamp(2.5rem,5vw,3.5rem)">
+        <p class="pull">{pempelhome.handle}</p>
+        <div class="stack">
+          <p>{pempelhome.lead}</p>
+          <p><a class="arrow" href="/portfolio/">Den ganzen Case ansehen</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- Für wen ---------- -->
+  <section class="section section--sand">
+    <div class="wrap">
+      <div class="split" style="margin-bottom:clamp(2rem,4vw,3rem)">
+        <div>
+          <p class="eyebrow">Für wen</p>
+          <h2>Für Marken und Orte, die von Atmosphäre leben</h2>
+        </div>
+        <p class="lead">
+          Überall dort, wo Ästhetik, Erlebnis und Begehrlichkeit über den Erfolg
+          entscheiden — und ein beliebiger Feed sofort auffällt.
+        </p>
+      </div>
+
+      <div class="grid grid--3">
+        {
+          industries.map((b) => (
+            <div class="card" data-reveal>
+              <h3 class="card__title">{b.name}</h3>
+              <p class="card__text">{b.note}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <Cta />
+</Base>

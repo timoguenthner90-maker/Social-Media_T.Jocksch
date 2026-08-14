@@ -1,0 +1,60 @@
+---
+// Bild aus public/img mit srcset und festen Maßen.
+//
+// Breiten und Maße kommen aus src/data/images.json, das scripts/prepare-images.mjs
+// beim Zuschneiden schreibt. Dadurch können srcset und width/height nicht von den
+// tatsächlich erzeugten Dateien abweichen — und ein Tippfehler im Bildnamen fällt
+// sofort beim Build auf statt erst im Browser.
+
+import manifest from "../data/images.json";
+
+interface Props {
+  /** Dateiname ohne Endung, z. B. "tina-hero". */
+  name: string;
+  alt: string;
+  /** sizes-Attribut — wie breit das Bild im Layout tatsächlich dargestellt wird. */
+  sizes?: string;
+  loading?: "lazy" | "eager";
+  fetchpriority?: "high" | "auto";
+  class?: string;
+}
+
+const {
+  name,
+  alt,
+  sizes = "(min-width: 900px) 45vw, 100vw",
+  loading = "lazy",
+  fetchpriority = "auto",
+  class: className,
+} = Astro.props;
+
+const entry = (manifest as Record<string, { widths: number[]; w: number; h: number }>)[
+  name
+];
+
+if (!entry) {
+  throw new Error(
+    `Bild "${name}" fehlt in src/data/images.json. Erst "npm run images" laufen lassen oder den Namen prüfen.`,
+  );
+}
+
+// Die größte Breite trägt den Basisnamen (siehe prepare-images.mjs), alle
+// weiteren ein Breiten-Suffix.
+const base = entry.widths[0];
+const srcset = entry.widths
+  .map((w) => `/img/${w === base ? name : `${name}-${w}`}.webp ${w}w`)
+  .join(", ");
+---
+
+<img
+  src={`/img/${name}.webp`}
+  srcset={srcset}
+  sizes={sizes}
+  width={entry.w}
+  height={entry.h}
+  alt={alt}
+  loading={loading}
+  fetchpriority={fetchpriority}
+  decoding="async"
+  class={className}
+/>

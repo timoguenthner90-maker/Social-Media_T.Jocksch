@@ -1,0 +1,133 @@
+---
+import Base from "../layouts/Base.astro";
+import { site, isTodo } from "../data/site";
+
+// Diese Erklärung beschreibt exakt das, was die Seite technisch tut:
+// statisches Hosting bei Netlify, ein Kontaktformular über Netlify Forms,
+// selbst gehostete Schriften, keine Cookies, kein Tracking, keine externen
+// Ressourcen. Deshalb braucht die Seite auch kein Consent-Banner.
+//
+// Vor dem Live-Gang von einer fachkundigen Stelle prüfen lassen — siehe SPEC.md.
+const kontaktWert = isTodo(site.email) ? null : site.email;
+---
+
+<Base
+  title="Datenschutzerklärung — Tina Jocksch"
+  description="Welche Daten diese Website verarbeitet: Server-Logs bei Netlify und die Angaben aus dem Kontaktformular. Keine Cookies, kein Tracking, keine externen Dienste."
+  noindex={true}
+>
+  <section class="section">
+    <div class="wrap narrow">
+      <p class="eyebrow">Rechtliches</p>
+      <h1>Datenschutzerklärung</h1>
+
+      <p class="lead" style="margin-top:1.5rem">
+        Diese Website setzt keine Cookies, bindet keine externen Schriften, Karten
+        oder Videoplattformen ein und verwendet keine Analyse- oder Trackingdienste.
+        Verarbeitet werden nur die Daten, die technisch beim Aufruf anfallen — und
+        das, was Sie selbst in das Kontaktformular schreiben.
+      </p>
+
+      <h2 style="font-size:var(--step-2);margin:2.5rem 0 1rem">
+        1. Verantwortliche
+      </h2>
+      <p>
+        Verantwortlich im Sinne der DSGVO ist die im
+        <a href="/impressum/">Impressum</a> genannte Anbieterin. Bei Fragen zum
+        Datenschutz erreichen Sie mich
+        {
+          kontaktWert ? (
+            <>
+              {" "}unter <a href={`mailto:${kontaktWert}`}>{kontaktWert}</a>.
+            </>
+          ) : (
+            <>
+              {" "}unter der im Impressum genannten
+              <span class="todo">E-Mail-Adresse (noch offen)</span>.
+            </>
+          )
+        }
+      </p>
+
+      <h2 style="font-size:var(--step-2);margin:2.5rem 0 1rem">
+        2. Hosting und Server-Logs
+      </h2>
+      <p>
+        Diese Website wird bei <strong>Netlify</strong> gehostet (Netlify, Inc., 512
+        2nd Street, Suite 200, San Francisco, CA 94107, USA). Beim Aufruf der Seite
+        verarbeitet Netlify automatisch technische Zugriffsdaten: IP-Adresse,
+        Datum und Uhrzeit, aufgerufene Adresse, übertragene Datenmenge, Browsertyp
+        und Betriebssystem. Diese Daten sind für die Auslieferung der Seite und für
+        die Abwehr von Angriffen erforderlich.
+      </p>
+      <p>
+        Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO — mein berechtigtes Interesse
+        an einem sicheren und funktionierenden Webauftritt. Die Übermittlung in die
+        USA erfolgt auf Grundlage der Standardvertragsklauseln der EU-Kommission
+        sowie der Zertifizierung von Netlify unter dem EU-US Data Privacy Framework.
+      </p>
+
+      <h2 style="font-size:var(--step-2);margin:2.5rem 0 1rem">
+        3. Kontaktformular
+      </h2>
+      <p>
+        Wenn Sie das Kontaktformular nutzen, werden die von Ihnen eingetragenen
+        Angaben — Name, Unternehmen, E-Mail-Adresse, Branche, gewünschte Leistung,
+        Budgetrahmen, Zeitraum und Ihre Nachricht — über den Dienst
+        <strong>Netlify Forms</strong> übertragen, dort gespeichert und mir per
+        Benachrichtigung zugestellt.
+      </p>
+      <p>
+        Die Verarbeitung erfolgt auf Grundlage Ihrer Einwilligung (Art. 6 Abs. 1
+        lit. a DSGVO) sowie zur Durchführung vorvertraglicher Maßnahmen (Art. 6
+        Abs. 1 lit. b DSGVO). Ihre Einwilligung können Sie jederzeit mit Wirkung für
+        die Zukunft widerrufen. Die Angaben werden gelöscht, sobald Ihre Anfrage
+        abschließend bearbeitet ist und keine gesetzlichen Aufbewahrungspflichten
+        entgegenstehen.
+      </p>
+      <p>
+        Das Formular enthält ein für Sie unsichtbares Feld zur Abwehr automatisierter
+        Einsendungen (Honeypot). Es verarbeitet keine personenbezogenen Daten.
+      </p>
+
+      <h2 style="font-size:var(--step-2);margin:2.5rem 0 1rem">
+        4. Kontakt per E-Mail, Telefon oder WhatsApp
+      </h2>
+      <p>
+        Wenn Sie mich direkt kontaktieren, verarbeite ich Ihre Angaben zur
+        Bearbeitung der Anfrage (Art. 6 Abs. 1 lit. b bzw. lit. f DSGVO). Bei
+        WhatsApp gelten zusätzlich die Datenschutzbestimmungen von WhatsApp Ireland
+        Ltd.; die Nutzung ist freiwillig, alternativ stehen E-Mail und das Formular
+        zur Verfügung.
+      </p>
+
+      <h2 style="font-size:var(--step-2);margin:2.5rem 0 1rem">
+        5. Schriften und externe Inhalte
+      </h2>
+      <p>
+        Die verwendete Schrift wird vom eigenen Server ausgeliefert. Es findet keine
+        Verbindung zu Google Fonts oder einem anderen Drittanbieter statt. Videos
+        werden direkt von dieser Website ausgeliefert und laden erst, wenn Sie sie
+        starten. Links zu Instagram und LinkedIn sind einfache Verweise — es werden
+        keine Inhalte dieser Dienste eingebettet und beim bloßen Seitenaufruf keine
+        Daten dorthin übertragen.
+      </p>
+
+      <h2 style="font-size:var(--step-2);margin:2.5rem 0 1rem">6. Ihre Rechte</h2>
+      <p>
+        Sie haben das Recht auf Auskunft (Art. 15), Berichtigung (Art. 16), Löschung
+        (Art. 17), Einschränkung der Verarbeitung (Art. 18), Datenübertragbarkeit
+        (Art. 20) und Widerspruch (Art. 21 DSGVO). Außerdem können Sie sich bei
+        einer Datenschutz-Aufsichtsbehörde beschweren — zuständig ist in der Regel
+        die Behörde Ihres Wohnorts oder die Landesbeauftragte für Datenschutz und
+        Informationsfreiheit Nordrhein-Westfalen.
+      </p>
+
+      <h2 style="font-size:var(--step-2);margin:2.5rem 0 1rem">7. Stand</h2>
+      <p class="muted">
+        Diese Datenschutzerklärung wird angepasst, sobald sich an der Website oder an
+        den eingesetzten Diensten etwas ändert.
+      </p>
+    </div>
+  </section>
+</Base>

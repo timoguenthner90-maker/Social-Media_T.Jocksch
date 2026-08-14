@@ -1,0 +1,28 @@
+---
+// Der EINE Call-to-Action der Seite. Wording und Ziel stehen in src/data/site.ts
+// und werden hier nie überschrieben — ein Handlungsaufruf, überall gleich.
+import { cta } from "../data/site";
+
+interface Props {
+  /** Überschrift des Abschnitts. Der Button-Text bleibt immer gleich. */
+  title?: string;
+  text?: string;
+}
+
+const {
+  title = "Reden wir über Ihre Marke.",
+  text = "30 Minuten, unverbindlich: Wo steht Ihr Auftritt heute, was ist realistisch erreichbar, und wie sähe ein sinnvoller erster Schritt aus? Wenn ich nicht die Richtige bin, sage ich Ihnen das auch.",
+} = Astro.props;
+---
+
+<section class="section section--ink">
+  <div class="wrap narrow">
+    <p class="eyebrow">Nächster Schritt</p>
+    <h2>{title}</h2>
+    <p class="lead" style="margin-top:1.25rem">{text}</p>
+    <p style="margin-top:2.25rem">
+      <a class="btn" href={cta.href}>{cta.label}</a>
+    </p>
+    <p class="small muted" style="margin-top:1rem">{cta.note}</p>
+  </div>
+</section>

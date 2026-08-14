@@ -1,0 +1,1023 @@
+/* Tina Jocksch — Designsystem
+ *
+ * Positionierung: Social Media und Creator Marketing für visuell starke Marken
+ * und Orte — Interior, Hospitality, Lifestyle. Die Seite verkauft Ästhetik,
+ * also muss sie selbst welche haben; sie ist das erste Arbeitsbeispiel.
+ *
+ * Palette: warme, entsättigte Naturtöne (Sand, gebrochenes Weiß, Ton) mit einem
+ * tiefen Braun-Schwarz als Textfarbe. Bewusst KEINE bunte Akzentfarbe — die
+ * Farbe kommt aus den Fotos. Das Interface hält sich zurück, damit Material,
+ * Licht und Holz in den Bildern die einzigen Farbträger bleiben.
+ *
+ * Schrift: Fraunces (variabel, selbst gehostet über @fontsource-variable) für
+ * Displaygrößen, System-Grotesk für Fließtext. Keine externen Requests — das
+ * Font-Paket wird mitgebaut, nichts wird zur Laufzeit nachgeladen.
+ */
+
+@import "@fontsource-variable/fraunces/wght.css";
+
+:root {
+  /* ---------- Farbe ---------- */
+  --ink: #1e1a17;
+  --ink-2: #4f4842;
+  --ink-3: #857a6f;
+  --line: #e2dad0;
+  --line-strong: #cabfb1;
+  --paper: #fbf9f6;
+  --paper-2: #f3ede5;
+  --paper-3: #eae1d6;
+  /* Ton — sparsam für Linien, Marker und Hover, nie flächig. */
+  --clay: #9c7c5f;
+
+  /* ---------- Maße ---------- */
+  --wrap: 1240px;
+  --wrap-narrow: 760px;
+  --gutter: clamp(1.25rem, 4vw, 3.5rem);
+  --radius: 3px;
+
+  /* ---------- Typografie ---------- */
+  --display: "Fraunces Variable", "Iowan Old Style", Palatino, Georgia, serif;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, sans-serif;
+
+  --step--2: clamp(0.72rem, 0.7rem + 0.1vw, 0.78rem);
+  --step--1: clamp(0.84rem, 0.82rem + 0.12vw, 0.92rem);
+  --step-0: clamp(1rem, 0.97rem + 0.16vw, 1.09rem);
+  --step-1: clamp(1.15rem, 1.08rem + 0.35vw, 1.35rem);
+  --step-2: clamp(1.4rem, 1.24rem + 0.8vw, 1.9rem);
+  --step-3: clamp(1.75rem, 1.42rem + 1.6vw, 2.7rem);
+  --step-4: clamp(2.1rem, 1.6rem + 2.4vw, 3.4rem);
+  /* Die Hero-Zeile ist vier Zeilen lang. Größer als 4,4 rem drückt sie den
+     CTA auf einem 900-px-Fenster unter die Falz — dann steht die Haltung da,
+     aber niemand sieht den nächsten Schritt. */
+  --step-5: clamp(2.5rem, 1.7rem + 3.6vw, 4.4rem);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: var(--step-0);
+  line-height: 1.68;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img,
+video {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: from-font;
+}
+
+/* ---------- Typografie ---------- */
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--display);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+  margin: 0;
+}
+
+h1 {
+  font-size: var(--step-4);
+}
+h2 {
+  font-size: var(--step-3);
+}
+h3 {
+  font-size: var(--step-2);
+}
+h4 {
+  font-size: var(--step-1);
+  line-height: 1.25;
+}
+
+p {
+  margin: 0 0 1.1em;
+  text-wrap: pretty;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+/* Einleitungsabsatz — größer, ruhiger, direkt unter einer Überschrift. */
+.lead {
+  font-size: var(--step-1);
+  line-height: 1.55;
+  color: var(--ink-2);
+  max-width: 46ch;
+}
+
+/* Kleine Auszeichnung über Überschriften. Das einzige Element in Versalien. */
+.eyebrow {
+  font-size: var(--step--2);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin: 0 0 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 1.75rem;
+  height: 1px;
+  background: var(--clay);
+  flex: none;
+}
+
+.eyebrow--plain::before {
+  display: none;
+}
+
+/* Zitat-Optik für Persona-Sätze und Kernaussagen. */
+.pull {
+  font-family: var(--display);
+  font-size: var(--step-3);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  margin: 0;
+  text-wrap: balance;
+}
+
+.muted {
+  color: var(--ink-3);
+}
+
+.small {
+  font-size: var(--step--1);
+  line-height: 1.6;
+}
+
+/* ---------- Layout ---------- */
+
+.wrap {
+  width: 100%;
+  max-width: var(--wrap);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.narrow {
+  max-width: var(--wrap-narrow);
+}
+
+.section {
+  padding-block: clamp(3.5rem, 8vw, 7.5rem);
+}
+
+.section--tight {
+  padding-block: clamp(2.5rem, 5vw, 4.5rem);
+}
+
+.section--sand {
+  background: var(--paper-2);
+}
+
+.section--ink {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.section--ink .lead,
+.section--ink .muted {
+  color: #bfb5a9;
+}
+
+.section--ink .eyebrow {
+  color: #a89c8d;
+}
+
+.rule {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 0;
+}
+
+/* Zweispalter: links die Überschrift, rechts der Text. Fällt unter 900 px
+   auf eine Spalte zurück. */
+.split {
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 4rem);
+}
+
+@media (min-width: 900px) {
+  .split {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    align-items: start;
+  }
+  .split--even {
+    grid-template-columns: 1fr 1fr;
+  }
+  .split--sticky > :first-child {
+    position: sticky;
+    top: 7rem;
+  }
+}
+
+.stack {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.stack--lg {
+  gap: 2.5rem;
+}
+
+/* ---------- Bilder ---------- */
+
+figure {
+  margin: 0;
+}
+
+.media {
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--paper-3);
+}
+
+.media img,
+.media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.media--45 {
+  aspect-ratio: 4 / 5;
+}
+.media--34 {
+  aspect-ratio: 3 / 4;
+}
+.media--916 {
+  aspect-ratio: 9 / 16;
+}
+
+figcaption {
+  font-size: var(--step--1);
+  color: var(--ink-3);
+  margin-top: 0.6rem;
+}
+
+/* ---------- Buttons ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--sans);
+  font-size: var(--step--1);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  padding: 1.05em 1.6em;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--paper);
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.btn:hover {
+  background: var(--clay);
+  border-color: var(--clay);
+  color: #fff;
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--line-strong);
+}
+
+.btn--ghost:hover {
+  background: transparent;
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+.section--ink .btn {
+  background: var(--paper);
+  color: var(--ink);
+  border-color: var(--paper);
+}
+
+.section--ink .btn:hover {
+  background: var(--clay);
+  border-color: var(--clay);
+  color: #fff;
+}
+
+/* Textlink mit Pfeil — für weiterführende Verweise. */
+.arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: var(--step--1);
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  border-bottom: 1px solid var(--line-strong);
+  padding-bottom: 0.2rem;
+  transition: border-color 0.2s ease;
+}
+
+.arrow:hover {
+  border-color: var(--ink);
+}
+
+.arrow::after {
+  content: "→";
+  transition: transform 0.2s ease;
+}
+
+.arrow:hover::after {
+  transform: translateX(3px);
+}
+
+/* ---------- Header ---------- */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter: saturate(1.4) blur(10px);
+  border-bottom: 1px solid transparent;
+  transition:
+    border-color 0.25s ease,
+    padding 0.25s ease;
+}
+
+.is-stuck .header {
+  border-bottom-color: var(--line);
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding-block: clamp(0.9rem, 2vw, 1.4rem);
+  transition: padding-block 0.25s ease;
+}
+
+.is-stuck .header__inner {
+  padding-block: 0.7rem;
+}
+
+.brand {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  text-decoration: none;
+  line-height: 1;
+}
+
+.brand__name {
+  font-family: var(--display);
+  font-size: var(--step-1);
+  letter-spacing: -0.01em;
+}
+
+.brand__role {
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 2.5vw, 2rem);
+}
+
+.nav a {
+  font-size: var(--step--1);
+  text-decoration: none;
+  color: var(--ink-2);
+  padding-block: 0.2rem;
+  border-bottom: 1px solid transparent;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.nav a:hover,
+.nav a[aria-current="page"] {
+  color: var(--ink);
+  border-bottom-color: var(--clay);
+}
+
+/* Der CTA in der Navigation ist ein Button, kein Navigationslink — ohne diese
+   Regel gewinnt `.nav a` (höhere Spezifität) und schreibt dunkle Schrift auf die
+   dunkle Pille. */
+.nav a.btn {
+  color: var(--paper);
+  border-bottom-color: transparent;
+}
+
+.nav a.btn:hover {
+  color: #fff;
+  border-bottom-color: transparent;
+}
+
+.nav__cta {
+  display: none;
+}
+
+@media (min-width: 1040px) {
+  .nav__cta {
+    display: inline-flex;
+    padding: 0.75em 1.25em;
+  }
+}
+
+/* Unter 640 px rutscht die Navigation unter die Wortmarke und scrollt
+   horizontal, statt sich in ein Menü zu verstecken — bei vier Punkten ist ein
+   Burger-Menü mehr Aufwand als Nutzen. */
+@media (max-width: 639px) {
+  .header__inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+  }
+  .nav {
+    width: 100%;
+    overflow-x: auto;
+    gap: 1.25rem;
+    scrollbar-width: none;
+  }
+  .nav::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 0.75rem 1.25rem;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  left: 0;
+}
+
+:focus-visible {
+  outline: 2px solid var(--clay);
+  outline-offset: 3px;
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  padding-block: clamp(2.5rem, 6vw, 5.5rem) clamp(3rem, 7vw, 6rem);
+}
+
+.hero__grid {
+  display: grid;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .hero__grid {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  }
+}
+
+.hero h1 {
+  font-size: var(--step-5);
+  margin-bottom: 1.5rem;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.5rem;
+  margin-top: 2rem;
+}
+
+/* ---------- Karten und Raster ---------- */
+
+.grid {
+  display: grid;
+  gap: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+.grid--2 {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+}
+
+/* Feste drei Spalten ab Tablet — auto-fit würde bei 1440 px vier Spalten
+   bilden und eine Sechser-Gruppe zu 4 + 2 zerreißen. */
+.grid--3 {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+}
+
+@media (min-width: 900px) {
+  .grid--3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.grid--4 {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.card__num {
+  font-family: var(--display);
+  font-size: var(--step--1);
+  color: var(--clay);
+  letter-spacing: 0.04em;
+}
+
+.card__title {
+  font-family: var(--display);
+  font-size: var(--step-2);
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+}
+
+.card__text {
+  color: var(--ink-2);
+  font-size: var(--step--1);
+  line-height: 1.65;
+}
+
+/* Nummerierte Schrittfolge (Creator-Prozess, Ablauf der Zusammenarbeit). */
+.steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0;
+  counter-reset: step;
+}
+
+.steps li {
+  counter-increment: step;
+  display: grid;
+  grid-template-columns: 3.25rem 1fr;
+  gap: 0 1.25rem;
+  padding-block: 1.35rem;
+  border-top: 1px solid var(--line);
+  align-items: baseline;
+}
+
+.steps li:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.steps li::before {
+  content: counter(step, decimal-leading-zero);
+  font-family: var(--display);
+  font-size: var(--step--1);
+  color: var(--clay);
+}
+
+.steps__name {
+  font-family: var(--display);
+  font-size: var(--step-1);
+  line-height: 1.2;
+}
+
+.steps__text {
+  grid-column: 2;
+  color: var(--ink-2);
+  font-size: var(--step--1);
+  margin-top: 0.35rem;
+}
+
+/* ---------- Leistungssäulen ---------- */
+
+.pillar {
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  padding-block: clamp(2.5rem, 6vw, 5rem);
+  border-top: 1px solid var(--line);
+  scroll-margin-top: 7rem;
+}
+
+@media (min-width: 880px) {
+  .pillar {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    align-items: start;
+  }
+  /* Jede zweite Säule spiegeln — sonst wirkt die Seite wie eine Tabelle. */
+  .pillar:nth-child(even) > figure {
+    order: -1;
+  }
+}
+
+.pillar__list {
+  list-style: none;
+  margin: 1.75rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.65rem;
+  font-size: var(--step--1);
+  color: var(--ink-2);
+}
+
+.pillar__list li {
+  display: grid;
+  grid-template-columns: 1rem 1fr;
+  gap: 0.65rem;
+  align-items: baseline;
+}
+
+.pillar__list li::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--clay);
+  transform: translateY(-0.2em);
+}
+
+/* ---------- Preise ---------- */
+
+.preise {
+  display: grid;
+  gap: 0;
+}
+
+.paket {
+  display: grid;
+  gap: 0.75rem 2rem;
+  padding-block: 1.9rem;
+  border-top: 1px solid var(--line);
+}
+
+.paket:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+@media (min-width: 820px) {
+  .paket {
+    grid-template-columns: minmax(0, 4fr) minmax(0, 3fr) minmax(0, 5fr);
+    align-items: start;
+  }
+}
+
+.paket__preis {
+  font-family: var(--display);
+  font-size: var(--step-2);
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+.paket__unit {
+  display: block;
+  font-family: var(--sans);
+  font-size: var(--step--2);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-top: 0.35rem;
+}
+
+.paket__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.4rem;
+  font-size: var(--step--1);
+  color: var(--ink-2);
+}
+
+.paket__list li::before {
+  content: "— ";
+  color: var(--clay);
+}
+
+/* ---------- FAQ ---------- */
+
+.faq details {
+  border-top: 1px solid var(--line);
+  padding-block: 1.25rem;
+}
+
+.faq details:last-of-type {
+  border-bottom: 1px solid var(--line);
+}
+
+.faq summary {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.5rem;
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--display);
+  font-size: var(--step-1);
+  line-height: 1.25;
+}
+
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq summary::after {
+  content: "+";
+  font-family: var(--sans);
+  font-size: var(--step-1);
+  color: var(--clay);
+  flex: none;
+  line-height: 1;
+}
+
+.faq details[open] summary::after {
+  content: "–";
+}
+
+.faq details p {
+  margin: 0.9rem 0 0;
+  max-width: 62ch;
+  color: var(--ink-2);
+  font-size: var(--step--1);
+}
+
+/* ---------- Formular ---------- */
+
+.form {
+  display: grid;
+  gap: 1.4rem;
+}
+
+.form__row {
+  display: grid;
+  gap: 1.4rem;
+}
+
+@media (min-width: 640px) {
+  .form__row--2 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.field {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.field label {
+  font-size: var(--step--2);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.field input,
+.field select,
+.field textarea {
+  font-family: inherit;
+  font-size: var(--step-0);
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  padding: 0.85rem 1rem;
+  width: 100%;
+  transition: border-color 0.2s ease;
+}
+
+.field textarea {
+  min-height: 9rem;
+  resize: vertical;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: var(--ink);
+}
+
+.consent {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.75rem;
+  align-items: start;
+  font-size: var(--step--1);
+  color: var(--ink-2);
+}
+
+.consent input {
+  margin-top: 0.35em;
+  width: 1.05rem;
+  height: 1.05rem;
+  accent-color: var(--clay);
+}
+
+/* Honeypot gegen Bots — für Menschen unsichtbar, für Screenreader ausgeblendet. */
+.hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* ---------- Kontaktwege ---------- */
+
+.kanaele {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0;
+}
+
+.kanaele li {
+  display: grid;
+  gap: 0.2rem;
+  padding-block: 1.1rem;
+  border-top: 1px solid var(--line);
+}
+
+.kanaele li:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.kanaele dt,
+.kanaele__label {
+  font-size: var(--step--2);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.kanaele__value {
+  font-family: var(--display);
+  font-size: var(--step-1);
+  word-break: break-word;
+}
+
+/* ---------- Footer ---------- */
+
+.footer {
+  background: var(--ink);
+  color: #bfb5a9;
+  padding-block: clamp(3rem, 6vw, 5rem) 2rem;
+  font-size: var(--step--1);
+}
+
+.footer a {
+  color: var(--paper);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.footer a:hover {
+  border-bottom-color: var(--clay);
+}
+
+.footer__grid {
+  display: grid;
+  gap: 2.5rem;
+}
+
+@media (min-width: 760px) {
+  .footer__grid {
+    grid-template-columns: minmax(0, 2fr) repeat(3, minmax(0, 1fr));
+  }
+}
+
+.footer__claim {
+  font-family: var(--display);
+  font-size: var(--step-2);
+  line-height: 1.15;
+  color: var(--paper);
+  letter-spacing: -0.015em;
+  max-width: 22ch;
+}
+
+.footer__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.footer__head {
+  font-size: var(--step--2);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #857a6f;
+  margin-bottom: 1rem;
+}
+
+.footer__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 2rem;
+  justify-content: space-between;
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+  padding-top: 1.5rem;
+  border-top: 1px solid #3a332d;
+  font-size: var(--step--2);
+}
+
+/* ---------- Platzhalter-Markierung ----------
+ *
+ * Alles, was in src/data/site.ts noch ein "TODO — " ist, wird so ausgezeichnet.
+ * Es soll in der Preview unübersehbar sein; scripts/verify.mjs verhindert
+ * zusätzlich, dass ein solcher Wert je in Production geht.
+ */
+.todo {
+  background: #ffe9c7;
+  color: #7a4b00;
+  padding: 0.1em 0.45em;
+  border-radius: 2px;
+  font-family: var(--sans);
+  font-size: var(--step--1);
+  font-style: normal;
+  letter-spacing: 0;
+}
+
+/* ---------- Einblendung beim Scrollen ----------
+ *
+ * Der Startzustand hängt an `.js-reveal` am <html>, das erst das Skript setzt.
+ * Ohne JavaScript bleibt alles sichtbar — die Animation ist Zugabe, nie
+ * Voraussetzung. Bei reduzierter Bewegung passiert nichts.
+ */
+.js-reveal [data-reveal] {
+  opacity: 0;
+  transform: translateY(20px);
+  will-change: opacity, transform;
+  transition:
+    opacity 0.6s cubic-bezier(0.22, 0.68, 0.24, 1),
+    transform 0.75s cubic-bezier(0.22, 0.68, 0.24, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.js-reveal [data-reveal].is-in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js-reveal [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

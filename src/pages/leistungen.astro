@@ -1,0 +1,181 @@
+---
+import Base from "../layouts/Base.astro";
+import Picture from "../components/Picture.astro";
+import Cta from "../components/Cta.astro";
+import { pillars, pakete, creatorProcess, ablauf } from "../data/services";
+import { faq } from "../data/faq";
+import { faqLd, breadcrumbLd } from "../data/jsonld";
+---
+
+<Base
+  title="Leistungen & Preise — Tina Jocksch"
+  description="Social Media Management, Content Creation, Influencer Marketing und Beratung — mit Leistungsumfang, Ablauf und Ab-Preisen. Transparent statt auf Anfrage."
+  jsonLd={[faqLd, breadcrumbLd("Leistungen", "/leistungen/")]}
+>
+  <section class="section section--tight">
+    <div class="wrap split">
+      <div>
+        <p class="eyebrow">Leistungen</p>
+        <h1>Vier Säulen, die aufeinander aufbauen</h1>
+      </div>
+      <p class="lead">
+        Jede Säule ist einzeln buchbar. Ihren eigentlichen Wert entfalten sie
+        zusammen — weil Strategie, Content und Creator-Kampagnen dann derselben
+        Linie folgen statt drei verschiedenen.
+      </p>
+    </div>
+  </section>
+
+  <!-- ---------- Die vier Säulen ---------- -->
+  <section class="section section--tight">
+    <div class="wrap">
+      {
+        pillars.map((p) => (
+          <article class="pillar" id={p.slug}>
+            <div>
+              <p class="eyebrow">{p.name}</p>
+              <h2>{p.claim}</h2>
+              <p class="lead" style="margin-top:1.25rem">
+                {p.body}
+              </p>
+              <ul class="pillar__list">
+                {p.items.map((item) => (
+                  <li>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <figure class="media media--45" data-reveal>
+              <Picture
+                name={p.img}
+                alt={p.imgAlt}
+                sizes="(min-width: 880px) 40vw, 100vw"
+              />
+            </figure>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- ---------- Creator-Prozess: die Blackbox aufmachen ---------- -->
+  <section class="section section--sand">
+    <div class="wrap split split--sticky">
+      <div>
+        <p class="eyebrow">Creator Marketing im Detail</p>
+        <h2>Acht Schritte statt einer Blackbox</h2>
+        <p class="lead" style="margin-top:1.25rem">
+          Die häufigste Sorge bei Influencer-Kampagnen ist nicht der Preis, sondern
+          die Undurchsichtigkeit. Deshalb liegt der Prozess offen — Sie sehen, was
+          wann passiert und wo Ihre Freigabe sitzt.
+        </p>
+      </div>
+      <ol class="steps">
+        {
+          creatorProcess.map((s) => (
+            <li>
+              <span class="steps__name">{s.step}</span>
+              <span class="steps__text">{s.text}</span>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <!-- ---------- Pakete und Preise ---------- -->
+  <section class="section" id="preise">
+    <div class="wrap">
+      <div class="split" style="margin-bottom:clamp(2rem,4vw,3rem)">
+        <div>
+          <p class="eyebrow">Pakete</p>
+          <h2>Was das kostet</h2>
+        </div>
+        <p class="lead">
+          Alle Angaben sind Startpunkte, netto zzgl. Umsatzsteuer. Der tatsächliche
+          Umfang hängt von Kanälen, Frequenz und Produktionsaufwand ab — den
+          bekommen Sie nach dem Erstgespräch schriftlich und verbindlich.
+        </p>
+      </div>
+
+      <div class="preise">
+        {
+          pakete.map((p) => (
+            <div class="paket">
+              <div>
+                <h3 class="card__title">{p.name}</h3>
+                <p class="card__text" style="margin-top:0.5rem">
+                  {p.fit}
+                </p>
+              </div>
+              <p class="paket__preis">
+                ab {p.from}
+                <span class="paket__unit">{p.unit}</span>
+              </p>
+              <ul class="paket__list">
+                {p.includes.map((i) => (
+                  <li>{i}</li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+
+      <p class="small muted" style="margin-top:1.5rem;max-width:60ch">
+        Reise- und Produktionskosten außerhalb von Düsseldorf und Köln werden separat
+        ausgewiesen. Retainer laufen in der Regel über mindestens drei Monate — davor
+        lässt sich seriös nichts messen.
+      </p>
+    </div>
+  </section>
+
+  <!-- ---------- Ablauf der Zusammenarbeit ---------- -->
+  <section class="section section--sand">
+    <div class="wrap split split--sticky">
+      <div>
+        <p class="eyebrow">Ablauf</p>
+        <h2>Wie eine Zusammenarbeit beginnt</h2>
+        <p class="lead" style="margin-top:1.25rem">
+          Vom ersten Gespräch bis zum ersten Reporting vergehen in der Regel vier bis
+          sechs Wochen.
+        </p>
+      </div>
+      <ol class="steps">
+        {
+          ablauf.map((s) => (
+            <li>
+              <span class="steps__name">{s.step}</span>
+              <span class="steps__text">{s.text}</span>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <!-- ---------- FAQ ---------- -->
+  <section class="section">
+    <div class="wrap">
+      <div class="split" style="margin-bottom:clamp(1.5rem,3vw,2.5rem)">
+        <div>
+          <p class="eyebrow">Häufige Fragen</p>
+          <h2>Was Kundinnen und Kunden vorher wissen wollen</h2>
+        </div>
+      </div>
+      <div class="faq">
+        {
+          faq.map((f) => (
+            <details>
+              <summary>{f.q}</summary>
+              <p>{f.a}</p>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <Cta />
+</Base>

@@ -1,0 +1,88 @@
+---
+import { site, nav, isTodo } from "../data/site";
+import { pillars } from "../data/services";
+
+const year = new Date().getFullYear();
+const mailReady = !isTodo(site.email);
+const linkedinReady = !isTodo(site.linkedin);
+---
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div>
+        <p class="footer__claim">
+          Strategisch denken. Kreativ umsetzen. Messbar weiterentwickeln.
+        </p>
+        <p style="margin-top:1.5rem;max-width:34ch">
+          Social Media Management, Content Creation und Influencer Marketing für
+          visuell starke Marken und Orte.
+        </p>
+      </div>
+
+      <div>
+        <p class="footer__head">Leistungen</p>
+        <ul class="footer__list">
+          {
+            pillars.map((p) => (
+              <li>
+                <a href={`/leistungen/#${p.slug}`}>{p.name}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div>
+        <p class="footer__head">Seiten</p>
+        <ul class="footer__list">
+          {
+            nav.map((item) => (
+              <li>
+                <a href={item.href}>{item.label}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div>
+        <p class="footer__head">Kontakt</p>
+        <ul class="footer__list">
+          <li>
+            {
+              mailReady ? (
+                <a href={`mailto:${site.email}`}>{site.email}</a>
+              ) : (
+                <span class="todo">{site.email}</span>
+              )
+            }
+          </li>
+          <li>
+            {
+              linkedinReady ? (
+                <a href={site.linkedin} rel="me noopener">
+                  LinkedIn
+                </a>
+              ) : (
+                <span class="todo">LinkedIn: {site.linkedin}</span>
+              )
+            }
+          </li>
+          <li>
+            <a href={site.instagram} rel="me noopener">
+              Instagram {site.instagramHandle}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <span>© {year} {site.name}</span>
+      <span>
+        <a href="/impressum/">Impressum</a> · <a href="/datenschutz/">Datenschutz</a>
+      </span>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,46 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# ---------------------------------------------------------------------------
+# Security-Header.
+#
+# Die CSP ist eng gefasst, weil die Seite keine externen Ressourcen lädt:
+# Schriften kommen aus dem eigenen Build, Bilder und Videos aus /img und /video,
+# es gibt kein Tracking und keine eingebetteten Drittinhalte.
+#
+# Zwei Abweichungen von der strengsten Fassung:
+#   form-action 'self'  — Netlify Forms nimmt den POST auf derselben Origin
+#                         entgegen. Mit 'none' würde der Browser den Versand
+#                         blockieren und das Kontaktformular wäre tot.
+#   media-src  'self'   — für die Reels auf /portfolio/.
+# ---------------------------------------------------------------------------
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "SAMEORIGIN"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=(), interest-cohort=()"
+    Content-Security-Policy = "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; media-src 'self'; connect-src 'none'; font-src 'self'; form-action 'self'; frame-ancestors 'self'; base-uri 'self'"
+
+# Bilder und Videos tragen keinen Hash im Namen, werden aber praktisch nie
+# einzeln ausgetauscht — bei einer Änderung bekommt die Datei einen neuen Namen.
+[[headers]]
+  for = "/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/video/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/_astro/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

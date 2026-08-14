@@ -1,0 +1,35 @@
+---
+import Base from "../layouts/Base.astro";
+import { nav } from "../data/site";
+---
+
+<Base
+  title="Seite nicht gefunden — Tina Jocksch"
+  description="Diese Seite gibt es nicht (mehr). Hier geht es zurück zur Startseite und zu den wichtigsten Bereichen."
+  noindex={true}
+>
+  <section class="section">
+    <div class="wrap narrow">
+      <p class="eyebrow">Fehler 404</p>
+      <h1>Diese Seite gibt es nicht.</h1>
+      <p class="lead" style="margin-top:1.5rem">
+        Vielleicht hat sich die Adresse geändert, vielleicht ein Tippfehler. Hier
+        kommen Sie weiter:
+      </p>
+      <ol class="steps" style="margin-top:2rem">
+        <li>
+          <span class="steps__name"><a href="/">Startseite</a></span>
+        </li>
+        {
+          nav.map((item) => (
+            <li>
+              <span class="steps__name">
+                <a href={item.href}>{item.label}</a>
+              </span>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+</Base>

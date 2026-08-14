@@ -1,0 +1,82 @@
+# Tina Jocksch — Portfolio-Website
+
+Statische Astro-Seite für das Freelance-Business **Social Media Management,
+Content Creation und Influencer Marketing**.
+
+- **Strategische Grundlage:** [`docs/6P-Positionierung.md`](docs/6P-Positionierung.md) (ecomex 6P) ·
+  [`docs/Website-Story.md`](docs/Website-Story.md) (Golden Circle)
+- **Spec:** [`SPEC.md`](SPEC.md) · **Acceptance-Set:** [`acceptance.json`](acceptance.json)
+- **Freigabe-Paket:** [`GATE.md`](GATE.md)
+
+## Stack
+
+Astro 5, statisch. Keine externen Requests: die Schrift (Fraunces) wird über
+`@fontsource-variable` mitgebaut, Bilder und Videos liegen im eigenen Build.
+Deshalb sind weder Cookie-Banner noch Consent-Management nötig. JavaScript gibt
+es nur für zwei optionale Effekte (Sticky-Header, Einblendung beim Scrollen) —
+ohne JS bleibt die Seite vollständig nutzbar.
+
+## Befehle
+
+```bash
+npm ci
+npm run dev          # Entwicklung
+npm run build        # -> dist/
+npm run check        # astro check (TypeScript)
+npm run images       # Bilder und Reels aus ~/Desktop/Eigene Website Tina aufbereiten
+npm run og           # public/og.png neu erzeugen
+npm run verify       # Verify-Gauntlet (Platzhalter = Warnung)
+npm run verify:prod  # dito, aber Platzhalter = harter Fehler
+```
+
+Vollständiger Gauntlet vor jedem Deploy:
+
+```bash
+npm run build && npx astro check && npm run verify
+```
+
+## Struktur
+
+| Datei | Zweck |
+|---|---|
+| `src/data/site.ts` | Stammdaten, CTA, Navigation. **Einzige Quelle** — Inhalte hier ändern, nicht in den Seiten. |
+| `src/data/services.ts` | Die vier Leistungssäulen, Pakete und Preise, Creator-Prozess, Ablauf |
+| `src/data/cases.ts` | @pempelhome-Case, Reels, weitere Arbeiten |
+| `src/data/faq.ts` | FAQ — jede Frage stammt aus den Persona-Pains |
+| `src/data/jsonld.ts` | Strukturierte Daten. Platzhalter werden bewusst **nicht** ausgespielt. |
+| `src/data/images.json` | Bild-Manifest (Breiten und Maße), erzeugt von `prepare-images.mjs` |
+| `src/components/Cta.astro` | Der **eine** CTA. Wording und Ziel nie variieren. |
+| `src/components/Picture.astro` | Bild mit srcset und festen Maßen aus dem Manifest |
+| `scripts/prepare-images.mjs` | Bildaufbereitung inkl. Zuordnungstabelle Quelldatei → Zielname |
+| `scripts/verify.mjs` | Verify-Gauntlet, inklusive Platzhalter-Gate |
+| `scripts/screenshots.mjs` | Vollseiten-Screenshots in mehreren Breiten |
+| `netlify.toml` | Security-Header, CSP und Caching |
+
+## Platzhalter-Mechanik
+
+Noch offene Stammdaten stehen in `src/data/site.ts` mit dem Präfix `TODO — `.
+Das hat drei Effekte:
+
+1. Sie sind in der Preview orange hinterlegt und unübersehbar.
+2. Komponenten rendern sie als Text statt als Link — es entsteht keine
+   `mailto:`- oder `wa.me`-Adresse, die ins Leere oder zu einem fremden Anschluss
+   führt.
+3. `npm run verify:prod` bricht ab, solange ein solcher Wert im Build steht.
+
+**Die Seite kann damit als Preview laufen, aber nicht mit unvollständigem
+Impressum in Production gehen.**
+
+## Deploy
+
+```bash
+npx netlify-cli deploy            # Preview (Draft-URL)
+npx netlify-cli deploy --prod     # erst nach Freigabe am Gate
+```
+
+## Beim Umzug auf eine eigene Domain
+
+Drei Stellen müssen zusammenpassen, sonst brechen Canonical, OG-URLs und Sitemap:
+
+1. `SITE_URL` in `src/data/site.ts`
+2. `site` in `astro.config.mjs`
+3. `Sitemap:`-Zeile in `public/robots.txt`
