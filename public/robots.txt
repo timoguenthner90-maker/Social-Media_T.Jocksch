@@ -1,6 +1,0 @@
-User-agent: *
-Allow: /
-
-# Beim Umzug auf eine eigene Domain muss diese Zeile mit `site` in
-# astro.config.mjs und SITE_URL in src/data/site.ts zusammenpassen.
-Sitemap: https://tina-jocksch.netlify.app/sitemap-index.xml
