@@ -4,6 +4,12 @@
 
 [build.environment]
   NODE_VERSION = "22"
+  # Die devDependencies sind reines lokales Werkzeug: sharp für die
+  # Bildaufbereitung, chrome-launcher für die Screenshots, astro/check für die
+  # Typprüfung. Nichts davon braucht der Build — sie bringen aber native
+  # Binaries mit, die auf Netlifys Linux-Umgebung installiert werden müssten.
+  # Ohne sie ist der Build kleiner, schneller und hat eine Fehlerquelle weniger.
+  NPM_FLAGS = "--omit=dev"
 
 # ---------------------------------------------------------------------------
 # Security-Header.
