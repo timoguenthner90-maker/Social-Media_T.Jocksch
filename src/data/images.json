@@ -1,21 +1,5 @@
 {
-  "bts-licht": {
-    "widths": [
-      800,
-      560
-    ],
-    "w": 800,
-    "h": 1000
-  },
   "bts-set": {
-    "widths": [
-      800,
-      560
-    ],
-    "w": 800,
-    "h": 1000
-  },
-  "bts-spiegel": {
     "widths": [
       800,
       560
@@ -31,30 +15,6 @@
     "w": 800,
     "h": 1000
   },
-  "case-detail": {
-    "widths": [
-      800,
-      560
-    ],
-    "w": 800,
-    "h": 1000
-  },
-  "case-licht": {
-    "widths": [
-      800,
-      560
-    ],
-    "w": 800,
-    "h": 1000
-  },
-  "case-spiegel": {
-    "widths": [
-      800,
-      560
-    ],
-    "w": 800,
-    "h": 1000
-  },
   "case-wohnraum": {
     "widths": [
       1000,
@@ -63,39 +23,7 @@
     "w": 1000,
     "h": 1250
   },
-  "interior-boucle": {
-    "widths": [
-      800,
-      560
-    ],
-    "w": 800,
-    "h": 1000
-  },
-  "interior-fenster": {
-    "widths": [
-      800,
-      560
-    ],
-    "w": 800,
-    "h": 1000
-  },
   "interior-garten": {
-    "widths": [
-      800,
-      560
-    ],
-    "w": 800,
-    "h": 1000
-  },
-  "interior-lampen": {
-    "widths": [
-      800,
-      560
-    ],
-    "w": 800,
-    "h": 1000
-  },
-  "interior-pflanze": {
     "widths": [
       800,
       560
@@ -134,21 +62,7 @@
     "w": 720,
     "h": 1280
   },
-  "reel-showroom-poster": {
-    "widths": [
-      720
-    ],
-    "w": 720,
-    "h": 1280
-  },
   "reel-sofa-poster": {
-    "widths": [
-      720
-    ],
-    "w": 720,
-    "h": 1280
-  },
-  "reel-studio-poster": {
     "widths": [
       720
     ],
@@ -170,14 +84,6 @@
     ],
     "w": 900,
     "h": 1125
-  },
-  "tina-sofa": {
-    "widths": [
-      800,
-      560
-    ],
-    "w": 800,
-    "h": 1000
   },
   "tina-work": {
     "widths": [

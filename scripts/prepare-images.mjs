@@ -30,6 +30,26 @@ const VID_OUT = "public/video";
 fs.mkdirSync(IMG_OUT, { recursive: true });
 fs.mkdirSync(VID_OUT, { recursive: true });
 
+// Der Quellordner liegt auf dem Schreibtisch und damit im Zugriffsschutz von
+// macOS. Fehlt die Freigabe, meldet sharp nur „unsupported image format" —
+// eine irreführende Meldung, die nach kaputten Dateien klingt. Deshalb hier
+// einmal vorab prüfen und im Klartext sagen, woran es liegt.
+try {
+  fs.readdirSync(CONTENT);
+} catch (err) {
+  console.error(
+    `\nQuellordner nicht lesbar: ${CONTENT}\n` +
+      `  (${err.code})\n\n` +
+      `  Das ist in aller Regel der macOS-Zugriffsschutz, nicht ein Problem mit\n` +
+      `  den Dateien. Dem Terminal in den Systemeinstellungen unter\n` +
+      `  „Datenschutz & Sicherheit → Dateien und Ordner" Zugriff auf den\n` +
+      `  Schreibtisch geben — oder den Ordner an einen Ort außerhalb von\n` +
+      `  Schreibtisch, Dokumente und Downloads legen und den Pfad als Argument\n` +
+      `  übergeben: npm run images -- /pfad/zum/ordner\n`,
+  );
+  process.exit(1);
+}
+
 const c = (f) => path.join(CONTENT, f);
 
 /**
@@ -39,149 +59,80 @@ const c = (f) => path.join(CONTENT, f);
  * focus  = "attention" für Bilder mit Personen (sharp sucht das Gesicht),
  *          "centre" für Interior — dort liegt das Motiv verlässlich mittig
  */
+// Bewusst knapp gehalten: zehn Bilder, zwei Reels. Aus dem Quellordner ließen
+// sich leicht dreimal so viele aufbereiten — aber eine Portfolio-Seite überzeugt
+// über Auswahl, nicht über Menge. Jedes Bild hier hat eine feste Aufgabe.
 const IMAGES = [
   // ---- Personenbilder -----------------------------------------------------
   {
-    out: "tina-hero",
+    out: "tina-hero", // Hero der Startseite
     src: c("WhatsApp Image 2026-08-14 at 21.26.07 (4).jpeg"),
     ratio: 3 / 4,
     widths: [900, 600],
     focus: "attention",
   },
   {
-    out: "tina-portrait",
+    out: "tina-portrait", // Abschnitt „Über mich" + OG-Bild
     src: c("WhatsApp Image 2026-08-12 at 17.09.30.jpeg"),
     ratio: 4 / 5,
     widths: [900, 600],
     focus: "attention",
   },
   {
-    out: "tina-work",
+    out: "tina-work", // Säule Creator Marketing
     src: c("WhatsApp Image 2026-08-14 at 21.26.09.jpeg"),
     ratio: 4 / 5,
     widths: [800, 560],
     focus: "attention",
   },
-  {
-    out: "tina-sofa",
-    src: c("WhatsApp Image 2026-08-14 at 21.36.29 (9).jpeg"),
-    ratio: 4 / 5,
-    widths: [800, 560],
-    focus: "attention",
-  },
 
-  // ---- Produktion / Behind the Scenes -------------------------------------
+  // ---- Produktion ---------------------------------------------------------
   {
-    out: "bts-set",
+    out: "bts-set", // Säule Content Creation
     src: c("WhatsApp Image 2026-08-14 at 21.25.49.jpeg"),
     ratio: 4 / 5,
     widths: [800, 560],
     focus: "centre",
   },
   {
-    out: "bts-licht",
-    src: c("WhatsApp Image 2026-08-14 at 21.26.09 (3).jpeg"),
-    ratio: 4 / 5,
-    widths: [800, 560],
-    focus: "centre",
-  },
-  {
-    out: "bts-studio",
+    out: "bts-studio", // Säule Strategie & Projekt-Support
     src: c("WhatsApp Image 2026-08-14 at 21.36.29 (5).jpeg"),
     ratio: 4 / 5,
     widths: [800, 560],
     focus: "centre",
   },
-  {
-    out: "bts-spiegel",
-    src: c("WhatsApp Image 2026-08-14 at 21.26.09 (1).jpeg"),
-    ratio: 4 / 5,
-    widths: [800, 560],
-    focus: "centre",
-  },
 
-  // ---- @pempelhome — Case -------------------------------------------------
+  // ---- Arbeiten -----------------------------------------------------------
   {
-    out: "case-wohnraum",
+    out: "case-wohnraum", // Arbeiten-Raster, @pempelhome
     src: c("WhatsApp Image 2026-08-14 at 21.44.03 (1).jpeg"),
     ratio: 4 / 5,
     widths: [1000, 640],
     focus: "centre",
   },
   {
-    out: "case-detail",
-    src: c("WhatsApp Image 2026-08-14 at 21.44.03 (3).jpeg"),
-    ratio: 4 / 5,
-    widths: [800, 560],
-    focus: "centre",
-  },
-  {
-    out: "case-spiegel",
-    src: c("WhatsApp Image 2026-08-14 at 21.44.03.jpeg"),
-    ratio: 4 / 5,
-    widths: [800, 560],
-    focus: "centre",
-  },
-  {
-    out: "case-licht",
-    src: c("WhatsApp Image 2026-08-14 at 21.44.03 (2).jpeg"),
-    ratio: 4 / 5,
-    widths: [800, 560],
-    focus: "centre",
-  },
-
-  // ---- Interior- und Markenaufnahmen --------------------------------------
-  {
-    out: "interior-boucle",
-    src: c("WhatsApp Image 2026-08-14 at 21.26.10 (2).jpeg"),
-    ratio: 4 / 5,
-    widths: [800, 560],
-    focus: "centre",
-  },
-  {
-    out: "interior-garten",
+    out: "interior-garten", // Arbeiten-Raster
     src: c("WhatsApp Image 2026-08-14 at 21.26.10 (3).jpeg"),
     ratio: 4 / 5,
     widths: [800, 560],
     focus: "centre",
   },
   {
-    out: "interior-wohnraum",
+    out: "interior-wohnraum", // Säule Social Media Management
     src: c("WhatsApp Image 2026-08-14 at 21.36.29 (3).jpeg"),
     ratio: 4 / 5,
     widths: [800, 560],
     focus: "centre",
   },
   {
-    out: "interior-fenster",
-    src: c("WhatsApp Image 2026-08-14 at 21.36.29 (4).jpeg"),
-    ratio: 4 / 5,
-    widths: [800, 560],
-    focus: "centre",
-  },
-  {
-    out: "interior-pflanze",
-    src: c("WhatsApp Image 2026-08-14 at 21.36.29 (7).jpeg"),
-    ratio: 4 / 5,
-    widths: [800, 560],
-    focus: "centre",
-  },
-  {
-    out: "interior-regal",
+    out: "interior-regal", // Arbeiten-Raster
     src: c("WhatsApp Image 2026-08-14 at 21.36.29 (8).jpeg"),
     ratio: 4 / 5,
     widths: [800, 560],
     focus: "centre",
   },
   {
-    out: "interior-lampen",
-    src: c("WhatsApp Image 2026-08-14 at 21.26.09 (7).jpeg"),
-    ratio: 4 / 5,
-    widths: [800, 560],
-    focus: "centre",
-  },
-  {
-    out: "interior-textur",
+    out: "interior-textur", // Arbeiten-Raster, Materialdetail
     src: c("WhatsApp Image 2026-08-14 at 21.26.08 (5).jpeg"),
     ratio: 4 / 5,
     widths: [800, 560],
@@ -195,8 +146,6 @@ const IMAGES = [
 const VIDEOS = [
   { out: "reel-sofa", src: c("WhatsApp Video 2026-08-14 at 21.26.11.mp4") },
   { out: "reel-material", src: c("WhatsApp Video 2026-08-14 at 21.26.10.mp4") },
-  { out: "reel-studio", src: c("WhatsApp Video 2026-08-14 at 21.36.29.mp4") },
-  { out: "reel-showroom", src: c("WhatsApp Video 2026-08-14 at 21.26.10 (1).mp4") },
 ];
 
 const done = [];

@@ -2,14 +2,18 @@
 import Base from "../layouts/Base.astro";
 import Picture from "../components/Picture.astro";
 import Cta from "../components/Cta.astro";
-import { pillars, pakete, creatorProcess, ablauf } from "../data/services";
+import { pillars, pakete, creatorProcess } from "../data/services";
 import { faq } from "../data/faq";
 import { faqLd, breadcrumbLd } from "../data/jsonld";
+
+// Der Ablauf der Zusammenarbeit stand hier früher zusätzlich — er ist auf die
+// Kontaktseite gewandert, wo er hingehört. Zweimal dieselbe Schrittfolge hat
+// die Seite nur verlängert.
 ---
 
 <Base
   title="Leistungen & Preise — Tina Jocksch"
-  description="Social Media Management, Content Creation, Influencer Marketing und Beratung — mit Leistungsumfang, Ablauf und Ab-Preisen. Transparent statt auf Anfrage."
+  description="Social Media Management, Content Creation, Influencer Marketing und Beratung — mit Leistungsumfang und Ab-Preisen. Transparent statt auf Anfrage."
   jsonLd={[faqLd, breadcrumbLd("Leistungen", "/leistungen/")]}
 >
   <section class="section section--tight">
@@ -35,9 +39,7 @@ import { faqLd, breadcrumbLd } from "../data/jsonld";
             <div>
               <p class="eyebrow">{p.name}</p>
               <h2>{p.claim}</h2>
-              <p class="lead" style="margin-top:1.25rem">
-                {p.body}
-              </p>
+              <p style="margin-top:1rem">{p.body}</p>
               <ul class="pillar__list">
                 {p.items.map((item) => (
                   <li>
@@ -50,7 +52,7 @@ import { faqLd, breadcrumbLd } from "../data/jsonld";
               <Picture
                 name={p.img}
                 alt={p.imgAlt}
-                sizes="(min-width: 880px) 40vw, 100vw"
+                sizes="(min-width: 880px) 36vw, 100vw"
               />
             </figure>
           </article>
@@ -65,7 +67,7 @@ import { faqLd, breadcrumbLd } from "../data/jsonld";
       <div>
         <p class="eyebrow">Creator Marketing im Detail</p>
         <h2>Acht Schritte statt einer Blackbox</h2>
-        <p class="lead" style="margin-top:1.25rem">
+        <p class="lead" style="margin-top:1rem">
           Die häufigste Sorge bei Influencer-Kampagnen ist nicht der Preis, sondern
           die Undurchsichtigkeit. Deshalb liegt der Prozess offen — Sie sehen, was
           wann passiert und wo Ihre Freigabe sitzt.
@@ -87,15 +89,15 @@ import { faqLd, breadcrumbLd } from "../data/jsonld";
   <!-- ---------- Pakete und Preise ---------- -->
   <section class="section" id="preise">
     <div class="wrap">
-      <div class="split" style="margin-bottom:clamp(2rem,4vw,3rem)">
+      <div class="split" style="margin-bottom:clamp(1.5rem,3vw,2.5rem)">
         <div>
           <p class="eyebrow">Pakete</p>
           <h2>Was das kostet</h2>
         </div>
         <p class="lead">
-          Alle Angaben sind Startpunkte, netto zzgl. Umsatzsteuer. Der tatsächliche
-          Umfang hängt von Kanälen, Frequenz und Produktionsaufwand ab — den
-          bekommen Sie nach dem Erstgespräch schriftlich und verbindlich.
+          Startpunkte, netto zzgl. Umsatzsteuer. Der tatsächliche Umfang hängt von
+          Kanälen, Frequenz und Produktionsaufwand ab — den bekommen Sie nach dem
+          Erstgespräch schriftlich und verbindlich.
         </p>
       </div>
 
@@ -105,7 +107,7 @@ import { faqLd, breadcrumbLd } from "../data/jsonld";
             <div class="paket">
               <div>
                 <h3 class="card__title">{p.name}</h3>
-                <p class="card__text" style="margin-top:0.5rem">
+                <p class="card__text" style="margin-top:0.4rem">
                   {p.fit}
                 </p>
               </div>
@@ -123,7 +125,7 @@ import { faqLd, breadcrumbLd } from "../data/jsonld";
         }
       </div>
 
-      <p class="small muted" style="margin-top:1.5rem;max-width:60ch">
+      <p class="small muted" style="margin-top:1.25rem;max-width:60ch">
         Reise- und Produktionskosten außerhalb von Düsseldorf und Köln werden separat
         ausgewiesen. Retainer laufen in der Regel über mindestens drei Monate — davor
         lässt sich seriös nichts messen.
@@ -131,34 +133,10 @@ import { faqLd, breadcrumbLd } from "../data/jsonld";
     </div>
   </section>
 
-  <!-- ---------- Ablauf der Zusammenarbeit ---------- -->
-  <section class="section section--sand">
-    <div class="wrap split split--sticky">
-      <div>
-        <p class="eyebrow">Ablauf</p>
-        <h2>Wie eine Zusammenarbeit beginnt</h2>
-        <p class="lead" style="margin-top:1.25rem">
-          Vom ersten Gespräch bis zum ersten Reporting vergehen in der Regel vier bis
-          sechs Wochen.
-        </p>
-      </div>
-      <ol class="steps">
-        {
-          ablauf.map((s) => (
-            <li>
-              <span class="steps__name">{s.step}</span>
-              <span class="steps__text">{s.text}</span>
-            </li>
-          ))
-        }
-      </ol>
-    </div>
-  </section>
-
   <!-- ---------- FAQ ---------- -->
-  <section class="section">
+  <section class="section section--sand">
     <div class="wrap">
-      <div class="split" style="margin-bottom:clamp(1.5rem,3vw,2.5rem)">
+      <div class="split" style="margin-bottom:clamp(1.25rem,2.5vw,2rem)">
         <div>
           <p class="eyebrow">Häufige Fragen</p>
           <h2>Was Kundinnen und Kunden vorher wissen wollen</h2>

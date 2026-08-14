@@ -25,15 +25,7 @@ export const faq: FaqItem[] = [
     a: "Ja. Content geht vor Veröffentlichung durch Ihre Freigabe, solange Sie das möchten. Viele Kunden lockern das nach einigen Monaten, weil die Abstimmung Zeit kostet — aber das ist Ihre Entscheidung, nicht meine.",
   },
   {
-    q: "Arbeiten Sie auch mit Agenturen zusammen?",
-    a: "Ja. Für Agenturen übernehme ich Projektspitzen, Creator-Handling im White Label oder operative Betreuung, wenn intern jemand ausfällt. Abgerechnet wird tageweise.",
-  },
-  {
     q: "Machen Sie auch Paid Social und Ads?",
     a: "Aktuell nicht als Kernleistung. Ich bilde mich in dem Bereich weiter und ergänze ihn, sobald ich echte Praxiserfahrung vorweisen kann. Bis dahin sage ich lieber, dass ich es nicht anbiete, als es halb zu machen — und empfehle Ihnen bei Bedarf jemanden.",
-  },
-  {
-    q: "Wo arbeiten Sie?",
-    a: "Der Schwerpunkt liegt in Düsseldorf, Köln und dem Rheinland. Produktionstage darüber hinaus sind möglich, Betreuung und Strategie laufen ohnehin remote.",
   },
 ];

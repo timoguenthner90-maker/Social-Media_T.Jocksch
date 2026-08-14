@@ -19,7 +19,7 @@ statt über drei Dienstleister. Individuell statt von der Stange, persönlich st
 Agentur-Overhead — und mit klaren KPIs, damit Ästhetik überprüfbar bleibt.
 
 **What:** Social Media Management · Content Creation & UGC · Influencer & Creator Marketing
-· Audits, Workshops und Projekt-Support. Für visuell starke Marken und Orte: Interior,
+· Audits und Projekt-Support. Für visuell starke Marken und Orte: Interior,
 Hospitality, Gastronomie, Lifestyle, Consumer und D2C.
 
 **Tonalität:** ruhig, konkret, glaubwürdig. Keine Superlative, keine Buzzwords, keine
@@ -141,7 +141,7 @@ Drei Kacheln:
 
 ### Säule 4 — Strategie & Projekt-Support
 
-> Manchmal braucht es kein Retainer, sondern Klarheit. Audit, Workshop oder Sparring — oder
+> Manchmal braucht es kein Retainer, sondern Klarheit. Ein Audit oder Sparring — oder
 > operative Unterstützung für Agenturen und Marketingteams, wenn ein Projekt Spitzen hat.
 
 ### Pakete & Preise

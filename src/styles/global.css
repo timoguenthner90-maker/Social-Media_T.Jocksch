@@ -40,17 +40,19 @@
   --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
     Arial, sans-serif;
 
-  --step--2: clamp(0.72rem, 0.7rem + 0.1vw, 0.78rem);
-  --step--1: clamp(0.84rem, 0.82rem + 0.12vw, 0.92rem);
-  --step-0: clamp(1rem, 0.97rem + 0.16vw, 1.09rem);
-  --step-1: clamp(1.15rem, 1.08rem + 0.35vw, 1.35rem);
-  --step-2: clamp(1.4rem, 1.24rem + 0.8vw, 1.9rem);
-  --step-3: clamp(1.75rem, 1.42rem + 1.6vw, 2.7rem);
-  --step-4: clamp(2.1rem, 1.6rem + 2.4vw, 3.4rem);
-  /* Die Hero-Zeile ist vier Zeilen lang. Größer als 4,4 rem drückt sie den
-     CTA auf einem 900-px-Fenster unter die Falz — dann steht die Haltung da,
-     aber niemand sieht den nächsten Schritt. */
-  --step-5: clamp(2.5rem, 1.7rem + 3.6vw, 4.4rem);
+  /* Enge Skala, Schrittweite rund 1,18 statt 1,33. Zwischen der kleinsten und
+     der größten Stufe liegt jetzt Faktor 3,2 statt 6 — die Seite wirkt ruhiger
+     und gleichmäßiger, statt zwischen Plakat und Kleingedrucktem zu springen.
+     Die kleinste Stufe ist bewusst auf 0,82 rem angehoben; darunter wird das
+     gesperrte Versal-Label unangenehm zu lesen. */
+  --step--2: clamp(0.8rem, 0.78rem + 0.08vw, 0.85rem);
+  --step--1: clamp(0.91rem, 0.89rem + 0.1vw, 0.97rem);
+  --step-0: clamp(1.03rem, 1rem + 0.14vw, 1.1rem);
+  --step-1: clamp(1.18rem, 1.13rem + 0.22vw, 1.32rem);
+  --step-2: clamp(1.35rem, 1.26rem + 0.4vw, 1.62rem);
+  --step-3: clamp(1.55rem, 1.38rem + 0.72vw, 2rem);
+  --step-4: clamp(1.8rem, 1.53rem + 1.1vw, 2.45rem);
+  --step-5: clamp(2rem, 1.62rem + 1.6vw, 2.95rem);
 }
 
 *,
@@ -101,14 +103,16 @@ a {
 
 /* ---------- Typografie ---------- */
 
+/* Bei der engeren Skala braucht es mehr Durchschuss: 1,08 war für Plakatgrößen
+   gedacht und wirkt bei 2 rem gedrängt. */
 h1,
 h2,
 h3,
 h4 {
   font-family: var(--display);
   font-weight: 400;
-  line-height: 1.08;
-  letter-spacing: -0.015em;
+  line-height: 1.18;
+  letter-spacing: -0.01em;
   text-wrap: balance;
   margin: 0;
 }
@@ -147,7 +151,7 @@ p:last-child {
 /* Kleine Auszeichnung über Überschriften. Das einzige Element in Versalien. */
 .eyebrow {
   font-size: var(--step--2);
-  letter-spacing: 0.16em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--ink-3);
   margin: 0 0 1.1rem;
@@ -172,8 +176,8 @@ p:last-child {
 .pull {
   font-family: var(--display);
   font-size: var(--step-3);
-  line-height: 1.15;
-  letter-spacing: -0.015em;
+  line-height: 1.22;
+  letter-spacing: -0.01em;
   margin: 0;
   text-wrap: balance;
 }
@@ -289,6 +293,17 @@ figure {
 }
 .media--916 {
   aspect-ratio: 9 / 16;
+}
+
+/* Reels stehen im Hochformat. Ohne Deckel füllt jedes eine halbe Bildschirm-
+   breite und wird über tausend Pixel hoch — zwei davon schieben den Rest der
+   Seite weit nach unten. 30 rem für beide zusammen ist etwa Handy-Größe, also
+   genau das Format, in dem der Inhalt ohnehin gedacht ist. */
+.reels {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(0.75rem, 2vw, 1.25rem);
+  max-width: 30rem;
 }
 
 figcaption {
@@ -423,8 +438,8 @@ figcaption {
 }
 
 .brand__role {
-  font-size: 0.62rem;
-  letter-spacing: 0.14em;
+  font-size: 0.7rem;
+  letter-spacing: 0.11em;
   text-transform: uppercase;
   color: var(--ink-3);
 }
@@ -573,6 +588,15 @@ figcaption {
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
 }
 
+/* Auf dem Handy sonst einspaltig: vier Hochformate untereinander sind fast
+   2000 px Scrollweg für vier Bilder. Zwei Spalten zeigen dasselbe auf einem
+   Viertel der Strecke — und ein Raster liest sich ohnehin als Auswahl. */
+@media (max-width: 599px) {
+  .grid--4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 .card {
   display: flex;
   flex-direction: column;
@@ -589,8 +613,8 @@ figcaption {
 .card__title {
   font-family: var(--display);
   font-size: var(--step-2);
-  line-height: 1.12;
-  letter-spacing: -0.015em;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
 }
 
 .card__text {
@@ -643,6 +667,35 @@ figcaption {
   margin-top: 0.35rem;
 }
 
+.steps__link {
+  text-decoration: none;
+  border-bottom: 1px solid var(--line-strong);
+  transition: border-color 0.2s ease;
+}
+
+.steps__link:hover {
+  border-color: var(--ink);
+}
+
+/* Branchenliste als Chips statt als Kachelraster — dieselbe Information auf
+   einem Fünftel der Fläche. */
+.taglist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: var(--step--1);
+}
+
+.taglist li {
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  padding: 0.35em 0.9em;
+  color: var(--ink-2);
+}
+
 /* ---------- Leistungssäulen ---------- */
 
 .pillar {
@@ -661,6 +714,17 @@ figcaption {
   /* Jede zweite Säule spiegeln — sonst wirkt die Seite wie eine Tabelle. */
   .pillar:nth-child(even) > figure {
     order: -1;
+  }
+  /* Ohne Deckel wird ein 4:5-Bild in dieser Spalte über 600 px hoch. Vier davon
+     machen aus der Leistungsseite eine Bildergalerie mit Text daneben — die
+     Reihenfolge, die hier zählt, ist umgekehrt. */
+  .pillar > figure {
+    max-width: 21rem;
+    width: 100%;
+    justify-self: end;
+  }
+  .pillar:nth-child(even) > figure {
+    justify-self: start;
   }
 }
 
@@ -943,9 +1007,9 @@ figcaption {
 .footer__claim {
   font-family: var(--display);
   font-size: var(--step-2);
-  line-height: 1.15;
+  line-height: 1.25;
   color: var(--paper);
-  letter-spacing: -0.015em;
+  letter-spacing: -0.01em;
   max-width: 22ch;
 }
 

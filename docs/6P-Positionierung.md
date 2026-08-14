@@ -23,7 +23,7 @@ klar abgegrenzten Säulen, die zusammen einen vollständigen Social-Media-Auftri
 | **Social Media Management** | Strategie, Redaktions- und Contentplanung, Copywriting, Posting, Community Management, Analyse, Reporting | Monats-Retainer |
 | **Content Creation & UGC** | Reels, Shortform Video, Foto, Vor-Ort-Content, authentischer Brand- und Location-Content | Paket- oder Projektpreis |
 | **Influencer & Creator Marketing** | Recherche, Screening, Outreach, Verhandlung, Briefing, Contentabnahme, Kampagnensteuerung, Reporting | Projektfee je Kampagne |
-| **Strategie & Projekt-Support** | Audits, Workshops, Sparring, Freelancer-Unterstützung für Agenturen, Projektmanagement | Festpreis oder Tagessatz |
+| **Strategie & Projekt-Support** | Audits, Sparring, Freelancer-Unterstützung für Agenturen, Projektmanagement | Festpreis oder Tagessatz |
 
 **Das eigentliche Produkt ist die Verbindung dieser Säulen.** Einzeln ist jede davon
 austauschbar; zusammen ersetzen sie das, wofür ein Unternehmen sonst eine Agentur plus
@@ -62,7 +62,7 @@ Das ist das Produkt in einem Satz: **Abgabe ohne Kontrollverlust.**
   Persönlich statt Agentur-Overhead, individuell statt von der Stange, Entscheidungen
   entlang klarer KPIs statt Bauchgefühl.
 - **What** — Social Media Management · Content Creation & UGC · Influencer & Creator
-  Marketing · Audits, Workshops und Projekt-Support.
+  Marketing · Audits und Projekt-Support.
 
 **Strategie-Pyramide** — die Linie trägt von oben nach unten durch: Purpose (Marken und
 Menschen durch relevante Kommunikation verbinden) → Mission (Strategie, Kreativität und

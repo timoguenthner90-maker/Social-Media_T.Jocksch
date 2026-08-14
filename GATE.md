@@ -10,7 +10,11 @@ Stand: 14.08.2026
 | **Sichtbarkeit** | **Nicht öffentlich.** Netlify verlangt Team-Login — nur mit deinem Netlify-Konto (timoguenthner90@gmail.com) sichtbar. |
 | **Netlify-Projekt** | https://app.netlify.com/projects/tina-jocksch |
 | **Suchmaschinen** | Gesperrt. `robots.txt` liefert `Disallow: /`, solange das Impressum unvollständig ist. |
-| **Build** | 9 Seiten · 0 TypeScript-Fehler · 0 harte Verify-Fehler |
+| **Build** | 7 Seiten · 0 TypeScript-Fehler · 0 harte Verify-Fehler |
+
+**Aufbau:** drei Inhaltsseiten — Start (mit den Abschnitten Arbeiten und Über
+mich), Leistungen & Preise, Kontakt. Dazu Danke-, Impressums-, Datenschutz- und
+Fehlerseite.
 
 Die Seite ist damit vollständig gebaut und abnahmebereit, aber bewusst noch
 nicht öffentlich — ein unvollständiges Impressum gehört nicht auf eine
@@ -18,7 +22,7 @@ erreichbare deutsche Geschäftsseite.
 
 ## Was geprüft wurde
 
-- `npm run build` — 9 Seiten, fehlerfrei
+- `npm run build` — 7 Seiten, fehlerfrei
 - `npx astro check` — 0 Fehler, 0 Warnungen
 - `npm run verify` — 0 harte Fehler; alle Pflicht-URLs vorhanden; strukturierte
   Daten vollständig (Person, ProfessionalService, WebSite, FAQPage, BreadcrumbList)
@@ -52,9 +56,10 @@ Solange einer dieser Werte fehlt, schlägt `npm run verify:prod` fehl und
 - **@pempelhome „seit Sommer 2026"** — stimmt der Zeitpunkt?
 - **Sie-Form** — durchgehend im Sie. Bei jüngerer D2C-Ausrichtung wäre Du
   stimmiger; das wäre ein kompletter Wechsel, keine halbe Sache.
-- **Bildauswahl** — 24 Bilder und 4 Reels aus deinem Material. Passt jedes davon
-  öffentlich? Besonders: die Studioaufnahmen, falls dort Kundenmarken erkennbar
-  sind, und die Aufnahme mit einer zweiten Person auf `/ueber-mich/`.
+- **Bildauswahl** — zehn Bilder und zwei Reels aus deinem Material. Passt jedes
+  davon öffentlich? Besonders: die Studioaufnahmen, falls dort Kundenmarken
+  erkennbar sind, und die Aufnahme mit einer zweiten Person bei „Influencer &
+  Creator Marketing".
 
 ### 3. Rechtstexte prüfen lassen
 

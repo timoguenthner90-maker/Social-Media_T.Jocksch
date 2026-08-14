@@ -59,37 +59,28 @@ export const cta = {
   note: "30 Minuten, unverbindlich. Antwort in der Regel innerhalb eines Werktags.",
 } as const;
 
+/**
+ * Navigation. „Arbeiten" und „Über mich" sind Abschnitte der Startseite, keine
+ * eigenen Seiten — drei Inhaltsseiten reichen für ein Freelance-Portfolio, und
+ * eine kurze Seite liest sich besser als vier halbleere.
+ */
 export const nav = [
   { href: "/leistungen/", label: "Leistungen" },
-  { href: "/portfolio/", label: "Arbeiten" },
-  { href: "/ueber-mich/", label: "Über mich" },
+  { href: "/#arbeiten", label: "Arbeiten" },
+  { href: "/#ueber-mich", label: "Über mich" },
   { href: "/kontakt/", label: "Kontakt" },
 ] as const;
 
-/** Branchen, auf die die Positionierung zielt — „visuell starke Marken und Orte". */
+/**
+ * Branchen, auf die die Positionierung zielt — „visuell starke Marken und Orte".
+ * Als Aufzählung statt als Kachelraster: sechs Karten mit je einem Satz haben
+ * mehr Fläche gekostet, als die Information wert ist.
+ */
 export const industries = [
-  {
-    name: "Interior & Home",
-    note: "Möbel, Wohnen, Einrichtung — Marken, die über Material und Licht wirken.",
-  },
-  {
-    name: "Hotellerie & Hospitality",
-    note: "Boutique-Hotels und Häuser, die vor der Buchung eine Atmosphäre verkaufen.",
-  },
-  {
-    name: "Gastronomie",
-    note: "Restaurants, Cafés und Bars, deren Gäste zuerst online entscheiden.",
-  },
-  {
-    name: "Lifestyle & Consumer",
-    note: "Produkte, die im Alltag gezeigt werden wollen, nicht im Katalog.",
-  },
-  {
-    name: "D2C & E-Commerce",
-    note: "Marken, die ohne Regal auskommen und deshalb Bilder brauchen, die tragen.",
-  },
-  {
-    name: "Agenturen",
-    note: "Projektspitzen, Elternzeitvertretung oder Creator-Kampagnen im White Label.",
-  },
+  "Interior & Home",
+  "Hotellerie & Hospitality",
+  "Gastronomie",
+  "Lifestyle & Consumer",
+  "D2C & E-Commerce",
+  "Agenturen mit Projektbedarf",
 ] as const;

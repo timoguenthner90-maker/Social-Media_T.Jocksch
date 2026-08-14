@@ -23,8 +23,6 @@
   "requiredUrls": [
     "/",
     "/leistungen/",
-    "/portfolio/",
-    "/ueber-mich/",
     "/kontakt/",
     "/danke/",
     "/impressum/",

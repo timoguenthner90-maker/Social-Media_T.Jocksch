@@ -24,12 +24,10 @@ export const pillars: Pillar[] = [
     claim: "Ihr Auftritt läuft, ohne dass Sie ihn tragen müssen.",
     body: "Ich entwickle die Strategie, plane die Inhalte, schreibe die Texte, veröffentliche und betreue die Community. Einmal im Monat legen wir gemeinsam offen, was funktioniert hat und was als Nächstes dran ist.",
     items: [
-      "Social-Media-Strategie und Kanalauswahl",
-      "Redaktions- und Contentplanung",
+      "Strategie, Kanalauswahl und Redaktionsplanung",
       "Copywriting für Feed, Reels und Stories",
       "Veröffentlichung und Community Management",
       "Monatliches Reporting mit klaren KPIs",
-      "Laufende Optimierung von Formaten und Frequenz",
     ],
     img: "interior-wohnraum",
     imgAlt:
@@ -45,8 +43,6 @@ export const pillars: Pillar[] = [
       "Foto: Produkt, Detail, Interior, Atmosphäre",
       "Vor-Ort-Content in Ihren Räumen",
       "UGC im authentischen Look statt Werbeoptik",
-      "Content-Serien statt Einzelstücke",
-      "Bildsprache und Formatvorlagen zum Weiterverwenden",
     ],
     img: "bts-set",
     imgAlt:
@@ -59,10 +55,8 @@ export const pillars: Pillar[] = [
     body: "Ich suche passende Profile, prüfe sie auf echte Reichweite und Markenfit, übernehme Ansprache und Verhandlung, schreibe die Briefings, gebe Inhalte frei und werte die Kampagne aus. Sie sehen jeden Schritt.",
     items: [
       "Creator-Recherche und Screening auf echte Reichweite",
-      "Outreach, Ansprache und Verhandlung",
-      "Briefings, die zur Marke passen",
-      "Content-Freigaben und Qualitätssicherung",
-      "Kampagnensteuerung über die gesamte Laufzeit",
+      "Outreach, Verhandlung und Briefing",
+      "Content-Freigaben und Kampagnensteuerung",
       "Auswertung: Reichweite, Engagement, Wirkung",
     ],
     img: "tina-work",
@@ -72,14 +66,12 @@ export const pillars: Pillar[] = [
     slug: "strategie-support",
     name: "Strategie & Projekt-Support",
     claim: "Manchmal braucht es kein Retainer, sondern Klarheit.",
-    body: "Ein Audit zeigt, wo Ihr Auftritt steht. Ein Workshop bringt das Team auf einen Stand. Und wenn ein Projekt Spitzen hat, springe ich operativ ein — auch für Agenturen im White Label.",
+    body: "Ein Audit zeigt, wo Ihr Auftritt steht und was als Nächstes dran ist. Und wenn ein Projekt Spitzen hat, springe ich operativ ein — auch für Agenturen im White Label.",
     items: [
       "Social-Media-Audit mit konkreten Empfehlungen",
-      "Workshops für Marketing- und Inhaberteams",
       "Strategie-Sparring auf Zuruf",
       "Freelancer-Unterstützung für Agenturen",
       "Projektmanagement für Kampagnen",
-      "Übergabe-Dokumentation, wenn Sie intern übernehmen",
     ],
     img: "bts-studio",
     imgAlt: "Große Studiofläche mit aufgebautem Set vor der Produktion",
@@ -149,8 +141,7 @@ export const pakete: Paket[] = [
     includes: [
       "Strategie und laufende Redaktionsplanung",
       "Content-Produktion im vereinbarten Umfang",
-      "Veröffentlichung und Community Management",
-      "Monatliches Reporting und Strategie-Call",
+      "Veröffentlichung, Community, Monatsreporting",
     ],
   },
   {
@@ -161,8 +152,7 @@ export const pakete: Paket[] = [
     includes: [
       "Konzept und Shotlist vorab",
       "Produktionstag vor Ort oder im Studio",
-      "Schnitt und finale Fassungen",
-      "Nutzungsrechte für Social und Website",
+      "Schnitt, finale Fassungen, Nutzungsrechte",
     ],
   },
   {
@@ -173,19 +163,17 @@ export const pakete: Paket[] = [
     includes: [
       "Creator-Recherche, Screening und Auswahl",
       "Outreach, Verhandlung und Briefing",
-      "Contentabnahme und Kampagnensteuerung",
-      "Auswertung nach Kampagnenende",
+      "Kampagnensteuerung und Auswertung",
     ],
   },
   {
-    name: "Audit & Workshop",
+    name: "Social-Media-Audit",
     from: "950 €",
     unit: "Festpreis",
     fit: "Für Teams, die selbst umsetzen — aber wissen wollen, wo sie stehen.",
     includes: [
       "Analyse von Auftritt, Formaten und Wettbewerb",
       "Konkrete Empfehlungen, priorisiert",
-      "Halbtägiger Workshop mit Ihrem Team",
       "Dokumentation zum Weiterarbeiten",
     ],
   },
@@ -198,12 +186,15 @@ export const pakete: Paket[] = [
       "Operative Unterstützung im Tagesgeschäft",
       "Kampagnen- und Projektmanagement",
       "Creator-Handling im White Label",
-      "Flexibel buchbar, tageweise abgerechnet",
     ],
   },
 ];
 
-/** Ablauf der Zusammenarbeit — beantwortet „Wie einfach ist der Einstieg?". */
+/**
+ * Ablauf der Zusammenarbeit — beantwortet „Wie einfach ist der Einstieg?".
+ * Steht nur noch auf der Kontaktseite; auf der Leistungsseite war er eine
+ * Dopplung und hat sie unnötig lang gemacht.
+ */
 export const ablauf = [
   {
     step: "Kennenlern-Call",
@@ -211,18 +202,10 @@ export const ablauf = [
   },
   {
     step: "Angebot",
-    text: "Schriftlich, mit klarem Leistungsumfang und Preis. Keine Überraschungen später.",
+    text: "Schriftlich, mit klarem Leistungsumfang und Preis — meist innerhalb von drei Werktagen.",
   },
   {
-    step: "Strategie & Setup",
-    text: "Zielgruppe, Formate, Bildsprache, Kanäle und KPIs — bevor der erste Beitrag entsteht.",
-  },
-  {
-    step: "Produktion & Betreuung",
-    text: "Content entsteht, wird veröffentlicht, die Community wird betreut.",
-  },
-  {
-    step: "Reporting & Weiterentwicklung",
-    text: "Monatlich Zahlen und Einordnung, daraus die Entscheidungen für den nächsten Monat.",
+    step: "Start",
+    text: "Strategie und Setup, dann Produktion, Veröffentlichung und monatliches Reporting.",
   },
 ];

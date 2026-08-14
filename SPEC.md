@@ -23,13 +23,15 @@ Ausformuliert als Seitentext in [`docs/Website-Story.md`](docs/Website-Story.md)
 
 ## 3. Seitenstruktur
 
+Drei Inhaltsseiten. „Arbeiten" und „Über mich" sind Abschnitte der Startseite
+und werden per Anker angesprungen — für ein Freelance-Portfolio liest sich eine
+zusammenhängende Seite besser als vier halbleere.
+
 | Route | Rolle (Golden Circle) | Kerninhalt |
 |---|---|---|
-| `/` | Why → How → What | Haltungs-Hero, Persona-Problem, Arbeitsweise, vier Säulen, Arbeiten-Teaser, Branchen |
-| `/leistungen/` | What | Vier Säulen ausführlich, Creator-Prozess in acht Schritten, Pakete mit Ab-Preisen, Ablauf, FAQ |
-| `/portfolio/` | What, belegt | @pempelhome-Case, vier Reels, zehn weitere Arbeiten |
-| `/ueber-mich/` | Why → How | Werdegang, Branchenfokus, Arbeitsweise |
-| `/kontakt/` | Handlung | Formular mit Vorqualifizierung, E-Mail, WhatsApp, LinkedIn, Instagram |
+| `/` | Why → How → What | Haltungs-Hero · Persona-Problem · Arbeitsweise · vier Säulen · `#arbeiten` (vier Bilder, @pempelhome, zwei Reels) · `#ueber-mich` (Werdegang, Branchen) |
+| `/leistungen/` | What | Vier Säulen ausführlich, Creator-Prozess in acht Schritten, Pakete mit Ab-Preisen, FAQ |
+| `/kontakt/` | Handlung | Formular mit sechs Feldern, E-Mail, WhatsApp, LinkedIn, Instagram, Ablauf in drei Schritten |
 | `/danke/` | — | Bestätigung nach Formularversand, `noindex` |
 | `/impressum/`, `/datenschutz/` | — | Pflichtseiten, `noindex` |
 | `/404` | — | Fehlerseite |
@@ -48,7 +50,7 @@ Strategie, eigener Produktion und Creator Marketing.
 | Social-Media-Retainer | 1.890 € / Monat |
 | Content- & UGC-Paket | 990 € / Produktionstag |
 | Influencer-Kampagne | 1.900 € Projektfee |
-| Audit & Workshop | 950 € Festpreis |
+| Social-Media-Audit | 950 € Festpreis |
 | Interim- & Projekt-Support | 650 € / Tag |
 
 Quelle: `src/data/services.ts`.
@@ -63,6 +65,12 @@ Quelle: `src/data/services.ts`.
   `media-src 'self'` (Reels)
 - Bilder in Farbe, WebP, zwei Breiten je Motiv, `srcset` aus `src/data/images.json`
 - Videos mit `preload="none"` und Poster — sie laden erst beim Klick
+- **Zehn Bilder, zwei Reels.** Aus dem Quellmaterial ließen sich leicht dreimal
+  so viele aufbereiten; die Auswahl ist bewusst knapp, weil eine Portfolio-Seite
+  über Kuratierung überzeugt und nicht über Menge.
+- **Enge Typo-Skala** (Schrittweite ≈ 1,18): zwischen kleinster und größter Stufe
+  liegt Faktor 3,2. Die Seite soll gleichmäßig wirken, nicht zwischen Plakat und
+  Kleingedrucktem springen.
 
 ## 6. Inhaltsquellen
 
