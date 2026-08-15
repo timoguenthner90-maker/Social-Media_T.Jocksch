@@ -44,6 +44,7 @@ npm run build && npx astro check && npm run verify
 | `src/data/services.ts` | Die drei Leistungen und die vier Pakete mit Preisen |
 | `src/data/experience.ts` | Kennzahlen, Werkzeuge und Stationen aus dem Lebenslauf |
 | `src/data/work.ts` | Die drei Content-Beispiele |
+| `src/data/story.ts` | StoryBrand-Bausteine: Problem-Zitate, Plan, Ergebnis |
 | `src/data/jsonld.ts` | Strukturierte Daten. Platzhalter werden bewusst **nicht** ausgespielt. |
 | `src/data/images.json` | Bild-Manifest (Breiten und Maße), erzeugt von `prepare-images.mjs` |
 | `src/components/Picture.astro` | Bild mit srcset und festen Maßen aus dem Manifest |

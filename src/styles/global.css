@@ -605,6 +605,87 @@ figcaption {
   margin-top: 0.7rem;
 }
 
+/* ---------- Zitate der Zielgruppe ----------
+ *
+ * Die Sätze aus der Empathy Map, wörtlich. Gesetzt wie Zitate, nicht wie
+ * Werbetext — sie sollen gelesen werden wie etwas, das jemand tatsächlich
+ * gesagt hat.
+ */
+
+.zitate {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: clamp(0.75rem, 2vw, 1.15rem);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+}
+
+.zitate li {
+  font-family: var(--display);
+  font-size: var(--step-2);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  background: var(--beige-soft);
+  border-radius: var(--radius);
+  padding: clamp(1.1rem, 2.5vw, 1.5rem);
+}
+
+/* ---------- Plan ----------
+ *
+ * Drei Schritte auf der blauen Fläche. Beantwortet die Frage, die vor einem
+ * Retainer den Abschluss blockiert: Was passiert, wenn ich ja sage?
+ */
+
+.plan {
+  display: grid;
+  gap: clamp(1.25rem, 2.5vw, 2rem);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+}
+
+.plan__nummer {
+  display: block;
+  font-family: var(--display);
+  font-size: var(--step-3);
+  line-height: 1;
+  color: color-mix(in srgb, var(--ink) 45%, transparent);
+  margin-bottom: 0.6rem;
+}
+
+.plan__titel {
+  font-family: var(--display);
+  font-size: var(--step-2);
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+
+.plan__text {
+  font-size: var(--step--1);
+  line-height: 1.6;
+}
+
+/* Ergebnis-Liste unter dem Plan — kurz, überprüfbar, mit Haken. */
+.wandel {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.6rem;
+  font-size: var(--step-1);
+}
+
+.wandel li {
+  display: grid;
+  grid-template-columns: 1.5rem 1fr;
+  gap: 0.6rem;
+  align-items: baseline;
+}
+
+.wandel li::before {
+  content: "→";
+  color: color-mix(in srgb, var(--ink) 55%, transparent);
+}
+
 /* ---------- Chips ---------- */
 
 .chips {

@@ -5,20 +5,35 @@ import { site, cta, heroMedia, laufband } from "../data/site";
 import { leistungen, pakete, preishinweis, tagessatz } from "../data/services";
 import { kennzahlen, werkzeuge, stationen, ausbildung } from "../data/experience";
 import { beispiele, accountHinweis } from "../data/work";
+import {
+  problemZitate,
+  problemText,
+  guideEmpathie,
+  planSchritte,
+  ergebnis,
+} from "../data/story";
 import { personLd, businessLd, websiteLd } from "../data/jsonld";
 
 // One-Pager. Gestaltung und Wortlaut folgen Tinas eigenem Entwurf
 // (~/Desktop/Eigene Website Tina/webseite vorlage): englische Abschnittstitel
 // in Kleinschreibung mit Punkt, deutscher Text, Farbflächen im Wechsel.
 //
-// Die REIHENFOLGE weicht bewusst ab: erst der Track Record, dann Angebot und
-// Preis, dann die Content-Beispiele, dann die Person.
+// Der AUFBAU folgt dem StoryBrand-Framework (Donald Miller): Der Kunde ist der
+// Held, Tina ist der Guide.
 //
-// Verkauft wird die laufende Betreuung eines Kanals — dafür ist die Erfahrung
-// das stärkste Argument, nicht ein Reel. Die Beispiele stehen deshalb hinter
-// dem Angebot: Sie belegen, dass Content auch selbst entstehen kann, sind aber
-// nicht das Hauptgeschäft. Angebot und Preis stehen zusammen in einem Block
-// statt in zwei Abschnitten, die dasselbe mit anderen Worten beschreiben.
+//   Held mit Wunsch      → Hero
+//   Problem              → the problem  (Zitate aus der Empathy Map)
+//   Guide trifft ihn     → track record (Empathie + Autorität)
+//   Guide gibt Plan      → the plan     (drei Schritte) + Handlungsaufruf
+//   Angebot konkret      → services     (Leistungen und Preise)
+//   Beleg                → creative work
+//   Person hinter Guide  → about
+//   Abschluss            → contact
+//
+// Ohne die Problem-Sektion handelt die Seite ausschließlich von Tina — der
+// Besucher käme darin nicht vor. Bewusst NICHT im StoryBrand-Ton: keine
+// rhetorischen Fragen, keine Angstmache. Die Zielgruppe reagiert auf
+// Sachlichkeit.
 ---
 
 <Base
@@ -33,13 +48,13 @@ import { personLd, businessLd, websiteLd } from "../data/jsonld";
         <p class="eyebrow">{site.role}</p>
         <h1>making brands worth following.</h1>
         <p class="lead">
-          Ich übernehme Strategie, Redaktionsplanung, Posting und Community — und
-          verbinde das mit Creator-Kampagnen. Damit ein Kanal nicht nur läuft,
-          sondern relevant wird.
+          Deine Marke wirkt — ihr Social-Media-Kanal zeigt das nur nicht. Ich
+          übernehme Strategie, Redaktion und Community, damit aus regelmäßigem
+          Posten endlich messbare Wirkung wird.
         </p>
         <div class="hero__actions">
           <a class="btn btn--blue" href={cta.href}>{cta.label}</a>
-          <a href="#erfahrung" style="font-size:var(--step--1)">Track Record ansehen</a>
+          <a href="#plan" style="font-size:var(--step--1)">So läuft die Zusammenarbeit</a>
         </div>
       </div>
 
@@ -82,13 +97,32 @@ import { personLd, businessLd, websiteLd } from "../data/jsonld";
     </div>
   </div>
 
+  <!-- ================= the problem ================= -->
+  <!-- StoryBrand-Schritt 1: Der Kunde ist der Held und hat ein Problem. Ohne
+       diesen Abschnitt handelt die ganze Seite nur von Tina, und der Besucher
+       erkennt sich nirgends wieder. Die Zitate stehen wörtlich so in der
+       Empathy Map. -->
+  <section class="section" id="problem">
+    <div class="wrap">
+      <h2 class="title">the problem.</h2>
+      <p class="lead" style="margin-bottom:2rem">{problemText.lead}</p>
+
+      <ul class="zitate">
+        {problemZitate.map((z) => <li data-reveal>„{z}“</li>)}
+      </ul>
+
+      <p style="margin-top:2.25rem;max-width:62ch">{problemText.schluss}</p>
+    </div>
+  </section>
+
   <!-- ================= track record ================= -->
   <section class="section section--beige" id="erfahrung">
     <div class="wrap">
       <h2 class="title">track record.</h2>
-      <p class="lead" style="margin-bottom:2rem">
-        Was ich in sechs Jahren angestellt aufgebaut habe — und jetzt für deine Marke
-        einsetze.
+      <p class="lead" style="margin-bottom:1.25rem">{guideEmpathie}</p>
+      <p style="margin-bottom:2rem;max-width:56ch">
+        Was ich in diesen sechs Jahren aufgebaut habe, setze ich jetzt für deine
+        Marke ein.
       </p>
 
       <ul class="chips" style="margin-bottom:2.25rem">
@@ -143,11 +177,52 @@ import { personLd, businessLd, websiteLd } from "../data/jsonld";
     </div>
   </section>
 
+  <!-- ================= the plan ================= -->
+  <!-- StoryBrand-Schritt 3: Der Guide gibt einen Plan. Beantwortet die Frage,
+       die vor einem Retainer den Abschluss blockiert — was passiert, wenn ich
+       ja sage? Danach folgt direkt der Handlungsaufruf. -->
+  <section class="section section--blue" id="plan">
+    <div class="wrap">
+      <h2 class="title">the plan.</h2>
+      <p class="lead" style="color:inherit;margin-bottom:2.5rem">
+        Drei Schritte. Nach dem ersten weißt du, woran du bist — auch wenn wir
+        danach nicht weitermachen.
+      </p>
+
+      <div class="plan">
+        {
+          planSchritte.map((schritt) => (
+            <div data-reveal>
+              <span class="plan__nummer">{schritt.nummer}</span>
+              <p class="plan__titel">{schritt.titel}</p>
+              <p class="plan__text">{schritt.text}</p>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="split split--top" style="margin-top:clamp(2.5rem,5vw,3.5rem)">
+        <div>
+          <p class="eyebrow" style="color:inherit;opacity:0.7">{ergebnis.titel}</p>
+          <ul class="wandel">
+            {ergebnis.punkte.map((punkt) => <li>{punkt}</li>)}
+          </ul>
+        </div>
+        <div>
+          <a class="btn" href={cta.href}>{cta.label}</a>
+          <p class="small" style="margin-top:1rem;opacity:0.8;max-width:44ch">
+            {ergebnis.kleinerEinstieg}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ================= services: Angebot UND Preis ================= -->
-  <section class="section section--blue" id="leistungen">
+  <section class="section" id="leistungen">
     <div class="wrap">
       <h2 class="title">what I do — and what it costs.</h2>
-      <p class="lead" style="color:inherit;max-width:56ch">
+      <p class="lead" style="max-width:56ch">
         Der Kern ist die laufende Betreuung eines Kanals. Creator Partnerships
         kommen als zweite Säule dazu — und Content produziere ich, wenn keiner da
         ist.
@@ -174,7 +249,7 @@ import { personLd, businessLd, websiteLd } from "../data/jsonld";
 
       <p
         class="eyebrow"
-        style="margin-top:clamp(2.5rem,5vw,3.5rem);margin-bottom:1.25rem;color:inherit;opacity:0.7"
+        style="margin-top:clamp(2.5rem,5vw,3.5rem);margin-bottom:1.25rem"
       >
         Pakete &amp; Preise
       </p>
@@ -182,7 +257,7 @@ import { personLd, businessLd, websiteLd } from "../data/jsonld";
       <div class="pakete">
         {
           pakete.map((p) => (
-            <div class="paket paket--auf-blau" data-reveal>
+            <div class="paket" data-reveal>
               <p class="paket__kopf">
                 {p.nummer} &nbsp; {p.name}
               </p>
@@ -229,14 +304,14 @@ import { personLd, businessLd, websiteLd } from "../data/jsonld";
         </p>
       </div>
 
-      <p class="small" style="margin-top:1.5rem;max-width:62ch;opacity:0.75">
+      <p class="small muted" style="margin-top:1.5rem;max-width:62ch">
         {preishinweis}
       </p>
     </div>
   </section>
 
   <!-- ================= creative work ================= -->
-  <section class="section" id="arbeiten">
+  <section class="section section--beige-soft" id="arbeiten">
     <div class="wrap">
       <h2 class="title">creative work.</h2>
       <p class="lead" style="margin-bottom:2.5rem">

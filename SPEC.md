@@ -1,6 +1,6 @@
 # Spec — Website Tina Jocksch
 
-Stand: 15.08.2026 · Version 3.0 (One-Pager, Fokus laufende Betreuung)
+Stand: 15.08.2026 · Version 4.0 (One-Pager nach StoryBrand)
 
 ## 1. Zweck
 
@@ -49,23 +49,42 @@ Schritt sonst über mehrere Bildschirmhöhen nicht erreichbar.
 
 Eine Inhaltsseite mit sechs Abschnitten; die Navigation springt per Anker.
 
-| Anker | Titel | Inhalt |
-|---|---|---|
-| `#start` | — | Hero: Haltungssatz, ein Medium, Signal-Button; darunter das Laufband |
-| `#erfahrung` | track record. | Werkzeuge, vier Kennzahlen, zwei Stationen, Showroom-Band |
-| `#leistungen` | what I do — and what it costs. | Drei Disziplinen **und** die vier Pakete mit Preisen, auf Babyblau |
-| `#arbeiten` | creative work. | Drei Content-Beispiele in Telefonrahmen |
-| `#about` | hi, I'm Tina. | Positionierung und Anspruch, Porträt |
-| `#kontakt` | contact. | Formular, E-Mail, Telefon/WhatsApp, Social |
+Der Aufbau folgt dem **StoryBrand-Framework** (Donald Miller): Der Kunde ist
+der Held, Tina ist der Guide.
 
-**Die Reihenfolge ist Positionierung.** Verkauft wird die laufende Betreuung
-eines Kanals — dafür ist der Track Record das stärkste Argument, nicht ein
-Reel. Deshalb steht die Erfahrung direkt hinter dem Hero, das Angebot mit Preis
-danach, und die Content-Beispiele erst dahinter: Sie belegen, dass Material
-auch selbst entstehen kann, sind aber nicht das Hauptgeschäft.
+| Anker | Titel | StoryBrand-Rolle | Inhalt |
+|---|---|---|---|
+| `#start` | — | Held mit Wunsch | Hero, Medium, Signal-Button; darunter das Laufband |
+| `#problem` | the problem. | Problem | Vier Zitate aus der Empathy Map, ein sachlicher Schlusssatz |
+| `#erfahrung` | track record. | Guide | Empathie-Zeile, dann Werkzeuge, Kennzahlen, Stationen |
+| `#plan` | the plan. | Plan + Handlung | Drei Schritte, „was sich ändert", CTA, kleiner Einstieg |
+| `#leistungen` | what I do — and what it costs. | Angebot | Drei Disziplinen **und** die vier Pakete mit Preisen |
+| `#arbeiten` | creative work. | Beleg | Drei Content-Beispiele in Telefonrahmen |
+| `#about` | hi, I'm Tina. | Person hinter dem Guide | Positionierung und Anspruch, Porträt |
+| `#kontakt` | contact. | Abschluss | Formular, E-Mail, Telefon/WhatsApp, Social |
 
-Angebot und Preis stehen in **einem** Block. Vorher beschrieben zwei Abschnitte
-dasselbe mit anderen Worten, und der Leser musste das eine aufs andere abbilden.
+**Warum StoryBrand.** Bis Version 3 handelte die Seite von Anfang bis Ende von
+Tina — der Besucher kam darin nicht vor, sein Problem wurde nirgends benannt.
+Die Empathy Map liefert die Sätze der Zielgruppe wörtlich; sie standen in
+Version 1 schon einmal auf der Seite und sind beim Straffen herausgefallen.
+
+Der **Plan** ist die zweite Ergänzung. Er beantwortet die Frage, die vor einem
+Retainer über 1.590 € im Monat den Abschluss blockiert: Was passiert
+eigentlich, wenn ich ja sage? Die drei Schritte entsprechen den Paketen —
+Schritt 1 ist das Audit, Schritt 2 und 3 sind der Retainer.
+
+**Was bewusst NICHT übernommen wurde:** der typische StoryBrand-Ton. Keine
+rhetorischen Fragen („Kennst du das?"), keine Angstmache, kein Ausmalen des
+Scheiterns. Die Zielgruppe sind Marketingverantwortliche und Inhaberinnen; die
+reagieren auf Sachlichkeit. Der Einsatz steht in genau einem Satz am Ende der
+Problem-Sektion.
+
+Angebot und Preis stehen weiterhin in **einem** Block. Vorher beschrieben zwei
+Abschnitte dasselbe mit anderen Worten.
+
+Farbflächen: Hero beige → Problem hell → track record beige → **Plan blau** →
+Leistungen hell (Paketkarten blau wie im Entwurf) → Arbeiten beige → about hell
+→ Kontakt beige.
 
 Eigene Seiten nur für `/impressum/`, `/datenschutz/`, `/danke/` und `/404`.
 
@@ -99,6 +118,7 @@ beste Türöffner für einen Retainer (es wird bei Abschluss angerechnet).
 | Aufbau, Wortlaut, Preise, Farben | `~/Desktop/Eigene Website Tina/webseite vorlage` |
 | Berufserfahrung, Kennzahlen, Werkzeuge, Kontaktdaten | `CV-Tina-Jocksch.pdf` |
 | Positionierung und Zielgruppe (Hintergrund) | `docs/6P-Positionierung.md`, `docs/Website-Story.md` |
+| Zitate der Zielgruppe, Problem und Einsatz | Empathy Map Canvas v1.0 → `src/data/story.ts` |
 | Fotos und Videos | `~/Desktop/Eigene Website Tina/Content/` |
 
 ## 7. Medien — bewusst knapp

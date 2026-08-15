@@ -78,18 +78,15 @@ export const heroMedia = {
  * Anker-Navigation. Die Seite ist ein One-Pager — jeder Punkt springt zu einer
  * Sektion, nicht auf eine Unterseite. Englische Labels wie in Tinas Entwurf.
  *
- * Reihenfolge: erst belegen (experience), dann das Angebot mit Preis
- * (services), dann die Content-Beispiele, dann die Person.
- *
- * Verkauft wird die laufende Betreuung eines Kanals — dafür ist der Track
- * Record das stärkste Argument, nicht ein Reel. Die Beispiele stehen deshalb
- * hinter dem Angebot: Sie belegen, dass Content auch selbst produziert werden
- * kann, sind aber nicht das Hauptgeschäft.
+ * Reihenfolge nach StoryBrand: Problem → Guide (experience) → Plan → Angebot
+ * → Beleg → Person → Abschluss. Die Problem-Sektion steht nicht in der
+ * Navigation — sie wird gelesen, nicht angesprungen.
  */
 export const nav = [
   { href: "#erfahrung", label: "experience" },
+  { href: "#plan", label: "the plan" },
   { href: "#leistungen", label: "services" },
-  { href: "#arbeiten", label: "creative work" },
+  { href: "#arbeiten", label: "work" },
   { href: "#about", label: "about" },
   { href: "#kontakt", label: "contact" },
 ] as const;
