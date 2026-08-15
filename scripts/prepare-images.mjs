@@ -78,7 +78,9 @@ const IMAGES = [
     // die Wirkung kommt aus der ganzen Szene — Licht, Vorhänge, Sofa. Ein
     // Zuschnitt aufs Gesicht würde genau das wegschneiden.
     out: "hero-sofa",
-    src: c("Ich", "WhatsApp Image 2026-08-12 at 16.55.59.jpeg"),
+    // Von Tina zugeschnitten geliefert und bereits im Zielformat 4:5 — es wird
+    // nur noch skaliert, nicht erneut beschnitten.
+    src: c("Ich", "portrait_1080x1350.png"),
     ratio: 4 / 5,
     widths: [1000, 640],
     focus: "centre",

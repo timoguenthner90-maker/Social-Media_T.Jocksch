@@ -71,7 +71,7 @@ export const cta = {
 export const heroMedia = {
   art: "bild" as "bild" | "video",
   name: "hero-sofa",
-  alt: "Tina Jocksch sitzt mit einem Getränk auf einem Cord-Sofa in einem hellen Studio mit bodenlangen Vorhängen",
+  alt: "Tina Jocksch sitzt mit einem Getränk auf einem beigen Cord-Sofa vor hellen Vorhängen",
 } as const;
 
 /**

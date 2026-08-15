@@ -45,8 +45,16 @@ Wettbewerbsanalyse, nicht aus dem Entwurf.
 | Display | Playfair Display (variabel, selbst gehostet) |
 | Text | Jost (variabel, selbst gehostet) |
 
-Abschnittstitel englisch, klein, mit Punkt (`hi, I'm Tina.`, `track record.`) —
-Tinas Handschrift. Fließtext deutsch, durchgehend **Du-Form**.
+**Sprachregel:** Englisch für kurze Beschilderung, Deutsch für alles, was eine
+Aussage macht. Abschnittstitel bleiben englisch, klein, mit Punkt (`the
+problem.`, `track record.`, `what I do.`) — das ist Tinas Handschrift und in
+der Branche üblich. Der **Hero-Titel ist deutsch**: Er ist kein Schild, sondern
+der eine Satz, der in der ersten Sekunde landen muss, und die Zielgruppe reicht
+von Hospitality über Sport bis in Branchen ohne Englisch-Affinität. Aus
+demselben Grund wurde `what I do — and what it costs.` auf `what I do.`
+gekürzt — ein englischer Satz statt eines Labels brach die Regel.
+
+Fließtext deutsch, durchgehend **Du-Form**.
 
 Zwei Elemente über den Entwurf hinaus: ein **Laufband** unter dem Hero (reine
 Dekoration, `aria-hidden`, steht bei reduzierter Bewegung still) und ein
@@ -62,11 +70,11 @@ der Held, Tina ist der Guide.
 
 | Anker | Titel | StoryBrand-Rolle | Inhalt |
 |---|---|---|---|
-| `#start` | — | Held mit Wunsch | Hero („making brands visible by design."), Medium, Signal-Button; darunter das Laufband |
+| `#start` | — | Held mit Wunsch | Hero („gib den Kanal ab. nicht die Marke."), Medium, Signal-Button; darunter das Laufband |
 | `#problem` | the problem. | Problem | Vier Zitate aus der Empathy Map, ein sachlicher Schlusssatz |
 | `#erfahrung` | track record. | Guide | Empathie-Zeile, dann Werkzeuge, Kennzahlen, Stationen |
 | `#plan` | the plan. | Plan + Handlung | Drei Schritte, „was sich ändert", CTA, kleiner Einstieg |
-| `#leistungen` | what I do — and what it costs. | Angebot | Drei Disziplinen **und** die vier Pakete mit Preisen |
+| `#leistungen` | what I do. | Angebot | Drei Disziplinen **und** die vier Pakete mit Preisen |
 | `#arbeiten` | creative work. | Beleg | Drei Content-Beispiele in Telefonrahmen |
 | `#about` | hi, I'm Tina. | Person hinter dem Guide | Positionierung und Anspruch, Porträt |
 | `#kontakt` | contact. | Abschluss | Formular, E-Mail, Telefon/WhatsApp, Social |
