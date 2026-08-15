@@ -1,11 +1,11 @@
 {
-  "hero-dreh": {
+  "hero-studio": {
     "widths": [
-      900,
-      600
+      1000,
+      640
     ],
-    "w": 900,
-    "h": 1125
+    "w": 1000,
+    "h": 1250
   },
   "produkt-reel-poster": {
     "widths": [

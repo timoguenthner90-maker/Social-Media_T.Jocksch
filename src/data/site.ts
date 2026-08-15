@@ -53,6 +53,25 @@ export const cta = {
 } as const;
 
 /**
+ * Das Medium im Hero. Der Slot nimmt beides auf — sobald das Hintergrundvideo
+ * fertig ist, reicht hier eine Zeile:
+ *
+ *   1. Datei als public/video/hero.mp4 ablegen (Hochformat 9:16 passt, der
+ *      Slot ist hochformatig; ein Querformat wird mittig beschnitten)
+ *   2. `art: "video"` setzen und `name: "hero"`
+ *   3. Ein Standbild als public/img/hero-poster.webp hinterlegen, damit vor dem
+ *      Laden nichts springt — `npm run images` erzeugt es mit.
+ *
+ * Das Video läuft stumm, in Schleife und ohne Bedienelemente. Bei
+ * `prefers-reduced-motion` zeigt der Browser nur das Standbild.
+ */
+export const heroMedia = {
+  art: "bild" as "bild" | "video",
+  name: "hero-studio",
+  alt: "Studioaufbau mit Sofa und Dauerlicht während einer Content-Produktion",
+} as const;
+
+/**
  * Anker-Navigation. Die Seite ist ein One-Pager — jeder Punkt springt zu einer
  * Sektion, nicht auf eine Unterseite. Englische Labels wie in Tinas Entwurf.
  */

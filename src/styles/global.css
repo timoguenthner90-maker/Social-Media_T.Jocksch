@@ -9,12 +9,12 @@
  * Wirkung über Farbe und Typografie — genau drei Fotos sind im Einsatz, dazu
  * die Content-Beispiele.
  *
- * Schriften: Fraunces (Display) und Figtree (Text), beide selbst gehostet über
- * @fontsource-variable. Keine externen Requests.
+ * Schriften: Playfair Display (Überschriften) und Jost (Fließtext), beide
+ * selbst gehostet über @fontsource-variable. Keine externen Requests.
  */
 
-@import "@fontsource-variable/fraunces/wght.css";
-@import "@fontsource-variable/figtree/wght.css";
+@import "@fontsource-variable/playfair-display/wght.css";
+@import "@fontsource-variable/jost/wght.css";
 
 :root {
   /* ---------- Farbe ---------- */
@@ -42,13 +42,16 @@
   --radius-lg: 22px;
 
   /* ---------- Typografie ---------- */
-  --display: "Fraunces Variable", "Iowan Old Style", Palatino, Georgia, serif;
-  --sans: "Figtree Variable", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+  --display: "Playfair Display Variable", "Iowan Old Style", Palatino, Georgia,
+    serif;
+  --sans: "Jost Variable", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, sans-serif;
 
-  --step--2: clamp(0.78rem, 0.76rem + 0.08vw, 0.83rem);
-  --step--1: clamp(0.9rem, 0.88rem + 0.1vw, 0.96rem);
-  --step-0: clamp(1.02rem, 0.99rem + 0.14vw, 1.09rem);
+  /* Jost hat eine kleinere x-Höhe als die meisten Grotesken — die Textstufen
+     sind deshalb rund 4 % angehoben, sonst wirkt der Fließtext zu zierlich. */
+  --step--2: clamp(0.81rem, 0.79rem + 0.08vw, 0.86rem);
+  --step--1: clamp(0.94rem, 0.92rem + 0.1vw, 1rem);
+  --step-0: clamp(1.06rem, 1.03rem + 0.14vw, 1.13rem);
   --step-1: clamp(1.16rem, 1.11rem + 0.22vw, 1.3rem);
   --step-2: clamp(1.34rem, 1.25rem + 0.4vw, 1.6rem);
   --step-3: clamp(1.6rem, 1.4rem + 0.85vw, 2.15rem);
@@ -88,7 +91,7 @@ body {
   color: var(--ink);
   font-family: var(--sans);
   font-size: var(--step-0);
-  line-height: 1.65;
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -771,6 +774,24 @@ figcaption {
   font-size: var(--step--2);
   letter-spacing: 0.04em;
   padding: 1em 1.1em;
+}
+
+/* Tagessatz-Zeile unter der Pakettafel — bewusst als schmale Leiste, nicht als
+   fünfte Karte: Er ist der Rechenanker, kein gleichrangiges Angebot. */
+.tagessatz {
+  display: grid;
+  gap: 1rem 2rem;
+  align-items: center;
+  margin-top: clamp(1rem, 2vw, 1.5rem);
+  padding: clamp(1.2rem, 2.5vw, 1.6rem);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+}
+
+@media (min-width: 700px) {
+  .tagessatz {
+    grid-template-columns: 1fr auto;
+  }
 }
 
 /* ---------- Formular ---------- */

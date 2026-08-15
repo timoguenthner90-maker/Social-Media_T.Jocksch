@@ -55,13 +55,15 @@ const c = (...p) => path.join(CONTENT, ...p);
  */
 const IMAGES = [
   {
-    // Hero: Tina bei der Produktion. Zeigt in einem Bild, worum es geht —
-    // deutlich besser als ein weiteres Porträt.
-    out: "hero-dreh",
-    src: c("Shooting", "WhatsApp Image 2026-08-14 at 21.26.09.jpeg"),
+    // Hero: Studioaufbau statt Porträt. Zeigt die Produktion, ohne dass eine
+    // zweite Person im Bild ist — und hält den Platz frei für das
+    // Hintergrundvideo, das denselben Slot bekommt (siehe heroMedia in
+    // src/data/site.ts).
+    out: "hero-studio",
+    src: c("Shooting", "WhatsApp Image 2026-08-14 at 21.26.09 (3).jpeg"),
     ratio: 4 / 5,
-    widths: [900, 600],
-    focus: "attention",
+    widths: [1000, 640],
+    focus: "centre",
   },
   {
     // „hi, I'm Tina" — dieselbe Aufnahme wie in ihrem Entwurf.
@@ -89,6 +91,9 @@ const IMAGES = [
 const VIDEOS = [
   { out: "trend-reel", src: c("pempelhome", "Trend-Video.mp4") },
   { out: "produkt-reel", src: c("pempelhome", "Produktvideo-Beistelltisch.mp4") },
+  // Hintergrundvideo für den Hero. Fehlt es noch, wird es übersprungen — die
+  // Seite läuft dann mit dem Standbild aus IMAGES weiter.
+  { out: "hero", src: c("pempelhome", "Hero-Video.mp4"), optional: true },
 ];
 
 const done = [];
@@ -127,7 +132,7 @@ for (const img of IMAGES) {
 
 for (const vid of VIDEOS) {
   if (!fs.existsSync(vid.src)) {
-    missing.push(`${vid.out} → ${path.basename(vid.src)}`);
+    if (!vid.optional) missing.push(`${vid.out} → ${path.basename(vid.src)}`);
     continue;
   }
   fs.copyFileSync(vid.src, path.join(VID_OUT, `${vid.out}.mp4`));

@@ -1,8 +1,8 @@
 ---
 import Base from "../layouts/Base.astro";
 import Picture from "../components/Picture.astro";
-import { site, cta } from "../data/site";
-import { leistungen, pakete, preishinweis } from "../data/services";
+import { site, cta, heroMedia } from "../data/site";
+import { leistungen, pakete, preishinweis, tagessatz } from "../data/services";
 import { kennzahlen, werkzeuge, stationen, ausbildung } from "../data/experience";
 import { beispiele, accountHinweis } from "../data/work";
 import { personLd, businessLd, websiteLd } from "../data/jsonld";
@@ -35,15 +35,33 @@ import { personLd, businessLd, websiteLd } from "../data/jsonld";
         </div>
       </div>
 
-      <!-- Kein data-reveal: Das Heldenbild ist der LCP und soll sofort stehen. -->
+      <!-- Medien-Slot: nimmt Bild ODER Hintergrundvideo auf, gesteuert über
+           heroMedia in src/data/site.ts. Kein data-reveal — das ist der LCP
+           und soll sofort stehen. -->
       <figure class="media media--45">
-        <Picture
-          name="hero-dreh"
-          alt="Tina Jocksch beim Dreh mit Gimbal während einer Content-Produktion"
-          sizes="(min-width: 900px) 40vw, 100vw"
-          loading="eager"
-          fetchpriority="high"
-        />
+        {
+          heroMedia.art === "video" ? (
+            <video
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="metadata"
+              poster={`/img/${heroMedia.name}-poster.webp`}
+              aria-label={heroMedia.alt}
+            >
+              <source src={`/video/${heroMedia.name}.mp4`} type="video/mp4" />
+            </video>
+          ) : (
+            <Picture
+              name={heroMedia.name}
+              alt={heroMedia.alt}
+              sizes="(min-width: 900px) 40vw, 100vw"
+              loading="eager"
+              fetchpriority="high"
+            />
+          )
+        }
       </figure>
     </div>
   </section>
@@ -282,6 +300,19 @@ import { personLd, businessLd, websiteLd } from "../data/jsonld";
             </div>
           ))
         }
+      </div>
+
+      <!-- Der Tagessatz ist der Anker, aus dem alle Pakete gerechnet sind —
+           und zugleich das direkte Vergleichsmaß zum Wettbewerb. -->
+      <div class="tagessatz">
+        <div>
+          <p class="paket__kopf" style="margin-bottom:0.5rem">Projekt &amp; Interim</p>
+          <p class="small">{tagessatz.text}</p>
+        </div>
+        <p class="paket__preis" style="border:0;padding:0">
+          {tagessatz.preis}
+          <span class="paket__einheit">{tagessatz.einheit}</span>
+        </p>
       </div>
 
       <p class="small muted" style="margin-top:1.5rem;max-width:62ch">{preishinweis}</p>
