@@ -20,6 +20,14 @@ für fremde Marken produziert, und die Seite darf das nicht suggerieren.
 Diese Gewichtung steuert Reihenfolge der Abschnitte, Reihenfolge der drei
 Disziplinen, Paketzuschnitt und die Rollenzeile im Hero.
 
+**Branchen bewusst offen.** Der Schwerpunkt liegt bei Interior, Hospitality und
+Lifestyle, aber die Seite grenzt nicht darauf ein: Tina betreut auch einen
+Tennis-Account und arbeitet an Konzepten für Branchen, denen man Social Media
+nicht ansieht. Der Vorstelltext benennt das ausdrücklich („Ob Sofa, Sandplatz
+oder etwas völlig Unspektakuläres"), damit eine Anfrage aus einem anderen Feld
+sich nicht von vornherein ausgeschlossen fühlt. Die Content-Beispiele stammen
+derzeit alle aus dem Interior-Bereich — das ist der Bestand, nicht die Grenze.
+
 ## 3. Gestaltung
 
 Grundlage ist Tinas eigener Entwurf in
@@ -54,7 +62,7 @@ der Held, Tina ist der Guide.
 
 | Anker | Titel | StoryBrand-Rolle | Inhalt |
 |---|---|---|---|
-| `#start` | — | Held mit Wunsch | Hero, Medium, Signal-Button; darunter das Laufband |
+| `#start` | — | Held mit Wunsch | Hero („making brands visible by design."), Medium, Signal-Button; darunter das Laufband |
 | `#problem` | the problem. | Problem | Vier Zitate aus der Empathy Map, ein sachlicher Schlusssatz |
 | `#erfahrung` | track record. | Guide | Empathie-Zeile, dann Werkzeuge, Kennzahlen, Stationen |
 | `#plan` | the plan. | Plan + Handlung | Drei Schritte, „was sich ändert", CTA, kleiner Einstieg |
