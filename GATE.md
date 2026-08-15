@@ -20,6 +20,24 @@ Die Seite ist damit vollständig gebaut und abnahmebereit, aber bewusst noch
 nicht öffentlich — ein unvollständiges Impressum gehört nicht auf eine
 erreichbare deutsche Geschäftsseite.
 
+## Offener technischer Punkt
+
+Netlify baut die Seite nicht mehr selbst — es bekommt das **lokal gebaute
+`dist/`** ausgeliefert. Grund: Der Build in Netlifys Umgebung bricht seit der
+Straffung mit „exit code 2" ab, obwohl derselbe Stand lokal fehlerfrei
+durchläuft (geprüft aus frischem Clone, mit Node 22 und 24, mit und ohne
+devDependencies). Eine Bisektion über vierzehn Deploys hat die Ursache nicht auf
+eine Quelldatei eingrenzen können, und die Build-Logs sind ohne Netlify-Login
+nicht lesbar.
+
+Für die Seite hat das keine Auswirkung: Der Abnahme-Gauntlet läuft vor jedem
+Deploy lokal, und ausgeliefert wird exakt das geprüfte Ergebnis.
+
+**Wenn du das sauber abschließen willst:** Öffne
+https://app.netlify.com/projects/tina-jocksch → *Deploys* → den rotmarkierten
+Deploy von heute Nacht, und kopiere mir die letzten ~30 Zeilen des Logs. Dann
+kann ich die eigentliche Ursache beheben und den Build wieder auf Netlify legen.
+
 ## Was geprüft wurde
 
 - `npm run build` — 7 Seiten, fehlerfrei

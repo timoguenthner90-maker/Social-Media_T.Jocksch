@@ -69,7 +69,7 @@ Impressum in Production gehen.**
 ## Deploy
 
 ```bash
-npx netlify-cli deploy            # Preview (Draft-URL)
+# Vor jedem Deploy: npm run build && npx astro check && npm run verify
 npx netlify-cli deploy --prod     # erst nach Freigabe am Gate
 ```
 
