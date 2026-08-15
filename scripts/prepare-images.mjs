@@ -1,11 +1,14 @@
 #!/usr/bin/env node
 // prepare-images.mjs — bereitet das Originalmaterial für den Build auf.
 //
-// Quelle: ~/Desktop/Eigene Website Tina/Content  (Unterordner Ich, Shooting,
-//         Showroom vetsak, pempelhome)
+// Quelle: ~/Desktop/Weiterbildung ecomex/Eigene Website Tina/Content
+//         (Unterordner Ich, Shooting, Showroom vetsak, pempelhome)
+//
+// Zieht der Ordner wieder um, kann der Pfad als Argument übergeben werden:
+//   npm run images -- "/pfad/zu/Eigene Website Tina"
 // Ziel:   public/img (WebP, mehrere Breiten) und public/video (mp4 + Poster)
 //
-// Bewusst sehr knapp gehalten: DREI Fotos und ZWEI Videos. Die Seite lebt von
+// Bewusst knapp gehalten: VIER Fotos und ZWEI Videos. Die Seite lebt von
 // Farbflächen, Typografie und den Content-Beispielen — nicht von einer Galerie.
 // Jedes Bild hier hat genau eine Aufgabe; wer eins austauscht, sollte dieselbe
 // Aufgabe im Blick behalten.
@@ -21,7 +24,17 @@ import path from "node:path";
 import os from "node:os";
 import { execFileSync } from "node:child_process";
 
-const ROOT = process.argv[2] ?? path.join(os.homedir(), "Desktop/Eigene Website Tina");
+// Bekannte Ablageorte, in dieser Reihenfolge durchprobiert. Der Ordner ist im
+// Lauf des Projekts schon einmal umgezogen; ein Argument sticht beide.
+const KANDIDATEN = [
+  "Desktop/Weiterbildung ecomex/Eigene Website Tina",
+  "Desktop/Eigene Website Tina",
+].map((p) => path.join(os.homedir(), p));
+
+const ROOT =
+  process.argv[2] ??
+  KANDIDATEN.find((p) => fs.existsSync(path.join(p, "Content"))) ??
+  KANDIDATEN[0];
 const CONTENT = path.join(ROOT, "Content");
 const IMG_OUT = "public/img";
 const VID_OUT = "public/video";
@@ -51,27 +64,43 @@ const c = (...p) => path.join(CONTENT, ...p);
 /**
  * ratio  = Zielseitenverhältnis (Breite/Höhe)
  * widths = erzeugte Breiten; die erste ist die Standardgröße im <img src>
- * focus  = "attention" für Bilder mit Personen, "centre" sonst
+ * focus  = "attention" (sharp sucht die auffälligste Stelle), "top" oder
+ *          "centre". Bei Porträts trifft "attention" nicht zuverlässig — es hat
+ *          hier schon einmal die Augen abgeschnitten. Im Zweifel "top".
  */
 const IMAGES = [
   {
-    // Hero: Studioaufbau statt Porträt. Zeigt die Produktion, ohne dass eine
-    // zweite Person im Bild ist — und hält den Platz frei für das
-    // Hintergrundvideo, das denselben Slot bekommt (siehe heroMedia in
-    // src/data/site.ts).
-    out: "hero-studio",
-    src: c("Shooting", "WhatsApp Image 2026-08-14 at 21.26.09 (3).jpeg"),
+    // Hero: Tina auf dem Cord-Sofa im hellen Studio. Von Tina ausgewählt.
+    // Der Slot nimmt auch das Hintergrundvideo auf, sobald es fertig ist
+    // (siehe heroMedia in src/data/site.ts).
+    //
+    // Zuschnitt mittig statt "attention": Die Person sitzt klein im Raum, und
+    // die Wirkung kommt aus der ganzen Szene — Licht, Vorhänge, Sofa. Ein
+    // Zuschnitt aufs Gesicht würde genau das wegschneiden.
+    out: "hero-sofa",
+    src: c("Ich", "WhatsApp Image 2026-08-12 at 16.55.59.jpeg"),
     ratio: 4 / 5,
     widths: [1000, 640],
     focus: "centre",
   },
   {
-    // „hi, I'm Tina" — dieselbe Aufnahme wie in ihrem Entwurf.
+    // „hi, I'm Tina" — näheres Porträt, seit das Sofa-Bild in den Hero gewandert
+    // ist. Zuschnitt von oben: Das Gesicht sitzt im oberen Bilddrittel, und
+    // "attention" hatte hier die Augen abgeschnitten.
     out: "tina-portrait",
-    src: c("Ich", "WhatsApp Image 2026-08-12 at 16.55.59.jpeg"),
+    src: c("Ich", "WhatsApp Image 2026-08-12 at 17.09.30.jpeg"),
     ratio: 4 / 5,
     widths: [900, 600],
-    focus: "attention",
+    focus: "top",
+  },
+  {
+    // Drittes Content-Beispiel: ein Foto-Post. Hochformat 9:16 wie die beiden
+    // Reels, damit alle drei im selben Telefonrahmen sitzen.
+    out: "post-sofa",
+    src: c("Shooting", "WhatsApp Image 2026-08-14 at 21.26.09 (2).jpeg"),
+    ratio: 9 / 16,
+    widths: [800, 500],
+    focus: "centre",
   },
   {
     // Schmales Band im Abschnitt „track record", neben der vetsak-Station.
@@ -122,7 +151,8 @@ for (const img of IMAGES) {
       .rotate() // EXIF-Orientierung anwenden, sonst liegen Handyfotos quer
       .resize(w, h, {
         fit: "cover",
-        position: img.focus === "attention" ? sharp.strategy.attention : "centre",
+        position:
+          img.focus === "attention" ? sharp.strategy.attention : img.focus,
       })
       .webp({ quality: 80 })
       .toFile(file);

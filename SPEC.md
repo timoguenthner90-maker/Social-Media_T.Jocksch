@@ -103,16 +103,20 @@ beste Türöffner für einen Retainer (es wird bei Abschluss angerechnet).
 
 ## 7. Medien — bewusst knapp
 
-**Drei Fotos, zwei Videos, ein Platzhalter.** Die Seite trägt über Farbflächen
-und Typografie, nicht über eine Galerie.
+**Vier Fotos, zwei Videos.** Die Seite trägt über Farbflächen und Typografie,
+nicht über eine Galerie.
 
-- `hero-studio` — Studioaufbau (Hero). Der Slot nimmt auch ein
-  Hintergrundvideo auf: `heroMedia` in `src/data/site.ts` umschalten.
+- `hero-sofa` — Cord-Sofa im Studio (Hero), von Tina ausgewählt. Der Slot nimmt
+  auch ein Hintergrundvideo auf: `heroMedia` in `src/data/site.ts` umschalten.
 - `tina-portrait` — Porträt (about)
+- `post-sofa` — Foto-Post, drittes Content-Beispiel
 - `vetsak-showroom` — Band im track record
 - `trend-reel.mp4` — 47.500 Views · 3.920 Likes
 - `produkt-reel.mp4` — 6.300 Views · 143 Likes
-- Carousel — als „in Arbeit" ausgewiesen, kein erfundener Inhalt
+
+Zuschnitt: `focus` in `scripts/prepare-images.mjs` steuert die Strategie.
+`attention` trifft bei Porträts nicht zuverlässig — es hat hier schon einmal die
+Augen abgeschnitten; im Zweifel `top`.
 
 @pempelhome erscheint nur als Fußnote unter den Beispielen: Der Account läuft
 erst seit Mitte Juni 2026 (490 Follower) und ist ein Testfeld, kein

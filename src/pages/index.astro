@@ -272,12 +272,12 @@ import { personLd, businessLd, websiteLd } from "../data/jsonld";
                   </video>
                 </div>
               ) : (
-                <div class="phone phone--leer">
-                  <p>
-                    <strong>In Arbeit.</strong>
-                    <br />
-                    Das erste Carousel entsteht gerade.
-                  </p>
+                <div class="phone">
+                  <Picture
+                    name={b.bild!}
+                    alt={b.alt!}
+                    sizes="(min-width: 900px) 22vw, (min-width: 600px) 45vw, 90vw"
+                  />
                 </div>
               )}
 
@@ -338,7 +338,7 @@ import { personLd, businessLd, websiteLd } from "../data/jsonld";
       <figure class="media media--45" data-reveal>
         <Picture
           name="tina-portrait"
-          alt="Tina Jocksch auf einem Sofa in einem hellen Studio"
+          alt="Porträt von Tina Jocksch"
           sizes="(min-width: 900px) 45vw, 100vw"
         />
       </figure>

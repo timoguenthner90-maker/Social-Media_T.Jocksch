@@ -43,16 +43,16 @@ ist eine ladungsfähige Geschäftsadresse die übliche Alternative.)
   Ergänzung. Trifft das deine Positionierung?
 - **Kennzahlen im track record** — 200+ Creator, ca. 30 % Revenue-Anteil, 20–30
   Kooperationen pro Monat, 6+ Jahre. Alles aus dem Lebenslauf.
-- **Content-Beispiele** — Trend-Reel (47.500 Views · 3.920 Likes) und
-  Produkt-Empfehlung (6.300 Views · 143 Likes). Das Carousel steht als „in
-  Arbeit"; sobald du eines hast, tauschen wir den Platzhalter.
+- **Content-Beispiele** — Trend-Reel (47.500 Views · 3.920 Likes),
+  Produkt-Empfehlung (6.300 Views · 143 Likes) und ein Foto-Post. Für den
+  Foto-Post liegen mir keine Zahlen vor; wenn du welche hast, trage ich sie
+  nach.
 - **Du-Form** — die ganze Seite duzt, wie in deinem Entwurf.
 
-### 3. Bildrechte und Personen
+### 3. Bildrechte
 
-Drei Fotos sind im Einsatz. Beim **Hero-Bild ist eine zweite Person deutlich zu
-erkennen** — hast du ihr Einverständnis für die Veröffentlichung? Wenn nicht,
-tausche ich es gegen eine Aufnahme ohne weitere Personen.
+Vier Fotos sind im Einsatz, alle aus deinem Material und ohne weitere Personen
+im Bild.
 
 ### 4. Rechtstexte
 

@@ -6,7 +6,7 @@
  *
  * Palette: Babyblau als Signalfarbe (direkt aus dem Entwurf gemessen),
  * Dunkelbraun als Textfarbe, Beige als Kontrastfläche. Die Seite trägt ihre
- * Wirkung über Farbe und Typografie — genau drei Fotos sind im Einsatz, dazu
+ * Wirkung über Farbe und Typografie — vier Fotos sind im Einsatz, dazu
  * die Content-Beispiele.
  *
  * Schriften: Playfair Display (Überschriften) und Jost (Fließtext), beide
@@ -752,22 +752,6 @@ figcaption {
   height: 100%;
   object-fit: cover;
   display: block;
-}
-
-/* Platzhalter-Kachel für ein Format, das noch nicht produziert ist. */
-.phone--leer {
-  display: grid;
-  place-items: center;
-  background: var(--blue-soft);
-  border-color: var(--ink);
-  text-align: center;
-  padding: 1.5rem;
-}
-
-.phone--leer p {
-  font-size: var(--step--1);
-  color: var(--ink-2);
-  max-width: 22ch;
 }
 
 /* Kennzahlen unter einem Beispiel. */

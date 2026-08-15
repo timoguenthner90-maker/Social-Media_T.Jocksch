@@ -16,8 +16,10 @@ export type Beispiel = {
   kategorie: string;
   titel: string;
   text: string;
-  /** Dateiname ohne Endung in public/video; fehlt, wenn das Format noch entsteht. */
+  /** Dateiname ohne Endung in public/video — für Bewegtbild. */
   video?: string;
+  /** Dateiname ohne Endung in public/img — für einen Foto-Post. */
+  bild?: string;
   alt?: string;
   zahlen?: { wert: string; label: string }[];
 };
@@ -49,9 +51,11 @@ export const beispiele: Beispiel[] = [
   },
   {
     nummer: "03",
-    kategorie: "Editorial",
-    titel: "Carousel",
-    text: "Mehrteiliger Post für Wissen, Vorher-Nachher oder Produktdetails — das Format mit der längsten Verweildauer.",
+    kategorie: "Feed Post",
+    titel: "Foto-Post",
+    text: "Licht, Material, Raum — ein ruhiger Beitrag zwischen den Reels. Das Format, das einem Profil Struktur gibt, statt nur Reichweite zu jagen.",
+    bild: "post-sofa",
+    alt: "Cord-Sofa mit gestapelten Kissen im Sonnenlicht vor bodenlangen Vorhängen",
   },
 ];
 

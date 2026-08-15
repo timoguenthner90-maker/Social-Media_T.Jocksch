@@ -1,11 +1,19 @@
 {
-  "hero-studio": {
+  "hero-sofa": {
     "widths": [
       1000,
       640
     ],
     "w": 1000,
     "h": 1250
+  },
+  "post-sofa": {
+    "widths": [
+      800,
+      500
+    ],
+    "w": 800,
+    "h": 1422
   },
   "produkt-reel-poster": {
     "widths": [

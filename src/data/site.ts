@@ -70,8 +70,8 @@ export const cta = {
  */
 export const heroMedia = {
   art: "bild" as "bild" | "video",
-  name: "hero-studio",
-  alt: "Studioaufbau mit Sofa und Dauerlicht während einer Content-Produktion",
+  name: "hero-sofa",
+  alt: "Tina Jocksch sitzt mit einem Getränk auf einem Cord-Sofa in einem hellen Studio mit bodenlangen Vorhängen",
 } as const;
 
 /**
