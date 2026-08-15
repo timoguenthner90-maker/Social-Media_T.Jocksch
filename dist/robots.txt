@@ -1,0 +1,4 @@
+# Vorschau-Stand: Das Impressum ist noch unvollständig.
+# Bis dahin bleibt die Seite aus dem Index. Siehe SPEC.md, Abschnitt 7.
+User-agent: *
+Disallow: /

@@ -1,15 +1,24 @@
-[build]
-  command = "npm run build"
-  publish = "dist"
+# ---------------------------------------------------------------------------
+# Kein Build auf Netlify — es wird ausschließlich das fertige dist/ ausgeliefert.
+#
+# Hintergrund: Der Build in Netlifys Umgebung bricht seit der Straffung mit
+# "exit code 2" ab, während derselbe Stand lokal fehlerfrei durchläuft — geprüft
+# aus einem frischen Clone, mit Node 22 und 24, mit und ohne devDependencies.
+# Eine Deploy-Bisektion über vierzehn Durchläufe hat die Ursache nicht auf eine
+# Quelldatei festnageln können; die Build-Logs sind ohne Netlify-Login nicht
+# lesbar. Solange das offen ist, ist der lokale Build die verlässlichere Quelle.
+#
+# Das passt zu diesem Projekt: eine statische Seite, eine Autorin, und ein
+# Abnahme-Gauntlet (npm run build && astro check && npm run verify), der vor
+# jedem Deploy ohnehin lokal läuft. dist/ ist deshalb eingecheckt.
+#
+# Zurück auf einen Netlify-Build: command = "npm run build" setzen, dist/ wieder
+# in .gitignore aufnehmen und aus dem Index entfernen.
+# ---------------------------------------------------------------------------
 
-[build.environment]
-  NODE_VERSION = "22"
-  # Die devDependencies sind reines lokales Werkzeug: sharp für die
-  # Bildaufbereitung, chrome-launcher für die Screenshots, astro/check für die
-  # Typprüfung. Nichts davon braucht der Build — sie bringen aber native
-  # Binaries mit, die auf Netlifys Linux-Umgebung installiert werden müssten.
-  # Ohne sie ist der Build kleiner, schneller und hat eine Fehlerquelle weniger.
-  NPM_FLAGS = "--omit=dev"
+[build]
+  command = ""
+  publish = "dist"
 
 # ---------------------------------------------------------------------------
 # Security-Header.
