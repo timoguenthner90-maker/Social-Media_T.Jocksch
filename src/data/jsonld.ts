@@ -5,7 +5,12 @@
 // wieder loszuwerden — ein fehlendes Feld ist harmlos, ein falsches nicht.
 
 import { SITE_URL, site, isTodo } from "./site";
-import { leistungen } from "./services";
+import { pakete } from "./services";
+
+/** "1.150 €" → "1150" — schema.org will eine reine Zahl. */
+function betrag(preis: string): string {
+  return preis.replace(/[^\d,]/g, "").replace(",", ".");
+}
 
 /** Nur ausgefüllte Werte übernehmen. */
 function real(value: string): string | undefined {
@@ -73,16 +78,23 @@ export const businessLd = clean({
   ],
   priceRange: "€€",
   sameAs,
+  // Der Katalog listet die Pakete, nicht die Oberkategorien: Sie tragen den
+  // Preis, und ein Angebot mit Preis ist für Suchmaschinen deutlich
+  // aussagekräftiger als eine reine Leistungsbezeichnung.
   hasOfferCatalog: {
     "@type": "OfferCatalog",
-    name: "Leistungen",
-    itemListElement: leistungen.map((l) => ({
+    name: "Leistungen und Pakete",
+    itemListElement: pakete.map((p) => ({
       "@type": "Offer",
-      itemOffered: {
-        "@type": "Service",
-        name: l.name,
-        description: l.text,
-        url: `${SITE_URL}/#${l.slug}`,
+      name: p.name,
+      description: p.was,
+      url: `${SITE_URL}/#leistungen`,
+      priceSpecification: {
+        "@type": "PriceSpecification",
+        price: betrag(p.preis),
+        priceCurrency: "EUR",
+        valueAddedTaxIncluded: false,
+        description: p.einheit,
       },
     })),
   },

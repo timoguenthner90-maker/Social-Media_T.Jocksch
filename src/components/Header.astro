@@ -1,5 +1,5 @@
 ---
-import { site, nav } from "../data/site";
+import { site, nav, cta } from "../data/site";
 
 // One-Pager: Die Navigation springt zu Ankern auf der Startseite. Auf den
 // Rechtsseiten (Impressum, Datenschutz, Danke, 404) gibt es diese Anker nicht —
@@ -16,5 +16,13 @@ const href = (anker: string) => (aufStartseite ? anker : `/${anker}`);
     <nav class="nav" aria-label="Hauptnavigation">
       {nav.map((item) => <a href={href(item.href)}>{item.label}</a>)}
     </nav>
+
+    <!-- Zwei Beschriftungen: Auf schmalen Bildschirmen passt der lange Text
+         nicht neben die Wortmarke. Umgeschaltet wird per CSS mit display:none,
+         damit Screenreader immer nur eine Fassung vorlesen. -->
+    <a class="btn header__cta" href={href(cta.href)}>
+      <span class="header__cta-lang">{cta.label}</span>
+      <span class="header__cta-kurz">Anfragen</span>
+    </a>
   </div>
 </header>

@@ -281,17 +281,60 @@ strong {
   border-bottom-color: var(--ink);
 }
 
+/* Der Handlungsaufruf scrollt mit. Auf einem One-Pager verschwindet er sonst
+   nach dem Hero und taucht erst ganz unten wieder auf — dazwischen liegen
+   sieben Bildschirmhöhen ohne nächsten Schritt. */
+.header__cta {
+  font-size: var(--step--2);
+  padding: 0.75em 1.15em;
+  white-space: nowrap;
+  flex: none;
+}
+
+.header__cta-kurz {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .header__cta-lang {
+    display: none;
+  }
+  .header__cta-kurz {
+    display: inline;
+  }
+}
+
+/* Auf dem Desktop schiebt die Navigation sich nach rechts, der Button folgt. */
+.nav {
+  margin-left: auto;
+}
+
 /* Unter 900 px rutscht die Navigation in eine eigene, horizontal scrollbare
    Zeile. Bei sieben kurzen Ankern ist das ehrlicher als ein Burger-Menü, das
    den Sprung zur Sektion hinter zwei Taps versteckt. */
 @media (max-width: 899px) {
+  /* Wortmarke und Button in der ersten Zeile, die Navigation darunter über die
+     volle Breite. Ein Raster statt einer Spalte, damit der Button oben neben
+     der Wortmarke bleibt und nicht als dritte Zeile darunter rutscht. */
   .header__inner {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "brand cta"
+      "nav nav";
+    align-items: center;
+    gap: 0.5rem 1rem;
     padding-block: 0.7rem;
   }
+  .brand {
+    grid-area: brand;
+  }
+  .header__cta {
+    grid-area: cta;
+  }
   .nav {
+    grid-area: nav;
+    margin-left: 0;
     width: 100%;
     overflow-x: auto;
     gap: 1.15rem;
@@ -405,6 +448,81 @@ strong {
   align-items: center;
   gap: 0.9rem 1.4rem;
   margin-top: 2rem;
+}
+
+/* ---------- Laufband ----------
+ *
+ * Schmales Band mit den Schlagworten, zwischen Hero und Arbeiten. Reine
+ * Dekoration: im Markup steht es `aria-hidden`, die Begriffe stehen inhaltlich
+ * ohnehin in den Leistungen.
+ *
+ * Die Liste wird im Markup zweimal ausgegeben und um genau die halbe Breite
+ * verschoben — dadurch schließt der Lauf nahtlos, ohne JavaScript. Der Rand
+ * links und rechts wird ausgeblendet, damit die Wörter nicht hart abreißen.
+ */
+.laufband {
+  background: var(--ink);
+  color: var(--paper);
+  padding-block: 0.85rem;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 8%,
+    #000 92%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 8%,
+    #000 92%,
+    transparent
+  );
+}
+
+.laufband__spur {
+  display: flex;
+  width: max-content;
+  animation: laufband 42s linear infinite;
+}
+
+.laufband ul {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0 1.25rem;
+  font-family: var(--display);
+  font-size: var(--step-1);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+/* Trennzeichen zwischen den Begriffen, in Babyblau. */
+.laufband li::after {
+  content: "◆";
+  margin-left: 2.5rem;
+  color: var(--blue);
+  font-size: 0.55em;
+  vertical-align: middle;
+}
+
+@keyframes laufband {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Wer reduzierte Bewegung eingestellt hat, bekommt das Band im Stand. */
+@media (prefers-reduced-motion: reduce) {
+  .laufband__spur {
+    animation: none;
+  }
 }
 
 /* ---------- Bilder ---------- */
@@ -685,6 +803,13 @@ figcaption {
   padding: clamp(1.4rem, 2.5vw, 1.9rem);
 }
 
+/* Seit Angebot und Preis in einem Block stehen, liegen die Karten auf der
+   blauen Fläche — blau auf blau verschwindet. Auf dem Blau kehrt sich das
+   Verhältnis um: helle Karte, blaue Fläche. */
+.paket--auf-blau {
+  background: var(--paper);
+}
+
 .paket__kopf {
   font-family: var(--display);
   font-size: var(--step--1);
@@ -784,7 +909,7 @@ figcaption {
   align-items: center;
   margin-top: clamp(1rem, 2vw, 1.5rem);
   padding: clamp(1.2rem, 2.5vw, 1.6rem);
-  border: 1px solid var(--line);
+  border: 1px solid color-mix(in srgb, var(--ink) 30%, transparent);
   border-radius: var(--radius-lg);
 }
 

@@ -74,12 +74,32 @@ export const heroMedia = {
 /**
  * Anker-Navigation. Die Seite ist ein One-Pager — jeder Punkt springt zu einer
  * Sektion, nicht auf eine Unterseite. Englische Labels wie in Tinas Entwurf.
+ *
+ * Reihenfolge: erst zeigen (creative work), dann belegen (experience), dann das
+ * Angebot mit Preis (services), dann die Person (about), dann der Abschluss.
+ * Wer von LinkedIn kommt, will die Arbeit sehen — nicht zuerst eine Biografie.
  */
 export const nav = [
-  { href: "#about", label: "about" },
-  { href: "#leistungen", label: "what I do" },
-  { href: "#erfahrung", label: "experience" },
   { href: "#arbeiten", label: "creative work" },
-  { href: "#pakete", label: "services" },
+  { href: "#erfahrung", label: "experience" },
+  { href: "#leistungen", label: "services" },
+  { href: "#about", label: "about" },
   { href: "#kontakt", label: "contact" },
+] as const;
+
+/**
+ * Laufband unter dem Hero. Reine Dekoration — es steht `aria-hidden`, weil die
+ * Begriffe sonst doppelt vorgelesen würden; inhaltlich stehen sie ohnehin in
+ * den Leistungen. Bei `prefers-reduced-motion` steht das Band still.
+ */
+export const laufband = [
+  "Social Media Strategy",
+  "Reels",
+  "Creator Partnerships",
+  "UGC",
+  "Content Planning",
+  "Short Form Video",
+  "Community Management",
+  "Campaign Management",
+  "Reporting",
 ] as const;

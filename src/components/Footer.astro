@@ -1,6 +1,6 @@
 ---
 import { site } from "../data/site";
-import { leistungen } from "../data/services";
+import { pakete } from "../data/services";
 
 const year = new Date().getFullYear();
 const aufStartseite = Astro.url.pathname === "/";
@@ -20,12 +20,12 @@ const href = (anker: string) => (aufStartseite ? anker : `/${anker}`);
       </div>
 
       <div>
-        <p class="footer__head">Leistungen</p>
+        <p class="footer__head">Pakete</p>
         <ul class="footer__list">
           {
-            leistungen.map((l) => (
+            pakete.map((p) => (
               <li>
-                <a href={href("#leistungen")}>{l.name}</a>
+                <a href={href("#leistungen")}>{p.name}</a>
               </li>
             ))
           }
