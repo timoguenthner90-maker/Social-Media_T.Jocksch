@@ -1087,6 +1087,26 @@ figcaption {
   word-break: break-word;
 }
 
+/* Der WhatsApp-Knopf ist neben dem Formular der zweite Hauptweg — er soll auch
+   so aussehen und nicht wie ein Textlink zwischen vier anderen. */
+.kontakt__whatsapp {
+  width: 100%;
+  justify-content: center;
+}
+
+@media (min-width: 480px) {
+  .kontakt__whatsapp {
+    width: auto;
+  }
+}
+
+/* Trennt die beiden Hauptwege von den Nebenkanälen. */
+.kontakt__linie {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 2rem 0 1.5rem;
+}
+
 .social {
   display: flex;
   flex-wrap: wrap;
