@@ -1,20 +1,19 @@
 #!/usr/bin/env node
 // prepare-images.mjs — bereitet das Originalmaterial für den Build auf.
 //
-// Quelle: ~/Desktop/Eigene Website Tina  (Fotos in ./Content, Reels teils dort,
-//         teils im übergeordneten Ordner)
+// Quelle: ~/Desktop/Eigene Website Tina/Content  (Unterordner Ich, Shooting,
+//         Showroom vetsak, pempelhome)
 // Ziel:   public/img (WebP, mehrere Breiten) und public/video (mp4 + Poster)
 //
-// Anders als bei der Vision-Tennis-Seite laufen die Bilder hier in FARBE. Das
-// Angebot ist ästhetischer Interior- und Lifestyle-Content — Graustufen würden
-// genau das entwerten, was verkauft wird. Material, Licht und Farbtemperatur
-// sind das Argument.
+// Bewusst sehr knapp gehalten: DREI Fotos und ZWEI Videos. Die Seite lebt von
+// Farbflächen, Typografie und den Content-Beispielen — nicht von einer Galerie.
+// Jedes Bild hier hat genau eine Aufgabe; wer eins austauscht, sollte dieselbe
+// Aufgabe im Blick behalten.
 //
-// Die Zuordnung Quelldatei → Zielname steht bewusst als Tabelle im Skript: Die
-// WhatsApp-Dateinamen sind nicht sprechend, und ohne diese Tabelle wäre nach
-// zwei Wochen nicht mehr nachvollziehbar, welches Bild wo auf der Seite landet.
+// Die Zuordnung Quelldatei → Zielname steht als Tabelle im Skript, weil die
+// WhatsApp-Dateinamen nicht sprechend sind.
 //
-// Aufruf:  npm run images
+// Aufruf:  npm run images   (optional mit abweichendem Quellpfad als Argument)
 
 import sharp from "sharp";
 import fs from "node:fs";
@@ -31,131 +30,71 @@ fs.mkdirSync(IMG_OUT, { recursive: true });
 fs.mkdirSync(VID_OUT, { recursive: true });
 
 // Der Quellordner liegt auf dem Schreibtisch und damit im Zugriffsschutz von
-// macOS. Fehlt die Freigabe, meldet sharp nur „unsupported image format" —
-// eine irreführende Meldung, die nach kaputten Dateien klingt. Deshalb hier
-// einmal vorab prüfen und im Klartext sagen, woran es liegt.
+// macOS. Fehlt die Freigabe, meldet sharp nur „unsupported image format" — eine
+// irreführende Meldung, die nach kaputten Dateien klingt. Deshalb vorab prüfen.
 try {
   fs.readdirSync(CONTENT);
 } catch (err) {
   console.error(
-    `\nQuellordner nicht lesbar: ${CONTENT}\n` +
-      `  (${err.code})\n\n` +
+    `\nQuellordner nicht lesbar: ${CONTENT}\n  (${err.code})\n\n` +
       `  Das ist in aller Regel der macOS-Zugriffsschutz, nicht ein Problem mit\n` +
-      `  den Dateien. Dem Terminal in den Systemeinstellungen unter\n` +
-      `  „Datenschutz & Sicherheit → Dateien und Ordner" Zugriff auf den\n` +
-      `  Schreibtisch geben — oder den Ordner an einen Ort außerhalb von\n` +
-      `  Schreibtisch, Dokumente und Downloads legen und den Pfad als Argument\n` +
-      `  übergeben: npm run images -- /pfad/zum/ordner\n`,
+      `  den Dateien. Dem Terminal unter „Datenschutz & Sicherheit → Dateien und\n` +
+      `  Ordner" Zugriff auf den Schreibtisch geben — oder den Ordner an einen\n` +
+      `  anderen Ort legen und den Pfad übergeben:\n` +
+      `      npm run images -- /pfad/zum/ordner\n`,
   );
   process.exit(1);
 }
 
-const c = (f) => path.join(CONTENT, f);
+const c = (...p) => path.join(CONTENT, ...p);
 
 /**
  * ratio  = Zielseitenverhältnis (Breite/Höhe)
- * widths = erzeugte Breiten; die erste ist die Standardgröße im <img src>,
- *          alle zusammen bilden das srcset
- * focus  = "attention" für Bilder mit Personen (sharp sucht das Gesicht),
- *          "centre" für Interior — dort liegt das Motiv verlässlich mittig
+ * widths = erzeugte Breiten; die erste ist die Standardgröße im <img src>
+ * focus  = "attention" für Bilder mit Personen, "centre" sonst
  */
-// Bewusst knapp gehalten: zehn Bilder, zwei Reels. Aus dem Quellordner ließen
-// sich leicht dreimal so viele aufbereiten — aber eine Portfolio-Seite überzeugt
-// über Auswahl, nicht über Menge. Jedes Bild hier hat eine feste Aufgabe.
 const IMAGES = [
-  // ---- Personenbilder -----------------------------------------------------
   {
-    out: "tina-hero", // Hero der Startseite
-    src: c("WhatsApp Image 2026-08-14 at 21.26.07 (4).jpeg"),
-    ratio: 3 / 4,
-    widths: [900, 600],
-    focus: "attention",
-  },
-  {
-    out: "tina-portrait", // Abschnitt „Über mich" + OG-Bild
-    src: c("WhatsApp Image 2026-08-12 at 17.09.30.jpeg"),
+    // Hero: Tina bei der Produktion. Zeigt in einem Bild, worum es geht —
+    // deutlich besser als ein weiteres Porträt.
+    out: "hero-dreh",
+    src: c("Shooting", "WhatsApp Image 2026-08-14 at 21.26.09.jpeg"),
     ratio: 4 / 5,
     widths: [900, 600],
     focus: "attention",
   },
   {
-    out: "tina-work", // Säule Creator Marketing
-    src: c("WhatsApp Image 2026-08-14 at 21.26.09.jpeg"),
+    // „hi, I'm Tina" — dieselbe Aufnahme wie in ihrem Entwurf.
+    out: "tina-portrait",
+    src: c("Ich", "WhatsApp Image 2026-08-12 at 16.55.59.jpeg"),
     ratio: 4 / 5,
-    widths: [800, 560],
+    widths: [900, 600],
     focus: "attention",
   },
-
-  // ---- Produktion ---------------------------------------------------------
   {
-    out: "bts-set", // Säule Content Creation
-    src: c("WhatsApp Image 2026-08-14 at 21.25.49.jpeg"),
-    ratio: 4 / 5,
-    widths: [800, 560],
-    focus: "centre",
-  },
-  {
-    out: "bts-studio", // Säule Strategie & Projekt-Support
-    src: c("WhatsApp Image 2026-08-14 at 21.36.29 (5).jpeg"),
-    ratio: 4 / 5,
-    widths: [800, 560],
-    focus: "centre",
-  },
-
-  // ---- Arbeiten -----------------------------------------------------------
-  {
-    out: "case-wohnraum", // Arbeiten-Raster, @pempelhome
-    src: c("WhatsApp Image 2026-08-14 at 21.44.03 (1).jpeg"),
-    ratio: 4 / 5,
-    widths: [1000, 640],
-    focus: "centre",
-  },
-  {
-    out: "interior-garten", // Arbeiten-Raster
-    src: c("WhatsApp Image 2026-08-14 at 21.26.10 (3).jpeg"),
-    ratio: 4 / 5,
-    widths: [800, 560],
-    focus: "centre",
-  },
-  {
-    out: "interior-wohnraum", // Säule Social Media Management
-    src: c("WhatsApp Image 2026-08-14 at 21.36.29 (3).jpeg"),
-    ratio: 4 / 5,
-    widths: [800, 560],
-    focus: "centre",
-  },
-  {
-    out: "interior-regal", // Arbeiten-Raster
-    src: c("WhatsApp Image 2026-08-14 at 21.36.29 (8).jpeg"),
-    ratio: 4 / 5,
-    widths: [800, 560],
-    focus: "centre",
-  },
-  {
-    out: "interior-textur", // Arbeiten-Raster, Materialdetail
-    src: c("WhatsApp Image 2026-08-14 at 21.26.08 (5).jpeg"),
-    ratio: 4 / 5,
-    widths: [800, 560],
+    // Schmales Band im Abschnitt „track record", neben der vetsak-Station.
+    out: "vetsak-showroom",
+    src: c("Showroom vetsak", "WhatsApp Image 2026-08-14 at 21.36.29 (3).jpeg"),
+    ratio: 16 / 9,
+    widths: [1400, 800],
     focus: "centre",
   },
 ];
 
-/** Reels. Die mp4 werden nicht umkodiert — ffmpeg ist auf dem Rechner nicht
- *  installiert, und die WhatsApp-Dateien sind mit ~2 MB bereits H.264-komprimiert.
- *  Sie laden erst beim Klick (preload="none"), das Poster trägt die Vorschau. */
+/**
+ * Content-Beispiele. Beide Videos liegen im Hochformat 9:16 vor und werden
+ * nicht umkodiert — sie laden erst beim Klick (preload="none"), bis dahin
+ * trägt das Poster die Vorschau.
+ */
 const VIDEOS = [
-  { out: "reel-sofa", src: c("WhatsApp Video 2026-08-14 at 21.26.11.mp4") },
-  { out: "reel-material", src: c("WhatsApp Video 2026-08-14 at 21.26.10.mp4") },
+  { out: "trend-reel", src: c("pempelhome", "Trend-Video.mp4") },
+  { out: "produkt-reel", src: c("pempelhome", "Produktvideo-Beistelltisch.mp4") },
 ];
 
 const done = [];
 const missing = [];
 
-/**
- * Manifest für die Picture-Komponente: Breiten und Maße jedes Bildes.
- * Ohne das müssten srcset und width/height in jeder Seite von Hand stehen und
- * würden beim nächsten Zuschnitt still falsch werden.
- */
+/** Manifest für die Picture-Komponente: Breiten und Maße jedes Bildes. */
 const manifest = {};
 
 for (const img of IMAGES) {
@@ -170,8 +109,8 @@ for (const img of IMAGES) {
   };
   for (const w of img.widths) {
     const h = Math.round(w / img.ratio);
-    // Die schmalste Breite behält den Basisnamen, damit `src` ohne srcset
-    // funktioniert; die größeren bekommen ein Breiten-Suffix.
+    // Die größte Breite behält den Basisnamen, damit `src` ohne srcset
+    // funktioniert; die kleineren bekommen ein Breiten-Suffix.
     const isBase = w === img.widths[0];
     const file = path.join(IMG_OUT, isBase ? `${img.out}.webp` : `${img.out}-${w}.webp`);
     await sharp(img.src)

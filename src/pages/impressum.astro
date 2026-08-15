@@ -1,21 +1,19 @@
 ---
 import Base from "../layouts/Base.astro";
-import { site, isTodo, phoneDisplay } from "../data/site";
+import { site, isTodo } from "../data/site";
 
 // Angaben gemäß § 5 DDG (früher § 5 TMG).
 //
-// Alles, was hier noch als Platzhalter steht, muss vor dem Production-Deploy
-// ausgefüllt werden — siehe SPEC.md, Abschnitt „Offene Angaben".
-// scripts/verify.mjs bricht ab, solange ein "TODO — " im Build steht.
-const val = (v: string) => ({ text: v, todo: isTodo(v) });
-
+// Alle Angaben stammen aus dem Lebenslauf. Offen ist nur die Steuerangabe —
+// sie ist als Platzhalter markiert, und scripts/verify.mjs bricht ab, solange
+// sie im Build steht. Siehe SPEC.md, Abschnitt „Offene Angaben".
 const felder = [
-  { label: "Anbieterin", ...val(site.legalName) },
-  { label: "Anschrift", ...val(site.street) },
-  { label: "PLZ / Ort", ...val(`${site.zip} ${site.city}`) },
-  { label: "E-Mail", ...val(site.email) },
-  { label: "Telefon", ...val(phoneDisplay()) },
-  { label: "Umsatzsteuer", ...val(site.vatId) },
+  { label: "Anbieterin", wert: site.legalName },
+  { label: "Anschrift", wert: site.street },
+  { label: "PLZ / Ort", wert: `${site.zip} ${site.city}` },
+  { label: "E-Mail", wert: site.email },
+  { label: "Telefon", wert: site.phoneDisplay },
+  { label: "Umsatzsteuer", wert: site.vatId },
 ];
 ---
 
@@ -26,24 +24,21 @@ const felder = [
 >
   <section class="section">
     <div class="wrap narrow">
-      <p class="eyebrow">Rechtliches</p>
-      <h1>Impressum</h1>
+      <h1 class="title">Impressum</h1>
 
-      <h2 style="font-size:var(--step-2);margin:2.5rem 0 1rem">
-        Angaben gemäß § 5 DDG
-      </h2>
-      <ul class="kanaele">
+      <h2 style="font-size:var(--step-2);margin:2rem 0 1rem">Angaben gemäß § 5 DDG</h2>
+      <dl class="kanaele">
         {
           felder.map((f) => (
-            <li>
-              <span class="kanaele__label">{f.label}</span>
-              <span class="kanaele__value">
-                {f.todo ? <span class="todo">{f.text}</span> : f.text}
-              </span>
-            </li>
+            <div>
+              <dt>{f.label}</dt>
+              <dd>
+                {isTodo(f.wert) ? <span class="todo">{f.wert}</span> : f.wert}
+              </dd>
+            </div>
           ))
         }
-      </ul>
+      </dl>
 
       <h2 style="font-size:var(--step-2);margin:2.5rem 0 1rem">
         Verantwortlich für den Inhalt
@@ -53,9 +48,7 @@ const felder = [
         der genannten Anschrift.
       </p>
 
-      <h2 style="font-size:var(--step-2);margin:2.5rem 0 1rem">
-        Streitbeilegung
-      </h2>
+      <h2 style="font-size:var(--step-2);margin:2.5rem 0 1rem">Streitbeilegung</h2>
       <p>
         Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung
         bereit: <a href="https://ec.europa.eu/consumers/odr/" rel="noopener"
@@ -66,19 +59,20 @@ const felder = [
 
       <h2 style="font-size:var(--step-2);margin:2.5rem 0 1rem">Bildnachweis</h2>
       <p>
-        Sämtliche Fotos und Videos auf dieser Website stammen von {site.name} und
-        sind urheberrechtlich geschützt. Eine Verwendung ohne schriftliche Zustimmung
-        ist nicht gestattet.
+        Sämtliche Fotos und Videos auf dieser Website stammen von {site.name} und sind
+        urheberrechtlich geschützt. Eine Verwendung ohne schriftliche Zustimmung ist
+        nicht gestattet.
       </p>
 
       <h2 style="font-size:var(--step-2);margin:2.5rem 0 1rem">Haftung</h2>
       <p>
         Die Inhalte dieser Seiten wurden mit Sorgfalt erstellt. Für die Richtigkeit,
-        Vollständigkeit und Aktualität der Inhalte kann jedoch keine Gewähr übernommen
-        werden. Für Inhalte externer Links sind ausschließlich deren Betreiber
-        verantwortlich; zum Zeitpunkt der Verlinkung waren keine Rechtsverstöße
-        erkennbar.
+        Vollständigkeit und Aktualität kann jedoch keine Gewähr übernommen werden. Für
+        Inhalte externer Links sind ausschließlich deren Betreiber verantwortlich; zum
+        Zeitpunkt der Verlinkung waren keine Rechtsverstöße erkennbar.
       </p>
+
+      <p style="margin-top:2.5rem"><a class="btn btn--blue" href="/">Zur Startseite</a></p>
     </div>
   </section>
 </Base>

@@ -1,50 +1,46 @@
 ---
 import Base from "../layouts/Base.astro";
 import Picture from "../components/Picture.astro";
-import Cta from "../components/Cta.astro";
-import { cta, industries, site } from "../data/site";
-import { pillars } from "../data/services";
-import { pempelhome, arbeiten, reels } from "../data/cases";
+import { site, cta } from "../data/site";
+import { leistungen, pakete, preishinweis } from "../data/services";
+import { kennzahlen, werkzeuge, stationen, ausbildung } from "../data/experience";
+import { beispiele, accountHinweis } from "../data/work";
 import { personLd, businessLd, websiteLd } from "../data/jsonld";
 
-// Die Reihenfolge folgt dem Golden Circle (docs/Website-Story.md):
-// Why (Hero, Problem) → How (Arbeitsweise) → What (Leistungen, Arbeiten).
-// Wer von oben nach unten liest, trifft die Leistungsliste erst, wenn die
-// Haltung dahinter schon steht.
+// One-Pager. Aufbau und Wortlaut folgen Tinas eigenem Entwurf
+// (~/Desktop/Eigene Website Tina/webseite vorlage): englische Abschnittstitel
+// in Kleinschreibung mit Punkt, deutscher Text, Farbflächen im Wechsel.
 //
-// Arbeiten und Über mich sind Abschnitte dieser Seite statt eigener Routen —
-// die Navigation springt per Anker hierher.
+// Die Sektionen sind zugleich die Sprungziele der Navigation.
 ---
 
 <Base
   title="Tina Jocksch — Social Media & Creator Marketing"
-  description="Social-Media-Strategie, Content Creation und Influencer Marketing aus einer Hand — für Interior-, Hospitality- und Lifestyle-Marken aus Düsseldorf."
+  description="Social Media Management, Creator Partnerships und Content Creation aus einer Hand — für Marken, die nicht nur sichtbar, sondern relevant sein wollen."
   jsonLd={[personLd, businessLd, websiteLd]}
 >
-  <!-- ---------- Hero: Why ---------- -->
-  <section class="hero">
+  <!-- ================= Hero ================= -->
+  <section class="hero" id="start">
     <div class="wrap hero__grid">
       <div>
-        <p class="eyebrow">Social Media · Content · Creator Marketing</p>
-        <h1>Sichtbar ist nicht genug.<br />Marken und Orte sollen erlebbar sein.</h1>
+        <p class="eyebrow">{site.role}</p>
+        <h1>making brands worth following.</h1>
         <p class="lead">
-          Ich verbinde Social-Media-Strategie, eigene Content-Produktion und Creator
-          Marketing zu einem Auftritt, der die Atmosphäre einer Marke auf den
-          Bildschirm bringt — und ihre Wirkung in Zahlen sichtbar macht.
+          Ich verbinde Social Media, Creator Marketing und Content zu Strategien, die
+          Marken nicht nur sichtbar machen, sondern relevant.
         </p>
         <div class="hero__actions">
-          <a class="btn" href={cta.href}>{cta.label}</a>
-          <a class="arrow" href="#arbeiten">Arbeiten ansehen</a>
+          <a class="btn btn--blue" href={cta.href}>{cta.label}</a>
+          <a href="#arbeiten" style="font-size:var(--step--1)">Arbeiten ansehen</a>
         </div>
       </div>
 
-      <!-- Kein data-reveal: Das Heldenbild ist der LCP. Es soll sofort stehen und
-           nicht auf den IntersectionObserver warten. -->
-      <figure class="media media--34">
+      <!-- Kein data-reveal: Das Heldenbild ist der LCP und soll sofort stehen. -->
+      <figure class="media media--45">
         <Picture
-          name="tina-hero"
-          alt="Tina Jocksch sitzt auf einem modularen Sofa in einem hellen Studio"
-          sizes="(min-width: 900px) 42vw, 100vw"
+          name="hero-dreh"
+          alt="Tina Jocksch beim Dreh mit Gimbal während einer Content-Produktion"
+          sizes="(min-width: 900px) 40vw, 100vw"
           loading="eager"
           fetchpriority="high"
         />
@@ -52,221 +48,356 @@ import { personLd, businessLd, websiteLd } from "../data/jsonld";
     </div>
   </section>
 
-  <!-- ---------- Problem und Ansatz ---------- -->
-  <section class="section section--sand">
-    <div class="wrap split">
+  <!-- ================= about ================= -->
+  <section class="section" id="about">
+    <div class="wrap split split--top">
       <div>
-        <p class="eyebrow">Das Problem</p>
-        <p class="pull">„Uns fehlt einfach die Zeit.“</p>
-      </div>
-      <div class="stack">
-        <p>
-          Es fehlt nicht an Ideen, sondern an Kapazität: ein Team, das Social Media
-          nebenbei mitmacht, ein Feed, der unregelmäßig läuft — und eine Konkurrenz,
-          die online sichtbarer ist.
-        </p>
-        <p>
-          Was Sie suchen, ist keine weitere Agentur mit Zwischenebenen, sondern
-          jemanden, der die operative Arbeit übernimmt, <strong>ohne dass Sie die
-          Kontrolle über Marke und Tonalität abgeben.</strong>
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ---------- Arbeitsweise: How ---------- -->
-  <section class="section">
-    <div class="wrap">
-      <div class="split" style="margin-bottom:clamp(2rem,4vw,3rem)">
-        <div>
-          <p class="eyebrow">Der Ansatz</p>
-          <h2>Alles aus einer Hand — und nachprüfbar</h2>
-        </div>
-        <p class="lead">
-          Die meisten Marken arbeiten mit einer Agentur für die Strategie, einer
-          Fotografin für die Bilder und einer weiteren Adresse für
-          Influencer-Kampagnen. Dazwischen gehen Zeit, Budget und Tonalität verloren.
-        </p>
-      </div>
-
-      <p class="lead" style="margin-bottom:clamp(2rem,4vw,3rem)">
-        Bei mir läuft alles über einen Tisch: ein Briefing, eine Ansprechpartnerin,
-        eine Handschrift — von der Strategie über die Produktion bis zur Kampagne.
-      </p>
-
-      <div class="grid grid--3">
-        <div class="card" data-reveal>
-          <span class="card__num">01</span>
-          <h3 class="card__title">Strategisch denken</h3>
-          <p class="card__text">
-            Zielgruppe, Formate, Kanäle und Kennzahlen stehen fest, bevor der erste
-            Beitrag entsteht. Nicht andersherum.
-          </p>
-        </div>
-        <div class="card" data-reveal>
-          <span class="card__num">02</span>
-          <h3 class="card__title">Kreativ umsetzen</h3>
-          <p class="card__text">
-            Reels, Fotos und UGC produziere ich selbst — vor Ort, in Ihrer
-            Bildsprache, mit Schnitt und finaler Fassung aus einer Hand.
-          </p>
-        </div>
-        <div class="card" data-reveal>
-          <span class="card__num">03</span>
-          <h3 class="card__title">Messbar weiterentwickeln</h3>
-          <p class="card__text">
-            Monatliches Reporting mit klaren Zahlen und Einordnung — auch dann, wenn
-            ein Monat schlechter lief als der davor.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ---------- Leistungen: What ---------- -->
-  <section class="section section--sand">
-    <div class="wrap">
-      <div class="split" style="margin-bottom:clamp(1.5rem,3vw,2.5rem)">
-        <div>
-          <p class="eyebrow">Leistungen</p>
-          <h2>Vier Säulen, ein Auftritt</h2>
-        </div>
-        <p class="lead">
-          Einzeln buchbar — im Zusammenspiel am stärksten, weil Strategie, Content
-          und Creator-Kampagnen dann derselben Linie folgen.
-        </p>
-      </div>
-
-      <ol class="steps">
-        {
-          pillars.map((p) => (
-            <li>
-              <span class="steps__name">
-                <a href={`/leistungen/#${p.slug}`} class="steps__link">
-                  {p.name}
-                </a>
-              </span>
-              <span class="steps__text">{p.claim}</span>
-            </li>
-          ))
-        }
-      </ol>
-
-      <p style="margin-top:2rem">
-        <a class="arrow" href="/leistungen/">Leistungen und Preise im Detail</a>
-      </p>
-    </div>
-  </section>
-
-  <!-- ---------- Arbeiten ---------- -->
-  <section class="section" id="arbeiten">
-    <div class="wrap">
-      <div class="split" style="margin-bottom:clamp(1.5rem,3vw,2.5rem)">
-        <div>
-          <p class="eyebrow">Arbeiten</p>
-          <h2>Was dabei herauskommt</h2>
-        </div>
-        <p class="lead">
-          Interior- und Lifestyle-Content: konzipiert, produziert, geschnitten und
-          veröffentlicht. Räume, die über Material, Licht und Atmosphäre wirken.
-        </p>
-      </div>
-
-      <div class="grid grid--4">
-        {
-          arbeiten.map((img) => (
-            <figure class="media media--45" data-reveal>
-              <Picture
-                name={img.file}
-                alt={img.alt}
-                sizes="(min-width: 900px) 23vw, (min-width: 600px) 45vw, 100vw"
-              />
-            </figure>
-          ))
-        }
-      </div>
-
-      <div class="split" style="margin-top:clamp(2.5rem,5vw,3.5rem)">
+        <h2 class="title">hi, I'm Tina.</h2>
         <div class="stack">
-          <p class="pull">{pempelhome.handle}</p>
-          <p>{pempelhome.lead}</p>
           <p>
-            <a class="arrow" href={site.instagram} rel="noopener">
-              Auf Instagram ansehen
-            </a>
-          </p>
-        </div>
-
-        <div class="reels">
-          {
-            reels.map((r) => (
-              <figure data-reveal>
-                <div class="media media--916">
-                  <video
-                    controls
-                    preload="none"
-                    playsinline
-                    poster={`/img/${r.file}-poster.webp`}
-                    width="720"
-                    height="1280"
-                    aria-label={r.alt}
-                  >
-                    <source src={`/video/${r.file}.mp4`} type="video/mp4" />
-                    Ihr Browser kann dieses Video nicht abspielen.
-                  </video>
-                </div>
-                <figcaption>
-                  <strong style="color:var(--ink)">{r.title}</strong> — {r.text}
-                </figcaption>
-              </figure>
-            ))
-          }
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ---------- Über mich ---------- -->
-  <section class="section section--sand" id="ueber-mich">
-    <div class="wrap hero__grid">
-      <div>
-        <p class="eyebrow">Über mich</p>
-        <h2>Ich bin Tina.</h2>
-        <div class="stack" style="margin-top:1.5rem">
-          <p class="lead">
-            Seit über sechs Jahren arbeite ich an der Schnittstelle von Social Media,
-            Content und Creator Marketing — Redaktionspläne, Reels, Creator-Briefings
-            und Kampagnenauswertung, meistens alles davon im selben Projekt.
+            Seit über sechs Jahren arbeite ich an der Schnittstelle zwischen
+            <strong>Marke, Content und Creator</strong> — von Social-Media-Strategien
+            und Kampagnenkonzepten über Creator Partnerships bis zur operativen
+            Umsetzung. Dabei kenne ich beide Perspektiven: die strategischen Ziele
+            einer Brand genauso wie die kreative Logik von Content, der Menschen
+            wirklich erreicht.
           </p>
           <p>
-            Was mich an Interior, Hospitality und Lifestyle festhält: Das sind Marken,
-            die man nicht beschreiben kann. Ein Raum wirkt oder er wirkt nicht, und
-            entschieden wird das heute lange vor dem ersten Besuch — auf einem
-            Bildschirm, in drei Sekunden. Genau diese Übersetzung ist der Teil der
-            Arbeit, den ich am liebsten mache.
+            Heute ergänze ich diese Erfahrung um
+            <strong>Performance Marketing und eigene Content Creation</strong>. So
+            entstehen Konzepte, die nicht nur gut aussehen, sondern auf ein klares
+            Ziel einzahlen.
           </p>
           <p>
-            Ich sage, was geht und was nicht. Ich arbeite selbstständig, ohne dass Sie
-            hinterherfragen müssen. Und ich lege Zahlen offen, auch wenn ein Monat
-            schlechter lief als der davor.
+            Mein Anspruch: <strong>weniger Content um des Contents willen und mehr
+            Ideen mit Strategie, Persönlichkeit und Wirkung.</strong>
+          </p>
+          <p style="font-family:var(--display);font-size:var(--step-2);margin-top:0.5rem">
+            Think. Create. Connect.
           </p>
         </div>
-
-        <p class="eyebrow" style="margin-top:2.5rem">Branchen</p>
-        <ul class="taglist">
-          {industries.map((b) => <li>{b}</li>)}
-        </ul>
       </div>
 
       <figure class="media media--45" data-reveal>
         <Picture
           name="tina-portrait"
-          alt="Porträt von Tina Jocksch"
-          sizes="(min-width: 900px) 42vw, 100vw"
+          alt="Tina Jocksch auf einem Sofa in einem hellen Studio"
+          sizes="(min-width: 900px) 45vw, 100vw"
         />
       </figure>
     </div>
   </section>
 
-  <Cta />
+  <!-- ================= what I do ================= -->
+  <section class="section section--blue" id="leistungen">
+    <div class="wrap">
+      <h2 class="title">what I do.</h2>
+
+      <ul class="leistungen">
+        {
+          leistungen.map((l, i) => (
+            <li id={l.slug}>
+              <div>
+                <span class="leistungen__num">{String(i + 1).padStart(2, "0")}</span>
+                <span class="leistungen__name">{l.name}</span>
+              </div>
+              <div>
+                <p>{l.text}</p>
+                <p class="leistungen__tags">{l.tags.join(" · ")}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- ================= track record ================= -->
+  <section class="section section--beige" id="erfahrung">
+    <div class="wrap">
+      <h2 class="title">track record.</h2>
+      <p class="lead" style="margin-bottom:2rem">
+        Was ich in sechs Jahren angestellt aufgebaut habe — und jetzt für deine Marke
+        einsetze.
+      </p>
+
+      <ul class="chips" style="margin-bottom:2.25rem">
+        {werkzeuge.map((w) => <li>{w}</li>)}
+      </ul>
+
+      <ul class="stats">
+        {
+          kennzahlen.map((k) => (
+            <li data-reveal>
+              <span class="stats__num">{k.zahl}</span>
+              <span class="stats__label">{k.label}</span>
+            </li>
+          ))
+        }
+      </ul>
+
+      <figure class="media media--169" style="margin-top:2.5rem" data-reveal>
+        <Picture
+          name="vetsak-showroom"
+          alt="Showroom mit modularen Sofas vor einer Fensterfront"
+          sizes="(min-width: 1200px) 1140px, 100vw"
+        />
+      </figure>
+
+      <div style="margin-top:2.5rem">
+        {
+          stationen.map((s) => (
+            <article class="station">
+              <div>
+                <p class="station__zeit">{s.zeit}</p>
+                <p class="station__name">{s.firma}</p>
+                <p class="station__rolle">{s.rolle}</p>
+              </div>
+              <div>
+                <p class="station__ergebnis">{s.ergebnis}</p>
+                <p>{s.text}</p>
+                <ul class="chips chips--plain">
+                  {s.tags.map((t) => (
+                    <li>{t}</li>
+                  ))}
+                </ul>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+
+      <p class="small muted" style="margin-top:1.75rem">
+        {ausbildung.studium} · {ausbildung.weiterbildung}
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= creative work ================= -->
+  <section class="section" id="arbeiten">
+    <div class="wrap">
+      <h2 class="title">creative work.</h2>
+      <p class="lead" style="margin-bottom:2.5rem">
+        Drei Formate, drei Aufgaben. Zum Abspielen antippen — die Videos laden erst
+        dann.
+      </p>
+
+      <div class="beispiele">
+        {
+          beispiele.map((b) => (
+            <figure data-reveal>
+              <div class="beispiel__kopf">
+                <span class="beispiel__num">
+                  {b.nummer} — {b.kategorie}
+                </span>
+                <p class="beispiel__titel">{b.titel}</p>
+              </div>
+
+              {b.video ? (
+                <div class="phone">
+                  <video
+                    controls
+                    preload="none"
+                    playsinline
+                    poster={`/img/${b.video}-poster.webp`}
+                    width="720"
+                    height="1280"
+                    aria-label={b.alt}
+                  >
+                    <source src={`/video/${b.video}.mp4`} type="video/mp4" />
+                    Dein Browser kann dieses Video nicht abspielen.
+                  </video>
+                </div>
+              ) : (
+                <div class="phone phone--leer">
+                  <p>
+                    <strong>In Arbeit.</strong>
+                    <br />
+                    Das erste Carousel entsteht gerade.
+                  </p>
+                </div>
+              )}
+
+              <figcaption>{b.text}</figcaption>
+
+              {b.zahlen && (
+                <p class="beispiel__zahlen">
+                  {b.zahlen.map((z) => (
+                    <span class="beispiel__zahl">
+                      <strong>{z.wert}</strong>
+                      {z.label}
+                    </span>
+                  ))}
+                </p>
+              )}
+            </figure>
+          ))
+        }
+      </div>
+
+      <p class="small muted" style="margin-top:2rem;max-width:62ch">
+        <a href={site.instagram} rel="noopener">{accountHinweis.handle}</a> —
+        {accountHinweis.text}
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= services ================= -->
+  <section class="section section--beige-soft" id="pakete">
+    <div class="wrap">
+      <h2 class="title">let's work together.</h2>
+
+      <div class="pakete">
+        {
+          pakete.map((p) => (
+            <div class="paket" data-reveal>
+              <p class="paket__kopf">
+                {p.nummer} &nbsp; {p.name}
+              </p>
+              <p class="paket__was">{p.was}</p>
+
+              <p class="paket__preis">
+                {p.preis}
+                <span class="paket__einheit">{p.einheit}</span>
+              </p>
+
+              <ul class="paket__liste">
+                {p.enthalten.map((e) => (
+                  <li>
+                    <span>{e}</span>
+                  </li>
+                ))}
+                {p.nichtEnthalten?.map((e) => (
+                  <li class="nicht">
+                    <span>{e}</span>
+                  </li>
+                ))}
+              </ul>
+
+              {p.hinweis && <p class="paket__hinweis">{p.hinweis}</p>}
+
+              <a class="btn btn--paper" href="#kontakt">
+                Paket anfragen
+              </a>
+            </div>
+          ))
+        }
+      </div>
+
+      <p class="small muted" style="margin-top:1.5rem;max-width:62ch">{preishinweis}</p>
+    </div>
+  </section>
+
+  <!-- ================= contact ================= -->
+  <section class="section" id="kontakt">
+    <div class="wrap">
+      <h2 class="title">contact.</h2>
+
+      <div class="split split--top">
+        <!-- Netlify Forms: Das Formular wird beim Deploy aus dem statischen HTML
+             gelesen. Nötig sind `data-netlify`, ein verstecktes `form-name`-Feld
+             und der Honeypot. Kein JavaScript beteiligt. -->
+        <form
+          class="form"
+          name="kontakt"
+          method="POST"
+          action="/danke/"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+        >
+          <input type="hidden" name="form-name" value="kontakt" />
+          <p class="hp">
+            <label>Bitte nicht ausfüllen: <input name="bot-field" tabindex="-1" /></label>
+          </p>
+
+          <div class="form__row form__row--2">
+            <div class="field">
+              <label for="name">Name *</label>
+              <input id="name" name="name" type="text" required autocomplete="name" />
+            </div>
+            <div class="field">
+              <label for="email">E-Mail *</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                required
+                autocomplete="email"
+              />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="paket">Worum geht es?</label>
+            <select id="paket" name="paket">
+              <option value="">Bitte wählen</option>
+              {
+                pakete.map((p) => (
+                  <option>
+                    {p.nummer} {p.name}
+                  </option>
+                ))
+              }
+              <option>Weiß ich noch nicht</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="nachricht">Nachricht *</label>
+            <textarea
+              id="nachricht"
+              name="nachricht"
+              required
+              placeholder="Erzähl mir kurz von deiner Marke und deinen Zielen"></textarea>
+          </div>
+
+          <label class="consent">
+            <input type="checkbox" name="einwilligung" required />
+            <span>
+              Ich bin damit einverstanden, dass meine Angaben zur Bearbeitung meiner
+              Anfrage gespeichert und verarbeitet werden. Details in der
+              <a href="/datenschutz/">Datenschutzerklärung</a>. *
+            </span>
+          </label>
+
+          <div>
+            <button class="btn" type="submit">Anfrage senden</button>
+          </div>
+
+          <p class="small muted">* Pflichtfeld · {cta.note}</p>
+        </form>
+
+        <dl class="kanaele">
+          <div>
+            <dt>E-Mail</dt>
+            <dd><a href={`mailto:${site.email}`}>{site.email}</a></dd>
+          </div>
+          <div>
+            <dt>Telefon &amp; WhatsApp</dt>
+            <dd><a href={`https://wa.me/${site.phoneDigits}`} rel="noopener">
+              {site.phoneDisplay}
+            </a></dd>
+          </div>
+          <div>
+            <dt>Social</dt>
+            <dd>
+              <ul class="social">
+                <li><a href={site.linkedin} rel="me noopener">LinkedIn</a></li>
+                <li>
+                  <a href={site.instagram} rel="me noopener">Instagram</a>
+                </li>
+              </ul>
+            </dd>
+          </div>
+          <div>
+            <dt>Standort</dt>
+            <dd class="small muted" style="font-size:var(--step--1)">
+              {site.zip} {site.city} — Produktionen vor Ort im Rheinland, Betreuung und
+              Strategie remote.
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
 </Base>

@@ -1,119 +1,119 @@
-# Spec — Portfolio-Website Tina Jocksch
+# Spec — Website Tina Jocksch
 
-Stand: 14.08.2026 · Version 1.0
+Stand: 15.08.2026 · Version 2.0 (One-Pager)
 
 ## 1. Zweck
 
-Die Website ist der wichtigste Akquisekanal des Business (Priorität 1 vor
-LinkedIn und @pempelhome). Sie bedient nicht die Awareness-, sondern die
-**Consideration- und Acquisition-Phase**: Besucher kommen über LinkedIn,
+Die Website ist der wichtigste Akquisekanal. Besucher kommen über LinkedIn,
 Empfehlungen oder Instagram und wollen prüfen, ob diese Person das kann, was sie
-brauchen — und was es kostet.
+brauchen — und was es kostet. Sie muss also nicht überzeugen, dass Social Media
+wichtig ist, sondern dass **diese** Person es kann.
 
-Messbares Ziel: **ab Q1 2027 monatlich mindestens drei qualifizierte Anfragen**
-aus der Zielbranche, die zu einem Kennenlern-Call führen.
+## 2. Gestaltung
 
-## 2. Positionierung
+Grundlage ist Tinas eigener Entwurf in
+`~/Desktop/Eigene Website Tina/webseite vorlage` (sieben Screenshots). Aufbau,
+Wortlaut, Preise und Farben stammen von dort; ergänzt um Wettbewerbsvorbilder
+(verweyensocialclub.com, alwaysonline.studio).
 
-> Strategie, Content und Creator Marketing aus einer Hand — für Marken und Orte,
-> die auf Social Media nicht nur sichtbar, sondern erlebbar werden wollen.
+| | |
+|---|---|
+| **Babyblau** | `#b9d0fb` — Kopfzeile, Leistungsfläche, Paketkarten, Signal-Buttons |
+| **Dunkelbraun** | `#3b2f27` — Textfarbe statt Schwarz, wärmer und weniger hart |
+| **Beige** | `#e9dfcd` / `#f1e9dc` — Kontrastflächen |
+| **Papier** | `#f8f5ef` — Grundfläche |
+| Display | Fraunces (variabel, selbst gehostet) |
+| Text | Figtree (variabel, selbst gehostet) |
 
-Hergeleitet in [`docs/6P-Positionierung.md`](docs/6P-Positionierung.md).
-Ausformuliert als Seitentext in [`docs/Website-Story.md`](docs/Website-Story.md).
+Abschnittstitel englisch, klein, mit Punkt (`hi, I'm Tina.`, `what I do.`) —
+Tinas Handschrift. Fließtext deutsch, durchgehend **Du-Form**.
 
-## 3. Seitenstruktur
+## 3. Aufbau — One-Pager
 
-Drei Inhaltsseiten. „Arbeiten" und „Über mich" sind Abschnitte der Startseite
-und werden per Anker angesprungen — für ein Freelance-Portfolio liest sich eine
-zusammenhängende Seite besser als vier halbleere.
+Eine Inhaltsseite mit sieben Abschnitten; die Navigation springt per Anker.
 
-| Route | Rolle (Golden Circle) | Kerninhalt |
+| Anker | Titel | Inhalt |
 |---|---|---|
-| `/` | Why → How → What | Haltungs-Hero · Persona-Problem · Arbeitsweise · vier Säulen · `#arbeiten` (vier Bilder, @pempelhome, zwei Reels) · `#ueber-mich` (Werdegang, Branchen) |
-| `/leistungen/` | What | Vier Säulen ausführlich, Creator-Prozess in acht Schritten, Pakete mit Ab-Preisen, FAQ |
-| `/kontakt/` | Handlung | Formular mit sechs Feldern, E-Mail, WhatsApp, LinkedIn, Instagram, Ablauf in drei Schritten |
-| `/danke/` | — | Bestätigung nach Formularversand, `noindex` |
-| `/impressum/`, `/datenschutz/` | — | Pflichtseiten, `noindex` |
-| `/404` | — | Fehlerseite |
+| `#start` | — | Hero: Haltungssatz, ein Foto, Signal-Button |
+| `#about` | hi, I'm Tina. | Positionierung und Anspruch, Porträt |
+| `#leistungen` | what I do. | Drei Leistungen mit Tags, auf Babyblau |
+| `#erfahrung` | track record. | Werkzeuge, vier Kennzahlen, zwei Stationen, Showroom-Band |
+| `#arbeiten` | creative work. | Drei Content-Beispiele in Telefonrahmen |
+| `#pakete` | let's work together. | Vier Pakete mit Preisen |
+| `#kontakt` | contact. | Formular, E-Mail, Telefon/WhatsApp, Social |
 
-**Ein CTA auf der ganzen Seite:** „Kennenlern-Call vereinbaren" → `/kontakt/`.
-Wording und Ziel werden nirgends variiert.
+Eigene Seiten nur für `/impressum/`, `/datenschutz/`, `/danke/` und `/404`.
 
 ## 4. Preise
 
-Netto, zzgl. USt. Positioniert am oberen Ende des Düsseldorfer Wettbewerbs
-(dort öffentlich sichtbar: 275–700 €/Tag), begründet durch die Kombination aus
-Strategie, eigener Produktion und Creator Marketing.
+Aus Tinas Entwurf übernommen, netto zzgl. USt. Was **nicht** enthalten ist,
+steht mit auf der Karte — das erzeugt weniger Rückfragen als Schweigen.
 
-| Paket | Ab-Preis |
+| Paket | Preis |
 |---|---|
-| Social-Media-Retainer | 1.890 € / Monat |
-| Content- & UGC-Paket | 990 € / Produktionstag |
-| Influencer-Kampagne | 1.900 € Projektfee |
-| Social-Media-Audit | 950 € Festpreis |
-| Interim- & Projekt-Support | 650 € / Tag |
+| 01 Content Studio | ab 850 € / Projekt |
+| 02 Social Management | ab 1.200 € / Monat |
+| 03 Social + Content | ab 2.200 € / Monat |
+| 04 Creator Partnerships | ab 1.300 € / Kampagne |
 
 Quelle: `src/data/services.ts`.
 
-## 5. Technik
-
-- Astro 5, statisch, `@astrojs/sitemap`
-- Keine externen Requests (Schrift mitgebaut, keine Analytics, keine Embeds)
-  → **kein Cookie-Banner erforderlich**
-- Kontaktformular über Netlify Forms, mit Honeypot, ohne JavaScript
-- CSP in `netlify.toml`; `form-action 'self'` (sonst kein Formularversand) und
-  `media-src 'self'` (Reels)
-- Bilder in Farbe, WebP, zwei Breiten je Motiv, `srcset` aus `src/data/images.json`
-- Videos mit `preload="none"` und Poster — sie laden erst beim Klick
-- **Zehn Bilder, zwei Reels.** Aus dem Quellmaterial ließen sich leicht dreimal
-  so viele aufbereiten; die Auswahl ist bewusst knapp, weil eine Portfolio-Seite
-  über Kuratierung überzeugt und nicht über Menge.
-- **Enge Typo-Skala** (Schrittweite ≈ 1,18): zwischen kleinster und größter Stufe
-  liegt Faktor 3,2. Die Seite soll gleichmäßig wirken, nicht zwischen Plakat und
-  Kleingedrucktem springen.
-
-## 6. Inhaltsquellen
+## 5. Inhaltsquellen
 
 | Inhalt | Quelle |
 |---|---|
-| Positionierung, Leistungen, Persona, Wettbewerb | `Social_Media_Business_Chat_Zusammenfassung.md` |
-| Leistungssäulen, Kundensegmente, Einnahmequellen | Business Model Canvas v1.0 |
-| Pains, Gains, Zitate der Persona | Empathy Map Canvas v1.0 |
-| Foto- und Videomaterial | `~/Desktop/Eigene Website Tina/Content/` |
+| Aufbau, Wortlaut, Preise, Farben | `~/Desktop/Eigene Website Tina/webseite vorlage` |
+| Berufserfahrung, Kennzahlen, Werkzeuge, Kontaktdaten | `CV-Tina-Jocksch.pdf` |
+| Positionierung und Zielgruppe (Hintergrund) | `docs/6P-Positionierung.md`, `docs/Website-Story.md` |
+| Fotos und Videos | `~/Desktop/Eigene Website Tina/Content/` |
 
-## 7. Offene Angaben — vor Production zwingend zu füllen
+## 6. Medien — bewusst knapp
 
-Alle in `src/data/site.ts`, erkennbar am Präfix `TODO — `:
+**Drei Fotos, zwei Videos, ein Platzhalter.** Die Seite trägt über Farbflächen
+und Typografie, nicht über eine Galerie.
 
-- [ ] `legalName` — vollständiger Name laut Gewerbeanmeldung
-- [ ] `street`, `zip` — ladungsfähige Anschrift
-- [ ] `email` — geschäftliche E-Mail-Adresse
-- [ ] `phoneDigits` — Nummer für WhatsApp und Telefon, nur Ziffern mit
-      Ländervorwahl (z. B. `4915112345678`)
+- `hero-dreh` — Tina beim Dreh (Hero)
+- `tina-portrait` — Porträt (about)
+- `vetsak-showroom` — Band im track record
+- `trend-reel.mp4` — 47.500 Views · 3.920 Likes
+- `produkt-reel.mp4` — 6.300 Views · 143 Likes
+- Carousel — als „in Arbeit" ausgewiesen, kein erfundener Inhalt
+
+@pempelhome erscheint nur als Fußnote unter den Beispielen: Der Account läuft
+erst seit Mitte Juni 2026 (490 Follower) und ist ein Arbeitsbeispiel, kein
+Aushängeschild.
+
+## 7. Technik
+
+- Astro 5, statisch, `@astrojs/sitemap`
+- Keine externen Requests (Schriften mitgebaut, kein Tracking, keine Embeds)
+  → **kein Cookie-Banner erforderlich**
+- Kontaktformular über Netlify Forms, mit Honeypot, ohne JavaScript
+- CSP in `netlify.toml`; `form-action 'self'` und `media-src 'self'`
+- Videos mit `preload="none"` und Poster — sie laden erst beim Klick
+- **Der Build läuft lokal**, Netlify liefert nur das geprüfte `dist/` aus
+  (Begründung in `netlify.toml`)
+
+## 8. Offene Angabe — vor Production zwingend
+
+Eine einzige, in `src/data/site.ts`, erkennbar am Präfix `TODO — `:
+
 - [ ] `vatId` — USt-IdNr., Steuernummer oder Hinweis auf § 19 UStG
-- [ ] `linkedin` — vollständige Profil-URL
 
-`npm run verify:prod` schlägt fehl, solange einer dieser Werte im Build steht.
+`npm run verify:prod` schlägt fehl, solange dieser Wert im Build steht, und
+`robots.txt` sperrt die Seite für Suchmaschinen.
 
-## 8. Bewusst offen gelassen
+Alle übrigen Stammdaten (Name, Anschrift, E-Mail, Telefon, LinkedIn) stammen aus
+dem Lebenslauf und sind eingetragen.
 
-- **Keine Testimonials, keine Kundenlogos.** Es liegen keine vor; erfundene
-  kommen nicht auf die Seite. Der Beweis läuft über sichtbare Arbeiten und den
-  @pempelhome-Case.
-- **Keine Kennzahlen zu @pempelhome.** Der Case beschreibt Vorgehen und Formate
-  statt Ergebnisse. Sobald Zahlen vorliegen (Follower, Views, Engagement),
-  ersetzen sie die qualitativen Formulierungen — das ist der stärkste einzelne
-  Hebel der ganzen Seite.
-- **Paid Social / Ads** ist bewusst nicht im Leistungsangebot, sondern in der
-  FAQ als „noch nicht" benannt.
-- **Rechtstexte.** Impressum und Datenschutzerklärung beschreiben exakt, was die
-  Seite technisch tut. Sie sind sorgfältig erstellt, aber keine Rechtsberatung —
-  vor dem Live-Gang von fachkundiger Stelle prüfen lassen.
+## 9. Bewusst nicht auf der Seite
 
-## 9. Nächste Ausbaustufen
-
-1. Erstes Kundenprojekt als zweiten Case ergänzen (Ausgangslage, Vorgehen,
-   Ergebnis, echtes Zitat)
-2. Kennzahlen in den @pempelhome-Case eintragen
-3. Eigene Domain statt Netlify-Subdomain (drei Stellen, siehe README)
-4. Paid Social als fünfte Säule, sobald Praxiserfahrung vorliegt
+- **Die aktuelle Suchsituation** und der Grund für das Ende der letzten
+  Anstellung. Beides steht im Lebenslauf und gehört in ein Gespräch, nicht auf
+  eine Angebotsseite. Die laufende Performance-Marketing-Weiterbildung steht
+  dagegen als Pluspunkt drin.
+- **Testimonials und Kundenlogos** — es liegen keine vor, erfundene kommen nicht
+  auf die Seite.
+- **Der private Instagram-Account** bleibt privat; verlinkt ist nur @pempelhome.
+- **FAQ und Ablauf-Sektion** — in Version 1 vorhanden, für die Straffung
+  entfernt.

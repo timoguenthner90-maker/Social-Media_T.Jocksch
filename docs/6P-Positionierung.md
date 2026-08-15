@@ -1,5 +1,10 @@
 # Strategischer Hintergrund (ecomex 6P)
 
+> **Stand 15.08.2026:** Dieses Dokument ist die strategische Herleitung aus der
+> Konzeptphase. Der verbindliche Wortlaut der Seite steht seit Version 2.0 in
+> Tinas eigenem Entwurf (`~/Desktop/Eigene Website Tina/webseite vorlage`) und
+> in `src/data/`. Wo beides auseinandergeht, gilt die Seite.
+
 Stand: 14.08.2026 · Grundlage: Chat-Zusammenfassung „Social Media Management Business",
 Business Model Canvas v1.0, Empathy Map Canvas v1.0
 

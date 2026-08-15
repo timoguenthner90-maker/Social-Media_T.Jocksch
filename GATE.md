@@ -1,109 +1,78 @@
-# Freigabe-Paket — Portfolio-Website Tina Jocksch
+# Freigabe-Paket — Website Tina Jocksch
 
-Stand: 14.08.2026
+Stand: 15.08.2026 · Version 2.0 (One-Pager)
 
 ## Status
 
 | | |
 |---|---|
-| **Preview-URL** | https://tina-jocksch.netlify.app |
-| **Sichtbarkeit** | **Nicht öffentlich.** Netlify verlangt Team-Login — nur mit deinem Netlify-Konto (timoguenthner90@gmail.com) sichtbar. |
+| **URL** | https://tina-jocksch.netlify.app |
+| **Sichtbarkeit** | **Nicht öffentlich.** Netlify verlangt Team-Login — nur mit deinem Netlify-Konto sichtbar. |
 | **Netlify-Projekt** | https://app.netlify.com/projects/tina-jocksch |
-| **Suchmaschinen** | Gesperrt. `robots.txt` liefert `Disallow: /`, solange das Impressum unvollständig ist. |
-| **Build** | 7 Seiten · 0 TypeScript-Fehler · 0 harte Verify-Fehler |
+| **Suchmaschinen** | Gesperrt, solange die Steuerangabe im Impressum fehlt. |
+| **Build** | 5 Seiten · 0 TypeScript-Fehler · 0 harte Verify-Fehler |
 
-**Aufbau:** drei Inhaltsseiten — Start (mit den Abschnitten Arbeiten und Über
-mich), Leistungen & Preise, Kontakt. Dazu Danke-, Impressums-, Datenschutz- und
-Fehlerseite.
+Ein One-Pager mit sieben Abschnitten, dazu Impressum, Datenschutz, Danke- und
+Fehlerseite. Aufbau, Wortlaut, Preise und Farben stammen aus deinem eigenen
+Entwurf; Erfahrung und Kontaktdaten aus deinem Lebenslauf.
 
-Die Seite ist damit vollständig gebaut und abnahmebereit, aber bewusst noch
-nicht öffentlich — ein unvollständiges Impressum gehört nicht auf eine
-erreichbare deutsche Geschäftsseite.
+## Was du prüfen solltest
 
-## Offener technischer Punkt
+### 1. Die eine fehlende Angabe
 
-Netlify baut die Seite nicht mehr selbst — es bekommt das **lokal gebaute
-`dist/`** ausgeliefert. Grund: Der Build in Netlifys Umgebung bricht seit der
-Straffung mit „exit code 2" ab, obwohl derselbe Stand lokal fehlerfrei
-durchläuft (geprüft aus frischem Clone, mit Node 22 und 24, mit und ohne
-devDependencies). Eine Bisektion über vierzehn Deploys hat die Ursache nicht auf
-eine Quelldatei eingrenzen können, und die Build-Logs sind ohne Netlify-Login
-nicht lesbar.
+- [ ] **Steuerangabe fürs Impressum** — USt-IdNr., Steuernummer oder der Hinweis
+      „Kleinunternehmerin gemäß § 19 UStG". Eintragen in `src/data/site.ts`.
 
-Für die Seite hat das keine Auswirkung: Der Abnahme-Gauntlet läuft vor jedem
-Deploy lokal, und ausgeliefert wird exakt das geprüfte Ergebnis.
+Das ist alles, was noch fehlt. Anschrift, E-Mail, Telefon und LinkedIn habe ich
+aus dem Lebenslauf übernommen — bitte einmal gegenlesen, ob alles stimmt und ob
+Telefonnummer und Privatadresse öffentlich stehen sollen. (Ein Impressum
+verlangt eine ladungsfähige Anschrift; wenn dir die Wohnadresse zu privat ist,
+ist eine ladungsfähige Geschäftsadresse die übliche Alternative.)
 
-**Wenn du das sauber abschließen willst:** Öffne
-https://app.netlify.com/projects/tina-jocksch → *Deploys* → den rotmarkierten
-Deploy von heute Nacht, und kopiere mir die letzten ~30 Zeilen des Logs. Dann
-kann ich die eigentliche Ursache beheben und den Build wieder auf Netlify legen.
+### 2. Inhalte
 
-## Was geprüft wurde
+- **Preise** — vier Pakete, 850 € / 1.200 € / 2.200 € / 1.300 €, exakt wie in
+  deinem Entwurf. Passt das so?
+- **Kennzahlen im track record** — 200+ Creator, ca. 30 % Revenue-Anteil, 20–30
+  Kooperationen pro Monat, 6+ Jahre. Alles aus dem Lebenslauf.
+- **Content-Beispiele** — Trend-Reel (47.500 Views · 3.920 Likes) und
+  Produkt-Empfehlung (6.300 Views · 143 Likes). Das Carousel steht als „in
+  Arbeit"; sobald du eines hast, tauschen wir den Platzhalter.
+- **Du-Form** — die ganze Seite duzt, wie in deinem Entwurf.
 
-- `npm run build` — 7 Seiten, fehlerfrei
-- `npx astro check` — 0 Fehler, 0 Warnungen
-- `npm run verify` — 0 harte Fehler; alle Pflicht-URLs vorhanden; strukturierte
-  Daten vollständig (Person, ProfessionalService, WebSite, FAQPage, BreadcrumbList)
-- Vollseiten-Screenshots in 1440 px und 390 px, alle Seiten (`screenshots/`)
-- Alle Bilder mit alt-Text, alle internen Links auflösbar
-- Deploy erfolgreich, Netlify Forms aktiviert
+### 3. Bildrechte und Personen
 
-Offene Warnungen sind ausschließlich die absichtlichen Platzhalter.
+Drei Fotos sind im Einsatz. Beim **Hero-Bild ist eine zweite Person deutlich zu
+erkennen** — hast du ihr Einverständnis für die Veröffentlichung? Wenn nicht,
+tausche ich es gegen eine Aufnahme ohne weitere Personen.
 
-## Was du jetzt tun musst
-
-### 1. Stammdaten liefern
-
-Alles in `src/data/site.ts`, Präfix `TODO — `:
-
-- [ ] Vollständiger Name laut Gewerbeanmeldung
-- [ ] Straße, Hausnummer, PLZ (ladungsfähige Anschrift)
-- [ ] Geschäftliche E-Mail-Adresse
-- [ ] Telefonnummer für WhatsApp (nur Ziffern mit Ländervorwahl, z. B. `4915112345678`)
-- [ ] USt-IdNr., Steuernummer oder Hinweis auf § 19 UStG
-- [ ] LinkedIn-Profil-URL
-
-Solange einer dieser Werte fehlt, schlägt `npm run verify:prod` fehl und
-`robots.txt` bleibt auf `Disallow`.
-
-### 2. Inhalte gegenlesen
-
-- **Preise** — die fünf Ab-Preise auf `/leistungen/` sind eine Empfehlung am
-  oberen Ende des Düsseldorfer Wettbewerbs. Stimmen sie so?
-- **„Seit über sechs Jahren"** auf `/ueber-mich/` — stimmt die Zahl?
-- **@pempelhome „seit Sommer 2026"** — stimmt der Zeitpunkt?
-- **Sie-Form** — durchgehend im Sie. Bei jüngerer D2C-Ausrichtung wäre Du
-  stimmiger; das wäre ein kompletter Wechsel, keine halbe Sache.
-- **Bildauswahl** — zehn Bilder und zwei Reels aus deinem Material. Passt jedes
-  davon öffentlich? Besonders: die Studioaufnahmen, falls dort Kundenmarken
-  erkennbar sind, und die Aufnahme mit einer zweiten Person bei „Influencer &
-  Creator Marketing".
-
-### 3. Rechtstexte prüfen lassen
+### 4. Rechtstexte
 
 Impressum und Datenschutzerklärung beschreiben exakt, was die Seite technisch
-tut (Netlify-Hosting, Netlify Forms, selbst gehostete Schrift, keine Cookies,
-kein Tracking). Sie sind sorgfältig erstellt, sind aber **keine Rechtsberatung**.
-Vor dem Live-Gang von fachkundiger Stelle prüfen lassen.
+tut (Netlify-Hosting, Netlify Forms, selbst gehostete Schriften, keine Cookies,
+kein Tracking). Sorgfältig erstellt, aber **keine Rechtsberatung** — vor dem
+Live-Gang von fachkundiger Stelle prüfen lassen.
 
 ## Der Weg live
 
-Wenn Punkte 1–3 erledigt sind:
-
-1. Stammdaten in `src/data/site.ts` eintragen
-2. `npm run build && npm run verify:prod` — muss grün sein
+1. Steuerangabe in `src/data/site.ts` eintragen
+2. `npm run build && npx astro check && npm run verify:prod` — muss grün sein
 3. Neu deployen
 4. In Netlify unter *Project configuration → Access & security* den Team-Login
-   für dieses Projekt abschalten, damit die Seite öffentlich wird
+   für dieses Projekt abschalten
 
-Erst Schritt 4 macht die Seite für die Welt sichtbar. `robots.txt` gibt sich mit
-dem Build aus Schritt 2 automatisch frei — das kann nicht vergessen werden.
+Erst Schritt 4 macht die Seite öffentlich. `robots.txt` gibt sich mit dem Build
+aus Schritt 2 automatisch frei — das kann nicht vergessen werden.
 
-## Was bewusst fehlt
+## Offener technischer Punkt
 
-- **Testimonials und Kundenlogos** — es liegen keine vor. Erfundene kommen nicht
-  auf die Seite.
-- **Kennzahlen zu @pempelhome** — der Case beschreibt Vorgehen statt Ergebnis.
-  Sobald du Follower-, View- oder Engagement-Zahlen hast, gehören sie hinein.
-  Das ist der stärkste einzelne Hebel der ganzen Seite.
-- **Paid Social** — steht in der FAQ als „noch nicht", nicht im Angebot.
+Netlify baut die Seite nicht selbst, sondern bekommt das **lokal gebaute
+`dist/`**. Grund: Der Build in Netlifys Umgebung brach reproduzierbar mit
+„exit code 2" ab, während derselbe Stand lokal fehlerfrei durchläuft; eine
+Bisektion über vierzehn Deploys hat die Ursache nicht eingrenzen können, und die
+Build-Logs sind ohne Netlify-Login nicht lesbar. Für die Seite hat das keine
+Auswirkung — der Prüflauf läuft vor jedem Deploy lokal, ausgeliefert wird exakt
+das geprüfte Ergebnis.
+
+Wenn du das sauber abschließen willst: Öffne im Netlify-Dashboard einen der rot
+markierten Deploys und schick mir die letzten ~30 Zeilen des Logs.

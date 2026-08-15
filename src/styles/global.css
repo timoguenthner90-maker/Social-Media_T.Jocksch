@@ -1,58 +1,59 @@
 /* Tina Jocksch — Designsystem
  *
- * Positionierung: Social Media und Creator Marketing für visuell starke Marken
- * und Orte — Interior, Hospitality, Lifestyle. Die Seite verkauft Ästhetik,
- * also muss sie selbst welche haben; sie ist das erste Arbeitsbeispiel.
+ * Grundlage ist Tinas eigener Entwurf (~/Desktop/Eigene Website Tina/webseite
+ * vorlage): Farbflächen statt Bilderflut, große Serifen-Überschriften in
+ * Kleinschreibung mit Punkt, englische Abschnittstitel über deutschem Text.
  *
- * Palette: warme, entsättigte Naturtöne (Sand, gebrochenes Weiß, Ton) mit einem
- * tiefen Braun-Schwarz als Textfarbe. Bewusst KEINE bunte Akzentfarbe — die
- * Farbe kommt aus den Fotos. Das Interface hält sich zurück, damit Material,
- * Licht und Holz in den Bildern die einzigen Farbträger bleiben.
+ * Palette: Babyblau als Signalfarbe (direkt aus dem Entwurf gemessen),
+ * Dunkelbraun als Textfarbe, Beige als Kontrastfläche. Die Seite trägt ihre
+ * Wirkung über Farbe und Typografie — genau drei Fotos sind im Einsatz, dazu
+ * die Content-Beispiele.
  *
- * Schrift: Fraunces (variabel, selbst gehostet über @fontsource-variable) für
- * Displaygrößen, System-Grotesk für Fließtext. Keine externen Requests — das
- * Font-Paket wird mitgebaut, nichts wird zur Laufzeit nachgeladen.
+ * Schriften: Fraunces (Display) und Figtree (Text), beide selbst gehostet über
+ * @fontsource-variable. Keine externen Requests.
  */
 
 @import "@fontsource-variable/fraunces/wght.css";
+@import "@fontsource-variable/figtree/wght.css";
 
 :root {
   /* ---------- Farbe ---------- */
-  --ink: #1e1a17;
-  --ink-2: #4f4842;
-  --ink-3: #857a6f;
-  --line: #e2dad0;
-  --line-strong: #cabfb1;
-  --paper: #fbf9f6;
-  --paper-2: #f3ede5;
-  --paper-3: #eae1d6;
-  /* Ton — sparsam für Linien, Marker und Hover, nie flächig. */
-  --clay: #9c7c5f;
+  /* Babyblau, aus dem Entwurf gemessen (#b9d0fb). */
+  --blue: #b9d0fb;
+  --blue-soft: #d6e2fd;
+  --blue-deep: #7e9fe0;
+
+  /* Dunkelbraun als Tinte statt Schwarz — wärmer und weniger hart. */
+  --ink: #3b2f27;
+  --ink-2: #6b5a4c;
+  --ink-3: #948274;
+
+  /* Beige als Kontrastfläche, dazu ein heller Papierton als Grundfläche. */
+  --beige: #e9dfcd;
+  --beige-soft: #f1e9dc;
+  --paper: #f8f5ef;
+  --line: #ded1bd;
 
   /* ---------- Maße ---------- */
-  --wrap: 1240px;
-  --wrap-narrow: 760px;
+  --wrap: 1200px;
+  --wrap-narrow: 720px;
   --gutter: clamp(1.25rem, 4vw, 3.5rem);
-  --radius: 3px;
+  --radius: 14px;
+  --radius-lg: 22px;
 
   /* ---------- Typografie ---------- */
   --display: "Fraunces Variable", "Iowan Old Style", Palatino, Georgia, serif;
-  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
-    Arial, sans-serif;
+  --sans: "Figtree Variable", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
 
-  /* Enge Skala, Schrittweite rund 1,18 statt 1,33. Zwischen der kleinsten und
-     der größten Stufe liegt jetzt Faktor 3,2 statt 6 — die Seite wirkt ruhiger
-     und gleichmäßiger, statt zwischen Plakat und Kleingedrucktem zu springen.
-     Die kleinste Stufe ist bewusst auf 0,82 rem angehoben; darunter wird das
-     gesperrte Versal-Label unangenehm zu lesen. */
-  --step--2: clamp(0.8rem, 0.78rem + 0.08vw, 0.85rem);
-  --step--1: clamp(0.91rem, 0.89rem + 0.1vw, 0.97rem);
-  --step-0: clamp(1.03rem, 1rem + 0.14vw, 1.1rem);
-  --step-1: clamp(1.18rem, 1.13rem + 0.22vw, 1.32rem);
-  --step-2: clamp(1.35rem, 1.26rem + 0.4vw, 1.62rem);
-  --step-3: clamp(1.55rem, 1.38rem + 0.72vw, 2rem);
-  --step-4: clamp(1.8rem, 1.53rem + 1.1vw, 2.45rem);
-  --step-5: clamp(2rem, 1.62rem + 1.6vw, 2.95rem);
+  --step--2: clamp(0.78rem, 0.76rem + 0.08vw, 0.83rem);
+  --step--1: clamp(0.9rem, 0.88rem + 0.1vw, 0.96rem);
+  --step-0: clamp(1.02rem, 0.99rem + 0.14vw, 1.09rem);
+  --step-1: clamp(1.16rem, 1.11rem + 0.22vw, 1.3rem);
+  --step-2: clamp(1.34rem, 1.25rem + 0.4vw, 1.6rem);
+  --step-3: clamp(1.6rem, 1.4rem + 0.85vw, 2.15rem);
+  --step-4: clamp(2rem, 1.62rem + 1.6vw, 3rem);
+  --step-5: clamp(2.4rem, 1.75rem + 2.8vw, 4.2rem);
 }
 
 *,
@@ -64,6 +65,9 @@
 html {
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
+  /* Der Sprungziel-Abstand für die Anker-Navigation: Die Sektion soll unter
+     der klebenden Kopfzeile beginnen, nicht dahinter. */
+  scroll-padding-top: 5.5rem;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -84,9 +88,8 @@ body {
   color: var(--ink);
   font-family: var(--sans);
   font-size: var(--step-0);
-  line-height: 1.68;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
 }
 
 img,
@@ -98,41 +101,34 @@ video {
 a {
   color: inherit;
   text-underline-offset: 0.2em;
-  text-decoration-thickness: from-font;
 }
 
 /* ---------- Typografie ---------- */
 
-/* Bei der engeren Skala braucht es mehr Durchschuss: 1,08 war für Plakatgrößen
-   gedacht und wirkt bei 2 rem gedrängt. */
 h1,
 h2,
 h3,
 h4 {
   font-family: var(--display);
   font-weight: 400;
-  line-height: 1.18;
-  letter-spacing: -0.01em;
+  line-height: 1.14;
+  letter-spacing: -0.015em;
   text-wrap: balance;
   margin: 0;
 }
 
 h1 {
-  font-size: var(--step-4);
+  font-size: var(--step-5);
 }
 h2 {
-  font-size: var(--step-3);
+  font-size: var(--step-4);
 }
 h3 {
   font-size: var(--step-2);
 }
-h4 {
-  font-size: var(--step-1);
-  line-height: 1.25;
-}
 
 p {
-  margin: 0 0 1.1em;
+  margin: 0 0 1.05em;
   text-wrap: pretty;
 }
 
@@ -140,46 +136,29 @@ p:last-child {
   margin-bottom: 0;
 }
 
-/* Einleitungsabsatz — größer, ruhiger, direkt unter einer Überschrift. */
 .lead {
   font-size: var(--step-1);
-  line-height: 1.55;
+  line-height: 1.5;
   color: var(--ink-2);
-  max-width: 46ch;
+  max-width: 48ch;
 }
 
-/* Kleine Auszeichnung über Überschriften. Das einzige Element in Versalien. */
+/* Abschnittstitel in Kleinschreibung mit Punkt — Tinas Handschrift aus dem
+   Entwurf. Englischer Titel, deutscher Text darunter. */
+.title {
+  font-family: var(--display);
+  font-size: var(--step-4);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0 0 1.25rem;
+}
+
 .eyebrow {
   font-size: var(--step--2);
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--ink-3);
-  margin: 0 0 1.1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.eyebrow::before {
-  content: "";
-  width: 1.75rem;
-  height: 1px;
-  background: var(--clay);
-  flex: none;
-}
-
-.eyebrow--plain::before {
-  display: none;
-}
-
-/* Zitat-Optik für Persona-Sätze und Kernaussagen. */
-.pull {
-  font-family: var(--display);
-  font-size: var(--step-3);
-  line-height: 1.22;
-  letter-spacing: -0.01em;
-  margin: 0;
-  text-wrap: balance;
+  margin: 0 0 1rem;
 }
 
 .muted {
@@ -188,7 +167,11 @@ p:last-child {
 
 .small {
   font-size: var(--step--1);
-  line-height: 1.6;
+  line-height: 1.55;
+}
+
+strong {
+  font-weight: 600;
 }
 
 /* ---------- Layout ---------- */
@@ -205,209 +188,55 @@ p:last-child {
 }
 
 .section {
-  padding-block: clamp(3.5rem, 8vw, 7.5rem);
+  padding-block: clamp(3.5rem, 7vw, 6.5rem);
+  /* Ankerziel für die Navigation. */
+  scroll-margin-top: 4.5rem;
 }
 
-.section--tight {
-  padding-block: clamp(2.5rem, 5vw, 4.5rem);
+.section--blue {
+  background: var(--blue);
 }
 
-.section--sand {
-  background: var(--paper-2);
+.section--beige {
+  background: var(--beige);
 }
 
-.section--ink {
-  background: var(--ink);
-  color: var(--paper);
+.section--beige-soft {
+  background: var(--beige-soft);
 }
 
-.section--ink .lead,
-.section--ink .muted {
-  color: #bfb5a9;
-}
-
-.section--ink .eyebrow {
-  color: #a89c8d;
-}
-
-.rule {
-  border: 0;
-  border-top: 1px solid var(--line);
-  margin: 0;
-}
-
-/* Zweispalter: links die Überschrift, rechts der Text. Fällt unter 900 px
-   auf eine Spalte zurück. */
 .split {
   display: grid;
-  gap: clamp(1.5rem, 4vw, 4rem);
+  gap: clamp(1.75rem, 4vw, 3.5rem);
 }
 
 @media (min-width: 900px) {
   .split {
-    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+  }
+  .split--top {
     align-items: start;
-  }
-  .split--even {
-    grid-template-columns: 1fr 1fr;
-  }
-  .split--sticky > :first-child {
-    position: sticky;
-    top: 7rem;
   }
 }
 
 .stack {
   display: grid;
-  gap: 1.25rem;
+  gap: 1rem;
 }
 
-.stack--lg {
-  gap: 2.5rem;
-}
-
-/* ---------- Bilder ---------- */
-
-figure {
-  margin: 0;
-}
-
-.media {
-  overflow: hidden;
-  border-radius: var(--radius);
-  background: var(--paper-3);
-}
-
-.media img,
-.media video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.media--45 {
-  aspect-ratio: 4 / 5;
-}
-.media--34 {
-  aspect-ratio: 3 / 4;
-}
-.media--916 {
-  aspect-ratio: 9 / 16;
-}
-
-/* Reels stehen im Hochformat. Ohne Deckel füllt jedes eine halbe Bildschirm-
-   breite und wird über tausend Pixel hoch — zwei davon schieben den Rest der
-   Seite weit nach unten. 30 rem für beide zusammen ist etwa Handy-Größe, also
-   genau das Format, in dem der Inhalt ohnehin gedacht ist. */
-.reels {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: clamp(0.75rem, 2vw, 1.25rem);
-  max-width: 30rem;
-}
-
-figcaption {
-  font-size: var(--step--1);
-  color: var(--ink-3);
-  margin-top: 0.6rem;
-}
-
-/* ---------- Buttons ---------- */
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-family: var(--sans);
-  font-size: var(--step--1);
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  line-height: 1;
-  padding: 1.05em 1.6em;
-  border: 1px solid var(--ink);
-  border-radius: 999px;
-  background: var(--ink);
-  color: var(--paper);
-  text-decoration: none;
-  cursor: pointer;
-  transition:
-    background-color 0.2s ease,
-    color 0.2s ease,
-    border-color 0.2s ease;
-}
-
-.btn:hover {
-  background: var(--clay);
-  border-color: var(--clay);
-  color: #fff;
-}
-
-.btn--ghost {
-  background: transparent;
-  color: var(--ink);
-  border-color: var(--line-strong);
-}
-
-.btn--ghost:hover {
-  background: transparent;
-  border-color: var(--ink);
-  color: var(--ink);
-}
-
-.section--ink .btn {
-  background: var(--paper);
-  color: var(--ink);
-  border-color: var(--paper);
-}
-
-.section--ink .btn:hover {
-  background: var(--clay);
-  border-color: var(--clay);
-  color: #fff;
-}
-
-/* Textlink mit Pfeil — für weiterführende Verweise. */
-.arrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  font-size: var(--step--1);
-  letter-spacing: 0.02em;
-  text-decoration: none;
-  border-bottom: 1px solid var(--line-strong);
-  padding-bottom: 0.2rem;
-  transition: border-color 0.2s ease;
-}
-
-.arrow:hover {
-  border-color: var(--ink);
-}
-
-.arrow::after {
-  content: "→";
-  transition: transform 0.2s ease;
-}
-
-.arrow:hover::after {
-  transform: translateX(3px);
-}
-
-/* ---------- Header ---------- */
+/* ---------- Kopfzeile ----------
+ *
+ * Volle Breite in Babyblau, wie im Entwurf. Bleibt beim Scrollen stehen, damit
+ * die Anker-Navigation auf einer One-Pager-Seite jederzeit erreichbar ist.
+ */
 
 .header {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: color-mix(in srgb, var(--paper) 88%, transparent);
-  backdrop-filter: saturate(1.4) blur(10px);
-  border-bottom: 1px solid transparent;
-  transition:
-    border-color 0.25s ease,
-    padding 0.25s ease;
-}
-
-.is-stuck .header {
-  border-bottom-color: var(--line);
+  background: var(--blue);
+  border-bottom: 1px dashed color-mix(in srgb, var(--ink) 25%, transparent);
 }
 
 .header__inner {
@@ -415,96 +244,56 @@ figcaption {
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
-  padding-block: clamp(0.9rem, 2vw, 1.4rem);
-  transition: padding-block 0.25s ease;
-}
-
-.is-stuck .header__inner {
-  padding-block: 0.7rem;
+  padding-block: 0.85rem;
 }
 
 .brand {
-  display: inline-flex;
-  flex-direction: column;
-  gap: 0.15rem;
-  text-decoration: none;
-  line-height: 1;
-}
-
-.brand__name {
   font-family: var(--display);
   font-size: var(--step-1);
   letter-spacing: -0.01em;
-}
-
-.brand__role {
-  font-size: 0.7rem;
-  letter-spacing: 0.11em;
-  text-transform: uppercase;
-  color: var(--ink-3);
+  text-decoration: none;
+  white-space: nowrap;
 }
 
 .nav {
   display: flex;
   align-items: center;
-  gap: clamp(1rem, 2.5vw, 2rem);
+  gap: clamp(0.85rem, 2vw, 1.9rem);
 }
 
 .nav a {
   font-size: var(--step--1);
   text-decoration: none;
-  color: var(--ink-2);
-  padding-block: 0.2rem;
-  border-bottom: 1px solid transparent;
+  color: color-mix(in srgb, var(--ink) 72%, transparent);
+  padding-block: 0.25rem;
+  border-bottom: 1.5px solid transparent;
+  white-space: nowrap;
   transition:
     color 0.2s ease,
     border-color 0.2s ease;
 }
 
-.nav a:hover,
-.nav a[aria-current="page"] {
+.nav a:hover {
   color: var(--ink);
-  border-bottom-color: var(--clay);
+  border-bottom-color: var(--ink);
 }
 
-/* Der CTA in der Navigation ist ein Button, kein Navigationslink — ohne diese
-   Regel gewinnt `.nav a` (höhere Spezifität) und schreibt dunkle Schrift auf die
-   dunkle Pille. */
-.nav a.btn {
-  color: var(--paper);
-  border-bottom-color: transparent;
-}
-
-.nav a.btn:hover {
-  color: #fff;
-  border-bottom-color: transparent;
-}
-
-.nav__cta {
-  display: none;
-}
-
-@media (min-width: 1040px) {
-  .nav__cta {
-    display: inline-flex;
-    padding: 0.75em 1.25em;
-  }
-}
-
-/* Unter 640 px rutscht die Navigation unter die Wortmarke und scrollt
-   horizontal, statt sich in ein Menü zu verstecken — bei vier Punkten ist ein
-   Burger-Menü mehr Aufwand als Nutzen. */
-@media (max-width: 639px) {
+/* Unter 900 px rutscht die Navigation in eine eigene, horizontal scrollbare
+   Zeile. Bei sieben kurzen Ankern ist das ehrlicher als ein Burger-Menü, das
+   den Sprung zur Sektion hinter zwei Taps versteckt. */
+@media (max-width: 899px) {
   .header__inner {
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.6rem;
+    gap: 0.5rem;
+    padding-block: 0.7rem;
   }
   .nav {
     width: 100%;
     overflow-x: auto;
-    gap: 1.25rem;
+    gap: 1.15rem;
     scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
   }
   .nav::-webkit-scrollbar {
     display: none;
@@ -526,14 +315,69 @@ figcaption {
 }
 
 :focus-visible {
-  outline: 2px solid var(--clay);
+  outline: 2px solid var(--ink);
   outline-offset: 3px;
 }
 
-/* ---------- Hero ---------- */
+/* ---------- Buttons ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--sans);
+  font-size: var(--step--1);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1;
+  padding: 1.05em 1.7em;
+  border: 0;
+  border-radius: 10px;
+  background: var(--ink);
+  color: var(--paper);
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    transform 0.18s ease,
+    background-color 0.18s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn::after {
+  content: "→";
+  font-size: 1.05em;
+  transition: transform 0.18s ease;
+}
+
+.btn:hover::after {
+  transform: translateX(3px);
+}
+
+/* Babyblau auf hellen Flächen — der Signal-Button des Entwurfs. */
+.btn--blue {
+  background: var(--blue);
+  color: var(--ink);
+}
+
+/* Auf blauen Flächen dreht sich das Verhältnis um. */
+.btn--paper {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+/* ---------- Hero ----------
+ *
+ * Aufbau aus dem Entwurf: kleine Zeile oben links, große Serifen-Aussage,
+ * daneben ein einzelnes Bild. Beige Fläche, damit die blaue Kopfzeile trägt.
+ */
 
 .hero {
-  padding-block: clamp(2.5rem, 6vw, 5.5rem) clamp(3rem, 7vw, 6rem);
+  background: var(--beige);
+  padding-block: clamp(2.5rem, 6vw, 5rem);
 }
 
 .hero__grid {
@@ -544,142 +388,105 @@ figcaption {
 
 @media (min-width: 900px) {
   .hero__grid {
-    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
   }
 }
 
 .hero h1 {
-  font-size: var(--step-5);
-  margin-bottom: 1.5rem;
+  margin-block: 1.25rem 1.5rem;
 }
 
 .hero__actions {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 1rem 1.5rem;
+  gap: 0.9rem 1.4rem;
   margin-top: 2rem;
 }
 
-/* ---------- Karten und Raster ---------- */
+/* ---------- Bilder ---------- */
 
-.grid {
-  display: grid;
-  gap: clamp(1.25rem, 2.5vw, 2rem);
+figure {
+  margin: 0;
 }
 
-.grid--2 {
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+.media {
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: var(--beige-soft);
 }
 
-/* Feste drei Spalten ab Tablet — auto-fit würde bei 1440 px vier Spalten
-   bilden und eine Sechser-Gruppe zu 4 + 2 zerreißen. */
-.grid--3 {
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+.media img,
+.media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-@media (min-width: 900px) {
-  .grid--3 {
-    grid-template-columns: repeat(3, 1fr);
-  }
+.media--45 {
+  aspect-ratio: 4 / 5;
+}
+.media--169 {
+  aspect-ratio: 16 / 9;
 }
 
-.grid--4 {
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
-}
-
-/* Auf dem Handy sonst einspaltig: vier Hochformate untereinander sind fast
-   2000 px Scrollweg für vier Bilder. Zwei Spalten zeigen dasselbe auf einem
-   Viertel der Strecke — und ein Raster liest sich ohnehin als Auswahl. */
-@media (max-width: 599px) {
-  .grid--4 {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-.card {
-  display: flex;
-  flex-direction: column;
-  gap: 0.85rem;
-}
-
-.card__num {
-  font-family: var(--display);
+figcaption {
   font-size: var(--step--1);
-  color: var(--clay);
-  letter-spacing: 0.04em;
+  color: var(--ink-3);
+  margin-top: 0.55rem;
 }
 
-.card__title {
-  font-family: var(--display);
-  font-size: var(--step-2);
-  line-height: 1.2;
-  letter-spacing: -0.01em;
-}
+/* ---------- Leistungen (what I do) ----------
+ *
+ * Nummerierte Zeilen mit Serifen-Versalien links und Beschreibung rechts,
+ * getrennt durch dünne Linien — direkt aus dem Entwurf.
+ */
 
-.card__text {
-  color: var(--ink-2);
-  font-size: var(--step--1);
-  line-height: 1.65;
-}
-
-/* Nummerierte Schrittfolge (Creator-Prozess, Ablauf der Zusammenarbeit). */
-.steps {
+.leistungen {
   list-style: none;
   margin: 0;
   padding: 0;
+  border-top: 1px solid color-mix(in srgb, var(--ink) 22%, transparent);
+}
+
+.leistungen li {
   display: grid;
-  gap: 0;
-  counter-reset: step;
+  gap: 0.75rem 2.5rem;
+  padding-block: clamp(1.5rem, 3vw, 2.25rem);
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 22%, transparent);
 }
 
-.steps li {
-  counter-increment: step;
-  display: grid;
-  grid-template-columns: 3.25rem 1fr;
-  gap: 0 1.25rem;
-  padding-block: 1.35rem;
-  border-top: 1px solid var(--line);
-  align-items: baseline;
+@media (min-width: 800px) {
+  .leistungen li {
+    grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+  }
 }
 
-.steps li:last-child {
-  border-bottom: 1px solid var(--line);
-}
-
-.steps li::before {
-  content: counter(step, decimal-leading-zero);
+.leistungen__num {
+  display: block;
   font-family: var(--display);
   font-size: var(--step--1);
-  color: var(--clay);
+  color: color-mix(in srgb, var(--ink) 60%, transparent);
+  margin-bottom: 0.35rem;
 }
 
-.steps__name {
+.leistungen__name {
   font-family: var(--display);
-  font-size: var(--step-1);
-  line-height: 1.2;
+  font-size: var(--step-2);
+  line-height: 1.15;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
-.steps__text {
-  grid-column: 2;
-  color: var(--ink-2);
+.leistungen__tags {
+  font-weight: 600;
   font-size: var(--step--1);
-  margin-top: 0.35rem;
+  margin-top: 0.7rem;
 }
 
-.steps__link {
-  text-decoration: none;
-  border-bottom: 1px solid var(--line-strong);
-  transition: border-color 0.2s ease;
-}
+/* ---------- Chips ---------- */
 
-.steps__link:hover {
-  border-color: var(--ink);
-}
-
-/* Branchenliste als Chips statt als Kachelraster — dieselbe Information auf
-   einem Fünftel der Fläche. */
-.taglist {
+.chips {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -689,188 +496,296 @@ figcaption {
   font-size: var(--step--1);
 }
 
-.taglist li {
-  border: 1px solid var(--line-strong);
+.chips li {
+  border: 1px solid var(--line);
   border-radius: 999px;
-  padding: 0.35em 0.9em;
+  padding: 0.4em 0.95em;
   color: var(--ink-2);
+  background: color-mix(in srgb, var(--paper) 70%, transparent);
 }
 
-/* ---------- Leistungssäulen ---------- */
-
-.pillar {
-  display: grid;
-  gap: clamp(1.5rem, 4vw, 3.5rem);
-  padding-block: clamp(2.5rem, 6vw, 5rem);
-  border-top: 1px solid var(--line);
-  scroll-margin-top: 7rem;
+.chips--plain li {
+  background: transparent;
 }
 
-@media (min-width: 880px) {
-  .pillar {
-    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
-    align-items: start;
-  }
-  /* Jede zweite Säule spiegeln — sonst wirkt die Seite wie eine Tabelle. */
-  .pillar:nth-child(even) > figure {
-    order: -1;
-  }
-  /* Ohne Deckel wird ein 4:5-Bild in dieser Spalte über 600 px hoch. Vier davon
-     machen aus der Leistungsseite eine Bildergalerie mit Text daneben — die
-     Reihenfolge, die hier zählt, ist umgekehrt. */
-  .pillar > figure {
-    max-width: 21rem;
-    width: 100%;
-    justify-self: end;
-  }
-  .pillar:nth-child(even) > figure {
-    justify-self: start;
-  }
-}
+/* ---------- Kennzahlen (track record) ---------- */
 
-.pillar__list {
+.stats {
   list-style: none;
-  margin: 1.75rem 0 0;
+  margin: 0;
   padding: 0;
   display: grid;
-  gap: 0.65rem;
+  gap: clamp(0.75rem, 1.5vw, 1.15rem);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
+}
+
+.stats li {
+  background: var(--paper);
+  border-radius: var(--radius);
+  padding: clamp(1.15rem, 2.5vw, 1.6rem);
+}
+
+.stats__num {
+  display: block;
+  font-family: var(--display);
+  font-size: var(--step-3);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.stats__label {
+  font-size: var(--step--1);
+  color: var(--ink-2);
+  line-height: 1.4;
+}
+
+/* ---------- Stationen (Zeitleiste) ---------- */
+
+.station {
+  display: grid;
+  gap: 0.75rem 2.5rem;
+  padding-block: clamp(1.75rem, 3vw, 2.5rem);
+  border-top: 1px solid var(--line);
+}
+
+@media (min-width: 800px) {
+  .station {
+    grid-template-columns: minmax(0, 3fr) minmax(0, 8fr);
+  }
+}
+
+.station__zeit {
+  font-size: var(--step--1);
+  color: var(--ink-3);
+}
+
+.station__name {
+  font-weight: 600;
+  font-size: var(--step-1);
+  margin-top: 0.2rem;
+}
+
+.station__rolle {
   font-size: var(--step--1);
   color: var(--ink-2);
 }
 
-.pillar__list li {
-  display: grid;
-  grid-template-columns: 1rem 1fr;
-  gap: 0.65rem;
-  align-items: baseline;
+/* Ergebnis-Marker: dunkle Pille über der Beschreibung, wie im Entwurf. */
+.station__ergebnis {
+  display: inline-block;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: var(--step--1);
+  font-weight: 600;
+  border-radius: 999px;
+  padding: 0.45em 1.1em;
+  margin-bottom: 0.9rem;
 }
 
-.pillar__list li::before {
-  content: "";
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--clay);
-  transform: translateY(-0.2em);
+.station ul.chips {
+  margin-top: 0.9rem;
 }
 
-/* ---------- Preise ---------- */
+/* ---------- Content-Beispiele (creative work) ----------
+ *
+ * Telefon-Rahmen für die Hochformat-Videos. Reine CSS-Attrappe: gerundeter
+ * Rahmen mit dunkler Fassung, damit Reels als das gelesen werden, was sie sind.
+ */
 
-.preise {
+.beispiele {
   display: grid;
-  gap: 0;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+}
+
+.beispiel__kopf {
+  margin-bottom: 1rem;
+}
+
+.beispiel__num {
+  font-size: var(--step--2);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.beispiel__titel {
+  font-family: var(--display);
+  font-size: var(--step-2);
+  line-height: 1.2;
+  margin-top: 0.25rem;
+}
+
+.phone {
+  border: 8px solid var(--ink);
+  border-radius: 30px;
+  overflow: hidden;
+  background: var(--ink);
+  aspect-ratio: 9 / 16;
+  position: relative;
+}
+
+.phone video,
+.phone img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Platzhalter-Kachel für ein Format, das noch nicht produziert ist. */
+.phone--leer {
+  display: grid;
+  place-items: center;
+  background: var(--blue-soft);
+  border-color: var(--ink);
+  text-align: center;
+  padding: 1.5rem;
+}
+
+.phone--leer p {
+  font-size: var(--step--1);
+  color: var(--ink-2);
+  max-width: 22ch;
+}
+
+/* Kennzahlen unter einem Beispiel. */
+.beispiel__zahlen {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.25rem;
+  margin-top: 0.85rem;
+  font-size: var(--step--1);
+}
+
+.beispiel__zahl strong {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: var(--step-1);
+  margin-right: 0.3rem;
+}
+
+/* ---------- Pakete (services) ---------- */
+
+.pakete {
+  display: grid;
+  gap: clamp(1rem, 2vw, 1.5rem);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  align-items: stretch;
 }
 
 .paket {
-  display: grid;
-  gap: 0.75rem 2rem;
-  padding-block: 1.9rem;
-  border-top: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  background: var(--blue);
+  border-radius: var(--radius-lg);
+  padding: clamp(1.4rem, 2.5vw, 1.9rem);
 }
 
-.paket:last-child {
-  border-bottom: 1px solid var(--line);
+.paket__kopf {
+  font-family: var(--display);
+  font-size: var(--step--1);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.9rem;
 }
 
-@media (min-width: 820px) {
-  .paket {
-    grid-template-columns: minmax(0, 4fr) minmax(0, 3fr) minmax(0, 5fr);
-    align-items: start;
+.paket__was {
+  font-size: var(--step--1);
+  line-height: 1.5;
+  margin-bottom: 1.4rem;
+}
+
+/* Die Kurzbeschreibungen sind drei bis vier Zeilen lang. Ohne Mindesthöhe
+   sitzen die Preise der vier Karten auf unterschiedlicher Höhe und die
+   Trennlinien fluchten nicht — das fällt bei nebeneinanderliegenden Karten
+   sofort auf. */
+@media (min-width: 900px) {
+  .paket__was {
+    min-height: 6em;
   }
 }
 
 .paket__preis {
   font-family: var(--display);
-  font-size: var(--step-2);
-  line-height: 1.1;
-  white-space: nowrap;
+  font-size: var(--step-3);
+  line-height: 1;
+  padding-top: 1.25rem;
+  border-top: 1px solid color-mix(in srgb, var(--ink) 25%, transparent);
 }
 
-.paket__unit {
+.paket__einheit {
   display: block;
   font-family: var(--sans);
   font-size: var(--step--2);
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--ink-3);
-  margin-top: 0.35rem;
+  color: color-mix(in srgb, var(--ink) 65%, transparent);
+  margin-top: 0.4rem;
 }
 
-.paket__list {
+.paket__liste {
   list-style: none;
-  margin: 0;
+  margin: 1.25rem 0 0;
   padding: 0;
   display: grid;
-  gap: 0.4rem;
+  gap: 0.5rem;
   font-size: var(--step--1);
-  color: var(--ink-2);
+  flex: 1;
 }
 
-.paket__list li::before {
-  content: "— ";
-  color: var(--clay);
+.paket__liste li {
+  display: grid;
+  grid-template-columns: 1.15rem 1fr;
+  gap: 0.5rem;
+  align-items: start;
 }
 
-/* ---------- FAQ ---------- */
-
-.faq details {
-  border-top: 1px solid var(--line);
-  padding-block: 1.25rem;
+.paket__liste li::before {
+  content: "✓";
+  line-height: 1.5;
 }
 
-.faq details:last-of-type {
-  border-bottom: 1px solid var(--line);
+/* Was NICHT enthalten ist — gehört sichtbar dazu, damit das Angebot ehrlich
+   bleibt und niemand später überrascht wird. */
+.paket__liste li.nicht {
+  color: color-mix(in srgb, var(--ink) 55%, transparent);
 }
 
-.faq summary {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 1.5rem;
-  cursor: pointer;
-  list-style: none;
-  font-family: var(--display);
-  font-size: var(--step-1);
-  line-height: 1.25;
+.paket__liste li.nicht::before {
+  content: "✕";
 }
 
-.faq summary::-webkit-details-marker {
-  display: none;
+.paket__hinweis {
+  font-size: var(--step--2);
+  color: color-mix(in srgb, var(--ink) 65%, transparent);
+  margin-top: 1.1rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid color-mix(in srgb, var(--ink) 25%, transparent);
 }
 
-.faq summary::after {
-  content: "+";
-  font-family: var(--sans);
-  font-size: var(--step-1);
-  color: var(--clay);
-  flex: none;
-  line-height: 1;
-}
-
-.faq details[open] summary::after {
-  content: "–";
-}
-
-.faq details p {
-  margin: 0.9rem 0 0;
-  max-width: 62ch;
-  color: var(--ink-2);
-  font-size: var(--step--1);
+/* In der schmalen Karte bricht der Button sonst auf zwei Zeilen. */
+.paket .btn {
+  margin-top: 1.4rem;
+  justify-content: center;
+  font-size: var(--step--2);
+  letter-spacing: 0.04em;
+  padding: 1em 1.1em;
 }
 
 /* ---------- Formular ---------- */
 
 .form {
   display: grid;
-  gap: 1.4rem;
+  gap: 1.15rem;
 }
 
 .form__row {
   display: grid;
-  gap: 1.4rem;
+  gap: 1.15rem;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 620px) {
   .form__row--2 {
     grid-template-columns: 1fr 1fr;
   }
@@ -878,7 +793,7 @@ figcaption {
 
 .field {
   display: grid;
-  gap: 0.45rem;
+  gap: 0.4rem;
 }
 
 .field label {
@@ -895,15 +810,15 @@ figcaption {
   font-size: var(--step-0);
   color: var(--ink);
   background: var(--paper);
-  border: 1px solid var(--line-strong);
-  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  border-radius: 10px;
   padding: 0.85rem 1rem;
   width: 100%;
   transition: border-color 0.2s ease;
 }
 
 .field textarea {
-  min-height: 9rem;
+  min-height: 8.5rem;
   resize: vertical;
 }
 
@@ -916,20 +831,20 @@ figcaption {
 .consent {
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: 0.75rem;
+  gap: 0.7rem;
   align-items: start;
   font-size: var(--step--1);
   color: var(--ink-2);
 }
 
 .consent input {
-  margin-top: 0.35em;
+  margin-top: 0.3em;
   width: 1.05rem;
   height: 1.05rem;
-  accent-color: var(--clay);
+  accent-color: var(--blue-deep);
 }
 
-/* Honeypot gegen Bots — für Menschen unsichtbar, für Screenreader ausgeblendet. */
+/* Honeypot gegen Bots — unsichtbar für Menschen und Screenreader. */
 .hp {
   position: absolute;
   left: -9999px;
@@ -941,76 +856,75 @@ figcaption {
 /* ---------- Kontaktwege ---------- */
 
 .kanaele {
+  display: grid;
+  gap: 1.5rem;
+  margin: 0;
+}
+
+.kanaele dt {
+  font-family: var(--display);
+  font-size: var(--step--1);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 0.3rem;
+}
+
+.kanaele dd {
+  margin: 0;
+  font-size: var(--step-1);
+  word-break: break-word;
+}
+
+.social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
   list-style: none;
   margin: 0;
   padding: 0;
-  display: grid;
-  gap: 0;
 }
 
-.kanaele li {
-  display: grid;
-  gap: 0.2rem;
-  padding-block: 1.1rem;
-  border-top: 1px solid var(--line);
+.social a {
+  display: inline-block;
+  background: var(--blue);
+  border-radius: 999px;
+  padding: 0.5em 1.2em;
+  font-size: var(--step--1);
+  text-decoration: none;
+  transition: background-color 0.2s ease;
 }
 
-.kanaele li:last-child {
-  border-bottom: 1px solid var(--line);
-}
-
-.kanaele dt,
-.kanaele__label {
-  font-size: var(--step--2);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--ink-3);
-}
-
-.kanaele__value {
-  font-family: var(--display);
-  font-size: var(--step-1);
-  word-break: break-word;
+.social a:hover {
+  background: var(--blue-deep);
 }
 
 /* ---------- Footer ---------- */
 
 .footer {
-  background: var(--ink);
-  color: #bfb5a9;
-  padding-block: clamp(3rem, 6vw, 5rem) 2rem;
+  background: var(--beige-soft);
+  border-top: 1px solid var(--line);
+  padding-block: clamp(2.5rem, 5vw, 4rem) 1.75rem;
   font-size: var(--step--1);
-}
-
-.footer a {
-  color: var(--paper);
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.2s ease;
-}
-
-.footer a:hover {
-  border-bottom-color: var(--clay);
 }
 
 .footer__grid {
   display: grid;
-  gap: 2.5rem;
+  gap: 2rem;
 }
 
 @media (min-width: 760px) {
   .footer__grid {
-    grid-template-columns: minmax(0, 2fr) repeat(3, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 2fr) repeat(2, minmax(0, 1fr));
   }
 }
 
-.footer__claim {
-  font-family: var(--display);
-  font-size: var(--step-2);
-  line-height: 1.25;
-  color: var(--paper);
-  letter-spacing: -0.01em;
-  max-width: 22ch;
+.footer__head {
+  font-size: var(--step--2);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 0.9rem;
 }
 
 .footer__list {
@@ -1018,15 +932,18 @@ figcaption {
   margin: 0;
   padding: 0;
   display: grid;
-  gap: 0.55rem;
+  gap: 0.5rem;
 }
 
-.footer__head {
-  font-size: var(--step--2);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: #857a6f;
-  margin-bottom: 1rem;
+.footer a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.footer a:hover {
+  border-bottom-color: var(--ink);
 }
 
 .footer__bottom {
@@ -1034,27 +951,26 @@ figcaption {
   flex-wrap: wrap;
   gap: 0.75rem 2rem;
   justify-content: space-between;
-  margin-top: clamp(2.5rem, 5vw, 4rem);
-  padding-top: 1.5rem;
-  border-top: 1px solid #3a332d;
+  margin-top: clamp(2rem, 4vw, 3rem);
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
   font-size: var(--step--2);
+  color: var(--ink-3);
 }
 
 /* ---------- Platzhalter-Markierung ----------
  *
- * Alles, was in src/data/site.ts noch ein "TODO — " ist, wird so ausgezeichnet.
- * Es soll in der Preview unübersehbar sein; scripts/verify.mjs verhindert
- * zusätzlich, dass ein solcher Wert je in Production geht.
+ * Alles, was in src/data/site.ts noch ein "TODO — " ist, wird so ausgezeichnet:
+ * in der Vorschau unübersehbar, und scripts/verify.mjs verhindert zusätzlich,
+ * dass ein solcher Wert je in Production geht.
  */
 .todo {
-  background: #ffe9c7;
+  background: #ffe4b8;
   color: #7a4b00;
   padding: 0.1em 0.45em;
-  border-radius: 2px;
-  font-family: var(--sans);
+  border-radius: 4px;
   font-size: var(--step--1);
   font-style: normal;
-  letter-spacing: 0;
 }
 
 /* ---------- Einblendung beim Scrollen ----------
@@ -1065,11 +981,11 @@ figcaption {
  */
 .js-reveal [data-reveal] {
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(18px);
   will-change: opacity, transform;
   transition:
-    opacity 0.6s cubic-bezier(0.22, 0.68, 0.24, 1),
-    transform 0.75s cubic-bezier(0.22, 0.68, 0.24, 1);
+    opacity 0.55s cubic-bezier(0.22, 0.68, 0.24, 1),
+    transform 0.7s cubic-bezier(0.22, 0.68, 0.24, 1);
   transition-delay: var(--reveal-delay, 0ms);
 }
 

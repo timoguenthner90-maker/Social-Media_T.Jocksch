@@ -40,12 +40,11 @@ npm run build && npx astro check && npm run verify
 | Datei | Zweck |
 |---|---|
 | `src/data/site.ts` | Stammdaten, CTA, Navigation. **Einzige Quelle** — Inhalte hier ändern, nicht in den Seiten. |
-| `src/data/services.ts` | Die vier Leistungssäulen, Pakete und Preise, Creator-Prozess, Ablauf |
-| `src/data/cases.ts` | @pempelhome-Case, Reels, weitere Arbeiten |
-| `src/data/faq.ts` | FAQ — jede Frage stammt aus den Persona-Pains |
+| `src/data/services.ts` | Die drei Leistungen und die vier Pakete mit Preisen |
+| `src/data/experience.ts` | Kennzahlen, Werkzeuge und Stationen aus dem Lebenslauf |
+| `src/data/work.ts` | Die drei Content-Beispiele |
 | `src/data/jsonld.ts` | Strukturierte Daten. Platzhalter werden bewusst **nicht** ausgespielt. |
 | `src/data/images.json` | Bild-Manifest (Breiten und Maße), erzeugt von `prepare-images.mjs` |
-| `src/components/Cta.astro` | Der **eine** CTA. Wording und Ziel nie variieren. |
 | `src/components/Picture.astro` | Bild mit srcset und festen Maßen aus dem Manifest |
 | `scripts/prepare-images.mjs` | Bildaufbereitung inkl. Zuordnungstabelle Quelldatei → Zielname |
 | `scripts/verify.mjs` | Verify-Gauntlet, inklusive Platzhalter-Gate |
@@ -55,6 +54,7 @@ npm run build && npx astro check && npm run verify
 ## Platzhalter-Mechanik
 
 Noch offene Stammdaten stehen in `src/data/site.ts` mit dem Präfix `TODO — `.
+Aktuell ist das nur noch die Steuerangabe fürs Impressum.
 Das hat drei Effekte:
 
 1. Sie sind in der Preview orange hinterlegt und unübersehbar.

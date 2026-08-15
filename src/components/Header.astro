@@ -1,27 +1,20 @@
 ---
-import { site, nav, cta } from "../data/site";
+import { site, nav } from "../data/site";
 
-// Aktuelle Seite für aria-current. Astro.url.pathname endet immer auf "/",
-// weil der Build Verzeichnis-URLs erzeugt.
-const here = Astro.url.pathname;
+// One-Pager: Die Navigation springt zu Ankern auf der Startseite. Auf den
+// Rechtsseiten (Impressum, Datenschutz, Danke, 404) gibt es diese Anker nicht —
+// dort wird jeder Punkt zu "/#anker", damit er zurück auf die Startseite führt
+// statt ins Leere.
+const aufStartseite = Astro.url.pathname === "/";
+const href = (anker: string) => (aufStartseite ? anker : `/${anker}`);
 ---
 
 <header class="header">
   <div class="wrap header__inner">
-    <a class="brand" href="/">
-      <span class="brand__name">{site.name}</span>
-      <span class="brand__role">Social &amp; Creator Marketing</span>
-    </a>
+    <a class="brand" href={aufStartseite ? "#start" : "/"}>{site.name}</a>
 
     <nav class="nav" aria-label="Hauptnavigation">
-      {
-        nav.map((item) => (
-          <a href={item.href} aria-current={here === item.href ? "page" : undefined}>
-            {item.label}
-          </a>
-        ))
-      }
-      <a class="btn nav__cta" href={cta.href}>{cta.label}</a>
+      {nav.map((item) => <a href={href(item.href)}>{item.label}</a>)}
     </nav>
   </div>
 </header>

@@ -1,81 +1,18 @@
 {
-  "bts-set": {
-    "widths": [
-      800,
-      560
-    ],
-    "w": 800,
-    "h": 1000
-  },
-  "bts-studio": {
-    "widths": [
-      800,
-      560
-    ],
-    "w": 800,
-    "h": 1000
-  },
-  "case-wohnraum": {
-    "widths": [
-      1000,
-      640
-    ],
-    "w": 1000,
-    "h": 1250
-  },
-  "interior-garten": {
-    "widths": [
-      800,
-      560
-    ],
-    "w": 800,
-    "h": 1000
-  },
-  "interior-regal": {
-    "widths": [
-      800,
-      560
-    ],
-    "w": 800,
-    "h": 1000
-  },
-  "interior-textur": {
-    "widths": [
-      800,
-      560
-    ],
-    "w": 800,
-    "h": 1000
-  },
-  "interior-wohnraum": {
-    "widths": [
-      800,
-      560
-    ],
-    "w": 800,
-    "h": 1000
-  },
-  "reel-material-poster": {
-    "widths": [
-      720
-    ],
-    "w": 720,
-    "h": 1280
-  },
-  "reel-sofa-poster": {
-    "widths": [
-      720
-    ],
-    "w": 720,
-    "h": 1280
-  },
-  "tina-hero": {
+  "hero-dreh": {
     "widths": [
       900,
       600
     ],
     "w": 900,
-    "h": 1200
+    "h": 1125
+  },
+  "produkt-reel-poster": {
+    "widths": [
+      720
+    ],
+    "w": 720,
+    "h": 1280
   },
   "tina-portrait": {
     "widths": [
@@ -85,12 +22,19 @@
     "w": 900,
     "h": 1125
   },
-  "tina-work": {
+  "trend-reel-poster": {
     "widths": [
-      800,
-      560
+      720
     ],
-    "w": 800,
-    "h": 1000
+    "w": 720,
+    "h": 1280
+  },
+  "vetsak-showroom": {
+    "widths": [
+      1400,
+      800
+    ],
+    "w": 1400,
+    "h": 788
   }
 }

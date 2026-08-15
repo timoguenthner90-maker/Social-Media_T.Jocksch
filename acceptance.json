@@ -19,11 +19,11 @@
     "missingCanonical": true,
     "missingOpenGraph": true
   },
-  "exemptFromSeo": ["404.html"],
+  "exemptFromSeo": [
+    "404.html"
+  ],
   "requiredUrls": [
     "/",
-    "/leistungen/",
-    "/kontakt/",
     "/danke/",
     "/impressum/",
     "/datenschutz/"
@@ -31,11 +31,11 @@
   "requiredStructuredData": [
     "Person",
     "ProfessionalService",
-    "WebSite",
-    "FAQPage",
-    "BreadcrumbList"
+    "WebSite"
   ],
-  "forbiddenText": ["TODO —"],
+  "forbiddenText": [
+    "TODO —"
+  ],
   "lighthouse": {
     "performance": 0.9,
     "accessibility": 0.95,

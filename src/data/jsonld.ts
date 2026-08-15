@@ -1,12 +1,11 @@
 // Strukturierte Daten (schema.org).
 //
-// Regel: Was noch ein Platzhalter ist, wird NICHT ausgespielt. Falsche
-// Adress- oder Kontaktdaten im JSON-LD landen in Suchmaschinen und sind später
-// schwer wieder loszuwerden — ein fehlendes Feld ist harmlos, ein falsches nicht.
+// Regel: Was noch ein Platzhalter ist, wird NICHT ausgespielt. Falsche Adress-
+// oder Steuerangaben im JSON-LD landen in Suchmaschinen und sind später schwer
+// wieder loszuwerden — ein fehlendes Feld ist harmlos, ein falsches nicht.
 
 import { SITE_URL, site, isTodo } from "./site";
-import { faq } from "./faq";
-import { pillars } from "./services";
+import { leistungen } from "./services";
 
 /** Nur ausgefüllte Werte übernehmen. */
 function real(value: string): string | undefined {
@@ -20,34 +19,35 @@ function clean<T extends Record<string, unknown>>(obj: T): T {
   ) as T;
 }
 
-const sameAs = [real(site.linkedin), site.instagram].filter(Boolean) as string[];
+const sameAs = [site.linkedin, site.instagram];
 
-const address = clean({
+const address = {
   "@type": "PostalAddress",
-  streetAddress: real(site.street),
-  postalCode: real(site.zip),
+  streetAddress: site.street,
+  postalCode: site.zip,
   addressLocality: site.city,
   addressCountry: site.country,
-});
+};
 
 export const personLd = clean({
   "@context": "https://schema.org",
   "@type": "Person",
   "@id": `${SITE_URL}/#person`,
   name: site.name,
-  jobTitle: "Social Media Managerin & Creator-Marketing-Expertin",
+  jobTitle: "Social Media & Creator Marketing Managerin",
   description:
-    "Freelancerin für Social Media Management, Content Creation und Influencer Marketing — spezialisiert auf visuell starke Marken und Orte.",
+    "Freelancerin für Social Media Management, Creator Partnerships und Content Creation.",
   url: SITE_URL,
-  email: real(site.email) ? `mailto:${site.email}` : undefined,
-  telephone: real(site.phoneDigits) ? `+${site.phoneDigits}` : undefined,
+  email: `mailto:${site.email}`,
+  telephone: `+${site.phoneDigits}`,
   address,
-  sameAs: sameAs.length ? sameAs : undefined,
+  sameAs,
+  alumniOf: "Hochschule für Wirtschaft und Recht Berlin",
   knowsAbout: [
     "Social Media Management",
-    "Content Creation",
-    "Influencer Marketing",
     "Creator Marketing",
+    "Influencer Marketing",
+    "Content Creation",
     "User Generated Content",
     "Social-Media-Strategie",
   ],
@@ -59,31 +59,30 @@ export const businessLd = clean({
   "@id": `${SITE_URL}/#business`,
   name: `${site.name} — Social Media & Creator Marketing`,
   description:
-    "Social Media Management, Content Creation und Influencer Marketing aus einer Hand — für Interior-, Hospitality-, Gastronomie- und Lifestyle-Marken.",
+    "Social Media Management, Creator Partnerships und Content Creation aus einer Hand.",
   url: SITE_URL,
   image: `${SITE_URL}/og.png`,
   founder: { "@id": `${SITE_URL}/#person` },
-  email: real(site.email) ? `mailto:${site.email}` : undefined,
-  telephone: real(site.phoneDigits) ? `+${site.phoneDigits}` : undefined,
+  email: `mailto:${site.email}`,
+  telephone: `+${site.phoneDigits}`,
   vatID: real(site.vatId),
   address,
   areaServed: [
     { "@type": "City", name: "Düsseldorf" },
-    { "@type": "City", name: "Köln" },
     { "@type": "Country", name: "Deutschland" },
   ],
-  priceRange: "€€€",
-  sameAs: sameAs.length ? sameAs : undefined,
+  priceRange: "€€",
+  sameAs,
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: "Leistungen",
-    itemListElement: pillars.map((p) => ({
+    itemListElement: leistungen.map((l) => ({
       "@type": "Offer",
       itemOffered: {
         "@type": "Service",
-        name: p.name,
-        description: p.claim,
-        url: `${SITE_URL}/leistungen/#${p.slug}`,
+        name: l.name,
+        description: l.text,
+        url: `${SITE_URL}/#${l.slug}`,
       },
     })),
   },
@@ -99,24 +98,3 @@ export const websiteLd = {
   publisher: { "@id": `${SITE_URL}/#person` },
 };
 
-export const faqLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faq.map((f) => ({
-    "@type": "Question",
-    name: f.q,
-    acceptedAnswer: { "@type": "Answer", text: f.a },
-  })),
-};
-
-/** Breadcrumb für Unterseiten — hilft Suchmaschinen bei der Einordnung. */
-export function breadcrumbLd(name: string, path: string) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Start", item: `${SITE_URL}/` },
-      { "@type": "ListItem", position: 2, name, item: `${SITE_URL}${path}` },
-    ],
-  };
-}

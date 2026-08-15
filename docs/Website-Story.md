@@ -1,5 +1,10 @@
 # Tina Jocksch — Website Story (Golden Circle)
 
+> **Stand 15.08.2026:** Dieses Dokument ist das Story-Gerüst aus der
+> Konzeptphase. Der verbindliche Wortlaut der Seite steht seit Version 2.0 in
+> Tinas eigenem Entwurf (`~/Desktop/Eigene Website Tina/webseite vorlage`) und
+> in `src/data/`. Wo beides auseinandergeht, gilt die Seite.
+
 Grundlage: [`6P-Positionierung.md`](6P-Positionierung.md). Die Reihenfolge folgt Simon Sineks
 Golden Circle: Wer die Seite von oben nach unten liest, spürt zuerst das **Why**, findet es
 durch das **How** glaubwürdig gemacht und trifft erst dann auf das **What** — die Leistungen
