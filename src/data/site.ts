@@ -20,7 +20,10 @@ export const SITE_URL = "https://tina-jocksch.netlify.app";
 
 export const site = {
   name: "Tina Jocksch",
-  role: "Social Media Management · Creator Partnerships · Content Creation",
+  // Reihenfolge ist Positionierung: Strategie und laufende Betreuung zuerst,
+  // Creator Marketing als zweite Säule. Content produziere ich, wenn er fehlt —
+  // aber ich bin keine UGC-Creatorin, und die Zeile soll das nicht suggerieren.
+  role: "Social Media Strategie · Redaktion & Community · Creator Partnerships",
   legalName: "Tina Jocksch",
   street: "Tußmannstraße 37",
   zip: "40477",
@@ -75,14 +78,18 @@ export const heroMedia = {
  * Anker-Navigation. Die Seite ist ein One-Pager — jeder Punkt springt zu einer
  * Sektion, nicht auf eine Unterseite. Englische Labels wie in Tinas Entwurf.
  *
- * Reihenfolge: erst zeigen (creative work), dann belegen (experience), dann das
- * Angebot mit Preis (services), dann die Person (about), dann der Abschluss.
- * Wer von LinkedIn kommt, will die Arbeit sehen — nicht zuerst eine Biografie.
+ * Reihenfolge: erst belegen (experience), dann das Angebot mit Preis
+ * (services), dann die Content-Beispiele, dann die Person.
+ *
+ * Verkauft wird die laufende Betreuung eines Kanals — dafür ist der Track
+ * Record das stärkste Argument, nicht ein Reel. Die Beispiele stehen deshalb
+ * hinter dem Angebot: Sie belegen, dass Content auch selbst produziert werden
+ * kann, sind aber nicht das Hauptgeschäft.
  */
 export const nav = [
-  { href: "#arbeiten", label: "creative work" },
   { href: "#erfahrung", label: "experience" },
   { href: "#leistungen", label: "services" },
+  { href: "#arbeiten", label: "creative work" },
   { href: "#about", label: "about" },
   { href: "#kontakt", label: "contact" },
 ] as const;
@@ -94,12 +101,12 @@ export const nav = [
  */
 export const laufband = [
   "Social Media Strategy",
-  "Reels",
-  "Creator Partnerships",
-  "UGC",
-  "Content Planning",
-  "Short Form Video",
+  "Audit",
+  "Redaktionsplanung",
   "Community Management",
+  "Creator Partnerships",
   "Campaign Management",
   "Reporting",
+  "Content Planning",
+  "Reels",
 ] as const;

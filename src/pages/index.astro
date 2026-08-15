@@ -11,16 +11,19 @@ import { personLd, businessLd, websiteLd } from "../data/jsonld";
 // (~/Desktop/Eigene Website Tina/webseite vorlage): englische Abschnittstitel
 // in Kleinschreibung mit Punkt, deutscher Text, Farbflächen im Wechsel.
 //
-// Die REIHENFOLGE weicht bewusst ab: erst die Arbeiten, dann der Track Record,
-// dann Angebot und Preis, dann die Person. Wer von LinkedIn kommt, will sehen,
-// ob sie es kann — und liest nicht zuerst eine Biografie. Angebot und Preis
-// stehen zusammen in einem Block statt in zwei Abschnitten, die dasselbe mit
-// anderen Worten beschreiben.
+// Die REIHENFOLGE weicht bewusst ab: erst der Track Record, dann Angebot und
+// Preis, dann die Content-Beispiele, dann die Person.
+//
+// Verkauft wird die laufende Betreuung eines Kanals — dafür ist die Erfahrung
+// das stärkste Argument, nicht ein Reel. Die Beispiele stehen deshalb hinter
+// dem Angebot: Sie belegen, dass Content auch selbst entstehen kann, sind aber
+// nicht das Hauptgeschäft. Angebot und Preis stehen zusammen in einem Block
+// statt in zwei Abschnitten, die dasselbe mit anderen Worten beschreiben.
 ---
 
 <Base
   title="Tina Jocksch — Social Media & Creator Marketing"
-  description="Social Media Management, Creator Partnerships und Content Creation aus einer Hand — für Marken, die nicht nur sichtbar, sondern relevant sein wollen."
+  description="Social-Media-Strategie, Redaktionsplanung, Community Management und Creator Partnerships — laufende Kanalbetreuung für Marken aus Düsseldorf."
   jsonLd={[personLd, businessLd, websiteLd]}
 >
   <!-- ================= Hero ================= -->
@@ -30,12 +33,13 @@ import { personLd, businessLd, websiteLd } from "../data/jsonld";
         <p class="eyebrow">{site.role}</p>
         <h1>making brands worth following.</h1>
         <p class="lead">
-          Ich verbinde Social Media, Creator Marketing und Content zu Strategien, die
-          Marken nicht nur sichtbar machen, sondern relevant.
+          Ich übernehme Strategie, Redaktionsplanung, Posting und Community — und
+          verbinde das mit Creator-Kampagnen. Damit ein Kanal nicht nur läuft,
+          sondern relevant wird.
         </p>
         <div class="hero__actions">
           <a class="btn btn--blue" href={cta.href}>{cta.label}</a>
-          <a href="#arbeiten" style="font-size:var(--step--1)">Arbeiten ansehen</a>
+          <a href="#erfahrung" style="font-size:var(--step--1)">Track Record ansehen</a>
         </div>
       </div>
 
@@ -77,75 +81,6 @@ import { personLd, businessLd, websiteLd } from "../data/jsonld";
       <ul>{laufband.map((w) => <li>{w}</li>)}</ul>
     </div>
   </div>
-
-  <!-- ================= creative work ================= -->
-  <section class="section" id="arbeiten">
-    <div class="wrap">
-      <h2 class="title">creative work.</h2>
-      <p class="lead" style="margin-bottom:2.5rem">
-        Eigene Produktionen — drei Formate, drei Aufgaben. Zum Abspielen antippen,
-        die Videos laden erst dann.
-      </p>
-
-      <div class="beispiele">
-        {
-          beispiele.map((b) => (
-            <figure data-reveal>
-              <div class="beispiel__kopf">
-                <span class="beispiel__num">
-                  {b.nummer} — {b.kategorie}
-                </span>
-                <p class="beispiel__titel">{b.titel}</p>
-              </div>
-
-              {b.video ? (
-                <div class="phone">
-                  <video
-                    controls
-                    preload="none"
-                    playsinline
-                    poster={`/img/${b.video}-poster.webp`}
-                    width="720"
-                    height="1280"
-                    aria-label={b.alt}
-                  >
-                    <source src={`/video/${b.video}.mp4`} type="video/mp4" />
-                    Dein Browser kann dieses Video nicht abspielen.
-                  </video>
-                </div>
-              ) : (
-                <div class="phone phone--leer">
-                  <p>
-                    <strong>In Arbeit.</strong>
-                    <br />
-                    Das erste Carousel entsteht gerade.
-                  </p>
-                </div>
-              )}
-
-              <figcaption>{b.text}</figcaption>
-
-              {b.zahlen && (
-                <p class="beispiel__zahlen">
-                  {b.zahlen.map((z) => (
-                    <span class="beispiel__zahl">
-                      <strong>{z.wert}</strong>
-                      {z.label}
-                    </span>
-                  ))}
-                </p>
-              )}
-            </figure>
-          ))
-        }
-      </div>
-
-      <p class="small muted" style="margin-top:2rem;max-width:62ch">
-        <a href={site.instagram} rel="noopener">{accountHinweis.handle}</a> —
-        {accountHinweis.text}
-      </p>
-    </div>
-  </section>
 
   <!-- ================= track record ================= -->
   <section class="section section--beige" id="erfahrung">
@@ -213,12 +148,38 @@ import { personLd, businessLd, websiteLd } from "../data/jsonld";
     <div class="wrap">
       <h2 class="title">what I do — and what it costs.</h2>
       <p class="lead" style="color:inherit;max-width:56ch">
-        Drei Disziplinen, vier Pakete: <strong>{leistungen.map((l) => l.name).join(
-          " · ",
-        )}</strong>. Was nicht enthalten ist, steht mit dabei.
+        Der Kern ist die laufende Betreuung eines Kanals. Creator Partnerships
+        kommen als zweite Säule dazu — und Content produziere ich, wenn keiner da
+        ist.
       </p>
 
-      <div class="pakete" style="margin-top:2.5rem">
+      <!-- Die drei Disziplinen. Die Reihenfolge ist die Gewichtung: Betreuung
+           zuerst, Content zuletzt und ausdrücklich als Ergänzung. -->
+      <ul class="leistungen" style="margin-top:2.5rem">
+        {
+          leistungen.map((l, i) => (
+            <li id={l.slug}>
+              <div>
+                <span class="leistungen__num">{String(i + 1).padStart(2, "0")}</span>
+                <span class="leistungen__name">{l.name}</span>
+              </div>
+              <div>
+                <p>{l.text}</p>
+                <p class="leistungen__tags">{l.tags.join(" · ")}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+
+      <p
+        class="eyebrow"
+        style="margin-top:clamp(2.5rem,5vw,3.5rem);margin-bottom:1.25rem;color:inherit;opacity:0.7"
+      >
+        Pakete &amp; Preise
+      </p>
+
+      <div class="pakete">
         {
           pakete.map((p) => (
             <div class="paket paket--auf-blau" data-reveal>
@@ -270,6 +231,76 @@ import { personLd, businessLd, websiteLd } from "../data/jsonld";
 
       <p class="small" style="margin-top:1.5rem;max-width:62ch;opacity:0.75">
         {preishinweis}
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= creative work ================= -->
+  <section class="section" id="arbeiten">
+    <div class="wrap">
+      <h2 class="title">creative work.</h2>
+      <p class="lead" style="margin-bottom:2.5rem">
+        Content-Produktion ist nicht mein Hauptgeschäft — aber wenn Material fehlt,
+        mache ich es selbst. Diese Formate entstehen auf meinem eigenen Account.
+        Zum Abspielen antippen, die Videos laden erst dann.
+      </p>
+
+      <div class="beispiele">
+        {
+          beispiele.map((b) => (
+            <figure data-reveal>
+              <div class="beispiel__kopf">
+                <span class="beispiel__num">
+                  {b.nummer} — {b.kategorie}
+                </span>
+                <p class="beispiel__titel">{b.titel}</p>
+              </div>
+
+              {b.video ? (
+                <div class="phone">
+                  <video
+                    controls
+                    preload="none"
+                    playsinline
+                    poster={`/img/${b.video}-poster.webp`}
+                    width="720"
+                    height="1280"
+                    aria-label={b.alt}
+                  >
+                    <source src={`/video/${b.video}.mp4`} type="video/mp4" />
+                    Dein Browser kann dieses Video nicht abspielen.
+                  </video>
+                </div>
+              ) : (
+                <div class="phone phone--leer">
+                  <p>
+                    <strong>In Arbeit.</strong>
+                    <br />
+                    Das erste Carousel entsteht gerade.
+                  </p>
+                </div>
+              )}
+
+              <figcaption>{b.text}</figcaption>
+
+              {b.zahlen && (
+                <p class="beispiel__zahlen">
+                  {b.zahlen.map((z) => (
+                    <span class="beispiel__zahl">
+                      <strong>{z.wert}</strong>
+                      {z.label}
+                    </span>
+                  ))}
+                </p>
+              )}
+            </figure>
+          ))
+        }
+      </div>
+
+      <p class="small muted" style="margin-top:2rem;max-width:62ch">
+        <a href={site.instagram} rel="noopener">{accountHinweis.handle}</a> —
+        {accountHinweis.text}
       </p>
     </div>
   </section>

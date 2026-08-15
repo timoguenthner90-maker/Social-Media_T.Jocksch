@@ -10,7 +10,8 @@ Content Creation und Influencer Marketing**.
 
 ## Stack
 
-Astro 5, statisch. Keine externen Requests: die Schrift (Fraunces) wird über
+Astro 5, statisch. Keine externen Requests: die Schriften (Playfair Display,
+Jost) werden über
 `@fontsource-variable` mitgebaut, Bilder und Videos liegen im eigenen Build.
 Deshalb sind weder Cookie-Banner noch Consent-Management nötig. JavaScript gibt
 es nur für zwei optionale Effekte (Sticky-Header, Einblendung beim Scrollen) —

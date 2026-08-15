@@ -1,12 +1,15 @@
 // Content-Beispiele.
 //
-// Drei Formate, die zeigen, was ich produziere. Zwei sind fertig und liegen als
-// Video vor, das Carousel ist noch in Arbeit und steht als ehrlich benannter
-// Platzhalter — eine erfundene Kachel wäre schlechter als eine leere.
+// Wichtig für die Einordnung: Content-Produktion ist NICHT das Hauptgeschäft.
+// Verkauft wird die laufende Betreuung eines Kanals; diese Beispiele belegen
+// nur, dass Material auch selbst entstehen kann, wenn keins da ist. Der
+// Abschnitt steht deshalb hinter dem Angebot und nicht davor.
+//
+// Zwei Formate sind fertig, das Carousel ist in Arbeit und steht als ehrlich
+// benannter Platzhalter — eine erfundene Kachel wäre schlechter als eine leere.
 //
 // Die Zahlen stammen von Tina (Stand 15.08.2026) und beziehen sich auf
-// @pempelhome. Sie werden bewusst klein gehalten: Der Account ist ein
-// Arbeitsbeispiel, kein Aushängeschild — er läuft erst seit Mitte Juni 2026.
+// @pempelhome. Der Account läuft erst seit Mitte Juni 2026.
 
 export type Beispiel = {
   nummer: string;
@@ -55,6 +58,6 @@ export const beispiele: Beispiel[] = [
 /** Kontext zum Account. Bewusst als Fußnote, nicht als eigener Abschnitt. */
 export const accountHinweis = {
   handle: "@pempelhome",
-  text: "Eigenes Projekt seit Mitte Juni 2026, aktuell 490 Follower. Ich nutze den Account als Testfeld für Formate, Schnitt und Trends — mit denselben Werkzeugen, die ich für Kundenmarken einsetze.",
+  text: "Mein eigener Account seit Mitte Juni 2026, aktuell 490 Follower. Er ist mein Testfeld: Hier probiere ich Formate, Schnitt und Trends unter realen Bedingungen aus, bevor ich sie in einen Redaktionsplan schreibe.",
   tags: ["Interior Content", "Reels", "Trend Research", "Editing"],
 };

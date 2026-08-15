@@ -1,6 +1,6 @@
 # Freigabe-Paket — Website Tina Jocksch
 
-Stand: 15.08.2026 · Version 2.0 (One-Pager)
+Stand: 15.08.2026 · Version 3.0 (One-Pager, Fokus laufende Betreuung)
 
 ## Status
 
@@ -12,9 +12,12 @@ Stand: 15.08.2026 · Version 2.0 (One-Pager)
 | **Suchmaschinen** | Gesperrt, solange die Steuerangabe im Impressum fehlt. |
 | **Build** | 5 Seiten · 0 TypeScript-Fehler · 0 harte Verify-Fehler |
 
-Ein One-Pager mit sieben Abschnitten, dazu Impressum, Datenschutz, Danke- und
-Fehlerseite. Aufbau, Wortlaut, Preise und Farben stammen aus deinem eigenen
-Entwurf; Erfahrung und Kontaktdaten aus deinem Lebenslauf.
+Ein One-Pager, dazu Impressum, Datenschutz, Danke- und Fehlerseite. Gestaltung
+und Wortlaut stammen aus deinem eigenen Entwurf, Erfahrung und Kontaktdaten aus
+deinem Lebenslauf, die Preise aus der Wettbewerbsanalyse.
+
+Reihenfolge: Hero → track record → services (Angebot **und** Preis) → creative
+work → about → contact.
 
 ## Was du prüfen solltest
 
@@ -31,8 +34,13 @@ ist eine ladungsfähige Geschäftsadresse die übliche Alternative.)
 
 ### 2. Inhalte
 
-- **Preise** — vier Pakete, 850 € / 1.200 € / 2.200 € / 1.300 €, exakt wie in
-  deinem Entwurf. Passt das so?
+- **Preise** — aus der Wettbewerbsanalyse gerechnet, Anker ist ein Tagessatz
+  von 650 €: Audit 950 € · Management ab 1.590 €/Monat · Management + Content
+  ab 2.890 €/Monat · Creator Partnerships ab 1.950 €/Kampagne. Das liegt über
+  deinem ersten Entwurf — Begründung steht in `src/data/services.ts`.
+- **Gewichtung** — die Seite verkauft laufende Betreuung, nicht
+  Content-Produktion. Content steht als dritte Disziplin und ausdrücklich als
+  Ergänzung. Trifft das deine Positionierung?
 - **Kennzahlen im track record** — 200+ Creator, ca. 30 % Revenue-Anteil, 20–30
   Kooperationen pro Monat, 6+ Jahre. Alles aus dem Lebenslauf.
 - **Content-Beispiele** — Trend-Reel (47.500 Views · 3.920 Likes) und

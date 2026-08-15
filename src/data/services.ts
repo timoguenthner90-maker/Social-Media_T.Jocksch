@@ -16,12 +16,25 @@ export type Leistung = {
   tags: string[];
 };
 
+/**
+ * Die Gewichtung ist Absicht: Verkauft wird die laufende Betreuung eines
+ * Kanals — Strategie, Audit, Redaktionsplanung, Posting und Community. Creator
+ * Marketing ist die zweite Säule. Content-Produktion ist eine Fähigkeit, die
+ * dazukommt, wenn Material fehlt, aber kein eigenständiges Angebot: Tina ist
+ * keine UGC-Creatorin, die Assets für fremde Marken produziert.
+ */
 export const leistungen: Leistung[] = [
   {
     slug: "social-media-management",
     name: "Social Media Management",
-    text: "Von der Strategie bis zur Umsetzung: Ich entwickle Social-Media-Auftritte, die zur Marke passen, klar positioniert sind und langfristig funktionieren.",
-    tags: ["Strategy", "Content Planning", "Community", "Reporting"],
+    text: "Der Kern: Strategie, Audit, Redaktions- und Contentplanung, Posting und Community Management. Ich entwickle Auftritte, die zur Marke passen, klar positioniert sind und langfristig funktionieren — und betreue sie im Alltag.",
+    tags: [
+      "Strategy",
+      "Audit",
+      "Redaktionsplanung",
+      "Community Management",
+      "Reporting",
+    ],
   },
   {
     slug: "creator-partnerships",
@@ -31,9 +44,9 @@ export const leistungen: Leistung[] = [
   },
   {
     slug: "content-creation",
-    name: "Content Creation",
-    text: "Ästhetischer, plattformgerechter Content für Social Media. Von der Idee über die Produktion bis zum fertigen Reel, Foto oder UGC Asset.",
-    tags: ["Reels", "Short Form Video", "UGC", "Content Management"],
+    name: "Content",
+    text: "Wenn Material fehlt, produziere ich es selbst: Reels, Shortform-Video und Fotos, plattformgerecht und im Look der Marke. Als Ergänzung zur Betreuung, nicht als Einzelleistung.",
+    tags: ["Reels", "Short Form Video", "Content Planning"],
   },
 ];
 
@@ -58,16 +71,21 @@ export const leistungen: Leistung[] = [
  * Anker ist deshalb ein Tagessatz von 650 € — Mitte des etablierten Segments,
  * unter Pollrich, über Verweyen. Alle Pakete sind daraus gerechnet:
  *
- *   Content Studio        1,75 Tage  →  1.150 €
- *   Social Management     2,5  Tage  →  1.590 € / Monat
- *   Social + Content      4,5  Tage  →  2.890 € / Monat
- *   Creator Partnerships  3    Tage  →  1.950 € / Kampagne
+ *   Social Media Audit          1,5 Tage  →    950 €
+ *   Social Media Management     2,5 Tage  →  1.590 € / Monat
+ *   Management + Content        4,5 Tage  →  2.890 € / Monat
+ *   Creator Partnerships        3   Tage  →  1.950 € / Kampagne
  *
  * Das liegt über Tinas erstem Entwurf (850 / 1.200 / 2.200 / 1.300 €). Der
  * Grund: Bei 1.200 € Monatspauschale wären für Strategie, Redaktionsplan,
  * Posting auf zwei Kanälen, Community und Reporting keine zwei Arbeitstage
  * gedeckt — das ist auf Dauer nicht tragfähig und signalisiert zudem das
  * Junior-Segment, aus dem sich die Positionierung gerade abgrenzen soll.
+ *
+ * Das reine Content-Paket aus dem ersten Entwurf ist bewusst entfallen: Es
+ * stellte die Produktion an den Anfang und ließ das Angebot nach UGC-Creatorin
+ * aussehen. An seine Stelle tritt das Audit — der kleinste sinnvolle Einstieg
+ * in eine Zusammenarbeit und zugleich der beste Türöffner für einen Retainer.
  * ------------------------------------------------------------------------- */
 
 /** Der Anker, aus dem alle Paketpreise gerechnet sind. Auch einzeln buchbar. */
@@ -92,44 +110,44 @@ export type Paket = {
 export const pakete: Paket[] = [
   {
     nummer: "01",
-    name: "Content Studio",
-    was: "Social-first Content für Brands, Produkte und Kampagnen.",
-    preis: "1.150 €",
-    einheit: "ab / Projekt",
+    name: "Social Media Audit",
+    was: "Standortbestimmung für Marken, die selbst umsetzen — oder wissen wollen, wo sie stehen.",
+    preis: "950 €",
+    einheit: "einmalig",
     enthalten: [
-      "3 Short-Form Videos / Reels",
-      "Konzept & Creative Direction",
-      "Dreh & Editing",
-      "1 Feedbackrunde",
-      "Organic Usage",
+      "Analyse von Auftritt, Formaten und Zielgruppe",
+      "Wettbewerbsvergleich",
+      "Priorisierte Handlungsempfehlungen",
+      "Dokumentation zum Weiterarbeiten",
+      "Auswertungs-Call",
     ],
-    nichtEnthalten: ["Kein Posting / Community Management"],
-    hinweis: "Auf Anfrage: Paid Usage · Raw Footage · Additional Content",
+    nichtEnthalten: ["Keine laufende Betreuung"],
+    hinweis: "Wird bei einem anschließenden Retainer voll angerechnet.",
   },
   {
     nummer: "02",
-    name: "Social Management",
-    was: "Strategische Kanalbetreuung für Brands mit vorhandenem Content.",
+    name: "Social Media Management",
+    was: "Laufende Kanalbetreuung für Brands mit vorhandenem Content.",
     preis: "1.590 €",
     einheit: "ab / Monat",
     enthalten: [
-      "Social Media Strategy",
+      "Social-Media-Strategie",
       "Redaktions- & Contentplan",
       "Posting auf bis zu 2 Kanälen",
       "Caption & Copywriting",
-      "Community Management light",
+      "Community Management",
       "Monatliches Reporting",
     ],
-    nichtEnthalten: ["Keine Content-Erstellung"],
+    nichtEnthalten: ["Keine Content-Produktion"],
   },
   {
     nummer: "03",
-    name: "Social + Content",
-    was: "Social Media Betreuung und Content Creation aus einer Hand.",
+    name: "Management + Content",
+    was: "Laufende Betreuung samt Produktion — wenn kein eigenes Material da ist.",
     preis: "2.890 €",
     einheit: "ab / Monat",
     enthalten: [
-      "Alles aus Social Management",
+      "Alles aus Social Media Management",
       "6–8 Content Pieces / Monat",
       "Reels, Posts & Carousels",
       "Konzept, Shooting & Editing",
