@@ -1,16 +1,21 @@
 # ---------------------------------------------------------------------------
-# Kein Build auf Netlify — es wird ausschließlich das fertige dist/ ausgeliefert.
+# Kein Build auf Netlify — es wird ausschließlich das fertige dist/ ausgeliefert,
+# auch bei den automatischen Deploys über die GitHub-Anbindung (Repo:
+# github.com/timoguenthner90-maker/Social-Media_T.Jocksch, verbunden per
+# Continuous Deployment auf main).
 #
-# Hintergrund: Der Build in Netlifys Umgebung bricht seit der Straffung mit
-# "exit code 2" ab, während derselbe Stand lokal fehlerfrei durchläuft — geprüft
-# aus einem frischen Clone, mit Node 22 und 24, mit und ohne devDependencies.
-# Eine Deploy-Bisektion über vierzehn Durchläufe hat die Ursache nicht auf eine
-# Quelldatei festnageln können; die Build-Logs sind ohne Netlify-Login nicht
-# lesbar. Solange das offen ist, ist der lokale Build die verlässlichere Quelle.
+# Hintergrund: Der Build in Netlifys eigener Umgebung brach über vierzehn
+# Deploys hinweg reproduzierbar mit "exit code 2" ab, während derselbe Stand
+# lokal fehlerfrei durchlief — geprüft aus einem frischen Clone, mit Node 22
+# und 24, mit und ohne devDependencies. Die Ursache ließ sich nicht auf eine
+# Quelldatei eingrenzen; die Build-Logs waren ohne Netlify-Login nicht lesbar.
 #
-# Das passt zu diesem Projekt: eine statische Seite, eine Autorin, und ein
-# Abnahme-Gauntlet (npm run build && astro check && npm run verify), der vor
-# jedem Deploy ohnehin lokal läuft. dist/ ist deshalb eingecheckt.
+# Das committete dist/ umgeht das Problem vollständig: Netlify hat nichts mehr
+# zu bauen, egal ob der Deploy manuell per CLI oder automatisch durch einen
+# GitHub-Push ausgelöst wird. Für dieses Projekt — eine statische Seite, eine
+# Autorin — ist das ohnehin die verlässlichere Variante: Der Abnahme-Gauntlet
+# (npm run build && astro check && npm run verify) läuft vor jedem Push lokal;
+# ausgeliefert wird exakt das geprüfte Ergebnis.
 #
 # Zurück auf einen Netlify-Build: command = "npm run build" setzen, dist/ wieder
 # in .gitignore aufnehmen und aus dem Index entfernen.

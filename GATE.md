@@ -9,6 +9,7 @@ Stand: 15.08.2026 · Version 3.0 (One-Pager, Fokus laufende Betreuung)
 | **URL** | https://tina-jocksch.netlify.app |
 | **Sichtbarkeit** | **Nicht öffentlich.** Netlify verlangt Team-Login — nur mit deinem Netlify-Konto sichtbar. |
 | **Netlify-Projekt** | https://app.netlify.com/projects/tina-jocksch |
+| **GitHub-Repo** | https://github.com/timoguenthner90-maker/Social-Media_T.Jocksch |
 | **Suchmaschinen** | Gesperrt, solange die Steuerangabe im Impressum fehlt. |
 | **Build** | 5 Seiten · 0 TypeScript-Fehler · 0 harte Verify-Fehler |
 
@@ -72,15 +73,21 @@ Live-Gang von fachkundiger Stelle prüfen lassen.
 Erst Schritt 4 macht die Seite öffentlich. `robots.txt` gibt sich mit dem Build
 aus Schritt 2 automatisch frei — das kann nicht vergessen werden.
 
-## Offener technischer Punkt
+## Deploy-Weg: jetzt über GitHub
 
-Netlify baut die Seite nicht selbst, sondern bekommt das **lokal gebaute
-`dist/`**. Grund: Der Build in Netlifys Umgebung brach reproduzierbar mit
-„exit code 2" ab, während derselbe Stand lokal fehlerfrei durchläuft; eine
-Bisektion über vierzehn Deploys hat die Ursache nicht eingrenzen können, und die
-Build-Logs sind ohne Netlify-Login nicht lesbar. Für die Seite hat das keine
-Auswirkung — der Prüflauf läuft vor jedem Deploy lokal, ausgeliefert wird exakt
-das geprüfte Ergebnis.
+Das Projekt liegt jetzt auf GitHub und ist mit Netlify verbunden (Continuous
+Deployment): ein Push auf `main` löst automatisch einen Deploy aus.
 
-Wenn du das sauber abschließen willst: Öffne im Netlify-Dashboard einen der rot
-markierten Deploys und schick mir die letzten ~30 Zeilen des Logs.
+Netlify baut dabei weiterhin **nicht selbst** — `netlify.toml` setzt
+`command = ""`, ausgeliefert wird exakt das `dist/`, das im Repo committet ist.
+Das ist kein Provisorium mehr, sondern der bewusste Weg: Der Build in Netlifys
+eigener Umgebung war über vierzehn Deploys hinweg reproduzierbar mit „exit code
+2" fehlgeschlagen, ohne dass sich die Ursache auf eine Quelldatei eingrenzen
+ließ (lokal, aus frischem Clone, mit Node 22 und 24, lief derselbe Stand
+fehlerfrei durch). Mit dem committeten `dist/` taucht dieses Problem gar nicht
+erst auf — Netlify hat nichts mehr zu bauen, egal ob der Auslöser ein manueller
+CLI-Deploy oder ein GitHub-Push ist.
+
+**Was das für dich bedeutet:** Der Prüflauf (`build`, `astro check`, `verify`)
+muss vor jedem Push lokal grün sein — Netlify prüft nichts mehr nach. Der genaue
+Ablauf steht in der README unter „Deploy".

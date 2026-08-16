@@ -70,10 +70,19 @@ Impressum in Production gehen.**
 
 ## Deploy
 
+Netlify baut nicht selbst (siehe `netlify.toml`) — es liefert exakt das
+`dist/`, das im Repo committet ist. Deploy heißt deshalb: lokal bauen und
+prüfen, dann pushen.
+
 ```bash
-# Vor jedem Deploy: npm run build && npx astro check && npm run verify
-npx netlify-cli deploy --prod     # erst nach Freigabe am Gate
+npm run build && npx astro check && npm run verify   # muss grün sein
+git add -A && git commit -m "…"
+git push origin main                                  # Netlify deployt automatisch
 ```
+
+Repo: https://github.com/timoguenthner90-maker/Social-Media_T.Jocksch
+Netlify ist mit `main` verbunden (Continuous Deployment) — ein Push löst den
+Deploy aus, ohne dass Netlify selbst baut.
 
 ## Beim Umzug auf eine eigene Domain
 
