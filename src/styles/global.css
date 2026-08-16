@@ -790,8 +790,11 @@ figcaption {
 
 /* ---------- Content-Beispiele (creative work) ----------
  *
- * Telefon-Rahmen für die Hochformat-Videos. Reine CSS-Attrappe: gerundeter
- * Rahmen mit dunkler Fassung, damit Reels als das gelesen werden, was sie sind.
+ * Telefon-Rahmen für die Hochformat-Videos und -Fotos. Reine CSS-Attrappe —
+ * Dynamic-Island-Ausschnitt oben, Home-Indicator unten — damit Reels und Posts
+ * erkennbar als das gelesen werden, was sie sind: Bildschirminhalt, kein Foto
+ * auf der Seite. Dieselbe Klasse trägt auch die Feed-Transformationen weiter
+ * unten, damit jedes Content-Beispiel auf der Seite im selben Rahmen sitzt.
  */
 
 .beispiele {
@@ -833,6 +836,77 @@ figcaption {
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+/* Dynamic Island und Home-Indicator: reine Dekoration, deshalb pointer-events
+   none — die nativen Video-Bedienelemente darunter bleiben so in jedem
+   Browser klickbar, unabhängig von der Stapelreihenfolge. */
+.phone::before {
+  content: "";
+  position: absolute;
+  top: 0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 34%;
+  height: 0.85rem;
+  background: var(--ink);
+  border-radius: 999px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.phone::after {
+  content: "";
+  position: absolute;
+  bottom: 0.45rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30%;
+  height: 0.2rem;
+  background: rgba(255, 255, 255, 0.55);
+  border-radius: 999px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Platzhalter-Variante für Bildschirminhalte, die noch nicht existieren. */
+.phone--platzhalter {
+  display: grid;
+  place-items: center;
+  background: var(--blue-soft);
+  text-align: center;
+  padding: 1.25rem;
+}
+
+.phone--platzhalter span {
+  font-size: var(--step--2);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+
+/* ---------- Feed Transformations ---------- */
+
+.feed__accounts {
+  display: grid;
+  gap: clamp(1.75rem, 3vw, 2.5rem);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+}
+
+.feed__paar {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-top: 0.6rem;
+}
+
+.feed__tag {
+  font-size: var(--step--2);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  text-align: center;
+  margin: 0 0 0.4rem;
 }
 
 /* Kennzahlen unter einem Beispiel. */

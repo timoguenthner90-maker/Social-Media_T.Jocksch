@@ -4,7 +4,7 @@ import Picture from "../components/Picture.astro";
 import { site, cta, heroMedia, laufband } from "../data/site";
 import { leistungen, pakete, preishinweis, tagessatz } from "../data/services";
 import { kennzahlen, werkzeuge, stationen, ausbildung } from "../data/experience";
-import { beispiele, accountHinweis } from "../data/work";
+import { beispiele, accountHinweis, feedTransformationen } from "../data/work";
 import {
   problemZitate,
   problemText,
@@ -377,6 +377,37 @@ import { personLd, businessLd, websiteLd } from "../data/jsonld";
         <a href={site.instagram} rel="noopener">{accountHinweis.handle}</a> —
         {accountHinweis.text}
       </p>
+
+      <!-- Feed Transformations: noch offene Plätze, keine erfundenen
+           Screenshots. Derselbe .phone-Rahmen wie oben, damit jedes
+           Content-Beispiel auf der Seite gleich aussieht. -->
+      <p class="eyebrow" style="margin-top:clamp(2.5rem,5vw,3.5rem)">Kommt bald</p>
+      <h3 style="font-size:var(--step-2);margin-bottom:1rem">feed transformations.</h3>
+      <p class="lead" style="margin-bottom:2rem">{feedTransformationen.intro}</p>
+
+      <div class="feed__accounts">
+        {
+          feedTransformationen.slots.map((s) => (
+            <div data-reveal>
+              <span class="beispiel__num">Account {s.nummer}</span>
+              <div class="feed__paar">
+                <div>
+                  <p class="feed__tag">vorher</p>
+                  <div class="phone phone--platzhalter">
+                    <span>Folgt</span>
+                  </div>
+                </div>
+                <div>
+                  <p class="feed__tag">nachher</p>
+                  <div class="phone phone--platzhalter">
+                    <span>Folgt</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
     </div>
   </section>
 

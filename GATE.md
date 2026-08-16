@@ -48,6 +48,10 @@ ist eine ladungsfähige Geschäftsadresse die übliche Alternative.)
   Produkt-Empfehlung (6.300 Views · 143 Likes) und ein Foto-Post. Für den
   Foto-Post liegen mir keine Zahlen vor; wenn du welche hast, trage ich sie
   nach.
+- **Neu: „feed transformations."** — drei Vorher/Nachher-Plätze für Accounts,
+  die du noch aussuchst. Aktuell zeigt jedes Feld „Folgt", ohne erfundene
+  Screenshots. Sobald du drei Accounts hast, schick mir je ein Vorher- und ein
+  Nachher-Bild (Hochformat, wie die Reels) — ich baue sie direkt ein.
 - **Du-Form** — die ganze Seite duzt, wie in deinem Entwurf.
 
 ### 3. Bildrechte

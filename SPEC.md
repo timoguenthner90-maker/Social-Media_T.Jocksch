@@ -75,7 +75,7 @@ der Held, Tina ist der Guide.
 | `#erfahrung` | track record. | Guide | Empathie-Zeile, dann Werkzeuge, Kennzahlen, Stationen |
 | `#plan` | the plan. | Plan + Handlung | Drei Schritte, „was sich ändert", CTA, kleiner Einstieg |
 | `#leistungen` | what I do. | Angebot | Drei Disziplinen **und** die vier Pakete mit Preisen |
-| `#arbeiten` | creative work. | Beleg | Drei Content-Beispiele in Telefonrahmen |
+| `#arbeiten` | creative work. | Beleg | Drei Content-Beispiele in Telefonrahmen, darunter „feed transformations." (3 Vorher/Nachher-Plätze, noch offen) |
 | `#about` | hi, I'm Tina. | Person hinter dem Guide | Positionierung und Anspruch, Porträt |
 | `#kontakt` | contact. | Abschluss | Formular, E-Mail, Telefon/WhatsApp, Social |
 
@@ -141,6 +141,14 @@ beste Türöffner für einen Retainer (es wird bei Abschluss angerechnet).
 
 **Vier Fotos, zwei Videos.** Die Seite trägt über Farbflächen und Typografie,
 nicht über eine Galerie.
+
+**Feed Transformations.** Neuer Unterabschnitt in „creative work": drei
+Accounts, die Tina einen neuen Feed verpasst — Vorher/Nachher, je Account ein
+Bildpaar. Die Accounts stehen noch nicht fest, deshalb zeigt jeder der sechs
+Plätze bewusst „Folgt" statt eines erfundenen Screenshots (`.phone--platzhalter`
+in global.css). Struktur in `src/data/work.ts` → `feedTransformationen`. Sobald
+ein Account gewählt ist, ersetzt ein echtes Bildpaar (9:16, wie die Reels) den
+Platzhalter — keine neue Komponente nötig, nur Daten und zwei Bilddateien.
 
 - `hero-sofa` — Cord-Sofa im Studio (Hero), von Tina ausgewählt. Der Slot nimmt
   auch ein Hintergrundvideo auf: `heroMedia` in `src/data/site.ts` umschalten.
