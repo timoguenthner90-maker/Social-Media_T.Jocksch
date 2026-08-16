@@ -86,11 +86,11 @@ const IMAGES = [
     focus: "centre",
   },
   {
-    // „hi, I'm Tina" — näheres Porträt, seit das Sofa-Bild in den Hero gewandert
-    // ist. Zuschnitt von oben: Das Gesicht sitzt im oberen Bilddrittel, und
-    // "attention" hatte hier die Augen abgeschnitten.
+    // „hi, I'm Tina" — nahes Porträt für den About-Abschnitt. Die Quelldatei
+    // liegt bereits nahe am Zielformat (1122×1402 ≈ 4:5), Zuschnitt von oben
+    // hält das Gesicht sicher im Bild.
     out: "tina-portrait",
-    src: c("Ich", "WhatsApp Image 2026-08-12 at 17.09.30.jpeg"),
+    src: c("Ich", "ChatGPT Image 15. Aug. 2026, 17_57_20.png"),
     ratio: 4 / 5,
     widths: [900, 600],
     focus: "top",
