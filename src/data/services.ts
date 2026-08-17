@@ -30,7 +30,7 @@ export const leistungen: Leistung[] = [
   {
     slug: "social-media-management",
     name: "Social Media Management",
-    text: "Social Media läuft bei den meisten Marken nebenbei mit — dabei steckt hinter einem Kanal, der wirklich funktioniert, mehr als eine spontane Idee für die Woche. Ich übernehme Strategie, Redaktionsplanung, Posting und Community, damit daraus ein System wird statt Wochenstress.",
+    text: "Social Media läuft bei den meisten Marken nebenbei mit. Dabei steckt hinter einem Kanal, der wirklich funktioniert, mehr als eine spontane Idee für die Woche. Ich übernehme Strategie, Redaktionsplanung, Posting und Community, damit daraus ein System wird statt Wochenstress.",
     tags: [
       "Strategy",
       "Audit",
@@ -42,13 +42,13 @@ export const leistungen: Leistung[] = [
   {
     slug: "creator-partnerships",
     name: "Creator Partnerships",
-    text: "Die falschen Creator kosten Budget, ohne etwas zu bringen — und die richtige Auswahl braucht Zeit, die selten da ist. Ich übernehme Recherche, Ansprache, Verhandlung und Steuerung, du bekommst passende Kooperationen ohne den Aufwand.",
+    text: "Die falschen Creator kosten Budget, ohne etwas zu bringen, und die richtige Auswahl braucht Zeit, die selten da ist. Ich übernehme Recherche, Ansprache, Verhandlung und Steuerung, du bekommst passende Kooperationen ohne den Aufwand.",
     tags: ["Creator Research", "Outreach", "Campaign Management", "Reporting"],
   },
   {
     slug: "content-creation",
     name: "Content",
-    text: "Ohne eigenes Material wirkt ein Feed schnell beliebig — professionelle Fotos und Reels fehlen meist an Zeit, nicht an Ideen. Wenn nötig, produziere ich sie selbst, plattformgerecht und im Look der Marke, bis hin zur kompletten Feed-Neugestaltung.",
+    text: "Ohne eigenes Material wirkt ein Feed schnell beliebig, denn professionelle Fotos und Reels fehlen meist an Zeit, nicht an Ideen. Wenn nötig, produziere ich sie selbst, plattformgerecht und im Look der Marke, bis hin zur kompletten Feed-Neugestaltung.",
     tags: ["Reels", "Short Form Video", "Content Planning", "Feed-Redesign"],
   },
 ];
@@ -95,7 +95,7 @@ export const leistungen: Leistung[] = [
 export const tagessatz = {
   preis: "650 €",
   einheit: "pro Tag",
-  text: "Für Projektspitzen, Interim-Betreuung oder Freelancer-Support in Agenturen — tageweise abgerechnet.",
+  text: "Für Projektspitzen, Interim-Betreuung oder Freelancer-Support in Agenturen, tageweise abgerechnet.",
 };
 
 export type Paket = {
@@ -114,7 +114,7 @@ export const pakete: Paket[] = [
   {
     nummer: "01",
     name: "Social Media Audit",
-    was: "Standortbestimmung für Marken, die selbst umsetzen — oder wissen wollen, wo sie stehen.",
+    was: "Standortbestimmung für Marken, die selbst umsetzen oder wissen wollen, wo sie stehen.",
     preis: "950 €",
     einheit: "einmalig",
     enthalten: [
@@ -146,7 +146,7 @@ export const pakete: Paket[] = [
   {
     nummer: "03",
     name: "Management + Content",
-    was: "Laufende Betreuung samt Produktion — wenn kein eigenes Material da ist.",
+    was: "Laufende Betreuung samt Produktion, wenn kein eigenes Material da ist.",
     preis: "2.890 €",
     einheit: "ab / Monat",
     enthalten: [
@@ -178,4 +178,4 @@ export const pakete: Paket[] = [
 
 /** Alle Preise netto. Steht einmal unter der Pakettafel. */
 export const preishinweis =
-  "Alle Preise netto zzgl. Umsatzsteuer und aus einem Tagessatz von 650 € gerechnet. Der genaue Umfang hängt von Kanälen, Frequenz und Produktionsaufwand ab — den bekommst du nach dem Erstgespräch schriftlich.";
+  "Alle Preise netto zzgl. Umsatzsteuer und aus einem Tagessatz von 650 € gerechnet. Der genaue Umfang hängt von Kanälen, Frequenz und Produktionsaufwand ab. Den bekommst du nach dem Erstgespräch schriftlich.";

@@ -33,7 +33,7 @@ export const problemText = {
 
 /** Die Empathie-Zeile vor dem Track Record — der Guide zeigt Verständnis, bevor er Autorität zeigt. */
 export const guideEmpathie =
-  "Sechs Jahre lang habe ich genau diese Kanäle verantwortet — erst im B2B-SaaS, dann für eine Premium-Lifestyle-Marke. Ich weiß, wie schnell Social Media zu der Aufgabe wird, die keiner mehr richtig macht.";
+  "Sechs Jahre lang habe ich genau diese Kanäle verantwortet, erst im B2B-SaaS, dann für eine Premium-Lifestyle-Marke. Ich weiß, wie schnell Social Media zu der Aufgabe wird, die keiner mehr richtig macht.";
 
 export type PlanSchritt = { nummer: string; titel: string; text: string };
 
@@ -48,7 +48,7 @@ export const planSchritte: PlanSchritt[] = [
   {
     nummer: "01",
     titel: "Audit",
-    text: "Wir sehen uns deinen Kanal an: was funktioniert, was fehlt, was sich lohnt. Du bekommst priorisierte Empfehlungen schriftlich — und weißt danach, woran du bist. Auch wenn wir nicht weitermachen.",
+    text: "Wir sehen uns deinen Kanal an: was funktioniert, was fehlt, was sich lohnt. Du bekommst priorisierte Empfehlungen schriftlich und weißt danach, woran du bist. Auch wenn wir nicht weitermachen.",
   },
   {
     nummer: "02",
@@ -58,7 +58,7 @@ export const planSchritte: PlanSchritt[] = [
   {
     nummer: "03",
     titel: "Umsetzung & Reporting",
-    text: "Ich plane, texte, veröffentliche und betreue die Community. Einmal im Monat bekommst du Zahlen — und die Entscheidungen für den nächsten Monat.",
+    text: "Ich plane, texte, veröffentliche und betreue die Community. Einmal im Monat bekommst du Zahlen und die Entscheidungen für den nächsten Monat.",
   },
 ];
 
@@ -67,7 +67,7 @@ export const ergebnis = {
   titel: "Was sich ändert",
   punkte: [
     "Der Kanal läuft nach Plan statt nach Tagesform.",
-    "Du siehst monatlich, was er gebracht hat — in Zahlen, nicht im Bauchgefühl.",
+    "Du siehst monatlich, was er gebracht hat: in Zahlen, nicht im Bauchgefühl.",
     "Online sieht die Marke so aus, wie sie offline wirkt.",
   ],
   /**

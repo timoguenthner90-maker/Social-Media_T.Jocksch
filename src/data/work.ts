@@ -41,7 +41,7 @@ export const beispiele: Beispiel[] = [
     nummer: "02",
     kategorie: "Product Content",
     titel: "Produkt-Empfehlung",
-    text: "Ein Möbelstück im Alltag statt im Katalog: aufgebaut, benutzt, gezeigt — nah an der Kaufentscheidung.",
+    text: "Ein Möbelstück im Alltag statt im Katalog: aufgebaut, benutzt, gezeigt, nah an der Kaufentscheidung.",
     video: "produkt-reel",
     alt: "Standbild aus dem Produktvideo: Aufbau eines Beistelltisches neben einem hellen Sofa",
     zahlen: [
@@ -53,7 +53,7 @@ export const beispiele: Beispiel[] = [
     nummer: "03",
     kategorie: "Feed Post",
     titel: "Foto-Post",
-    text: "Licht, Material, Raum — ein ruhiger Beitrag zwischen den Reels. Das Format, das einem Profil Struktur gibt, statt nur Reichweite zu jagen.",
+    text: "Licht, Material, Raum: ein ruhiger Beitrag zwischen den Reels. Das Format, das einem Profil Struktur gibt, statt nur Reichweite zu jagen.",
     bild: "post-sofa",
     alt: "Cord-Sofa mit gestapelten Kissen im Sonnenlicht vor bodenlangen Vorhängen",
   },
@@ -65,7 +65,7 @@ export const beispiele: Beispiel[] = [
     nummer: "04",
     kategorie: "Coming Soon",
     titel: "Carousel",
-    text: "Mehrteiliger Post für Wissen, Vorher-Nachher oder Produktdetails — entsteht als Nächstes.",
+    text: "Mehrteiliger Post für Wissen, Vorher-Nachher oder Produktdetails. Entsteht als Nächstes.",
   },
 ];
 
