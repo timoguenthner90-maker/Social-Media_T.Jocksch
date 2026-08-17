@@ -77,7 +77,11 @@ const IMAGES = [
     // Zuschnitt mittig statt "attention": Die Person sitzt klein im Raum, und
     // die Wirkung kommt aus der ganzen Szene — Licht, Vorhänge, Sofa. Ein
     // Zuschnitt aufs Gesicht würde genau das wegschneiden.
-    out: "hero-sofa",
+    // Zweite Version: eigener Dateiname statt "hero-sofa" wiederzuverwenden,
+    // weil /img/* mit Cache-Control "immutable, max-age=31536000" ausgeliefert
+    // wird (netlify.toml) — ein gleichnamiges Bild würde in Browsern, die es
+    // schon geladen haben (z. B. Safari), nie neu nachgeladen.
+    out: "hero-sofa-v2",
     src: c("Ich", "WhatsApp Image 2026-08-12 at 16.55.59.jpeg"),
     ratio: 4 / 5,
     widths: [1000, 640],
