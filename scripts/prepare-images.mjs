@@ -91,7 +91,14 @@ const IMAGES = [
     // „hi, I'm Tina" — nahes Porträt für den About-Abschnitt. Die Quelldatei
     // liegt bereits nahe am Zielformat (1122×1402 ≈ 4:5), Zuschnitt von oben
     // hält das Gesicht sicher im Bild.
-    out: "tina-portrait",
+    // Eigener Dateiname statt "tina-portrait" wiederzuverwenden — aus
+    // demselben Grund wie bei hero-sofa-v2: /img/* liefert "immutable,
+    // max-age=31536000" aus, ein gleichnamiges Bild würde in Browsern, die es
+    // schon geladen haben, nie neu nachgeladen. Genau das ist einem früheren
+    // Bildtausch schon passiert (Commit "About-Porträt gegen neues Foto
+    // getauscht") und blieb unbemerkt, bis Tina in Safari noch das alte Foto
+    // sah.
+    out: "tina-portrait-v2",
     src: c("Ich", "Portrait-Tina.png"),
     ratio: 4 / 5,
     widths: [900, 600],
