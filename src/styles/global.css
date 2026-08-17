@@ -44,8 +44,10 @@
   /* Feste Breite für die Phone-Mockups der Content-Beispiele — kein "1fr",
      damit sich die Größe nicht danach richtet, wie viele Elemente gerade im
      Grid stehen, sondern die vier Beispiele kompakt zu viert in einer Reihe
-     stehen. */
-  --phone-w-compact: 13rem;
+     stehen. 15rem statt der ursprünglichen 13rem, um den verfügbaren Platz im
+     Wrap (max. 1200px) besser auszunutzen — bei vier Spalten plus Gap bleibt
+     das auch auf kleineren Desktop-Fenstern noch sicher in einer Reihe. */
+  --phone-w-compact: 15rem;
 
   /* ---------- Typografie ---------- */
   --display: "Playfair Display Variable", "Iowan Old Style", Palatino, Georgia,
@@ -846,6 +848,12 @@ figcaption {
   .beispiele {
     --phone-w-compact: 30rem;
   }
+
+  /* Eine Spalte, also keine Ausrichtung zwischen Karten nötig — der
+     reservierte Platz für zweizeilige Titel wäre hier nur Leerraum. */
+  .beispiel__titel {
+    min-height: auto;
+  }
 }
 
 .beispiel__kopf {
@@ -864,6 +872,12 @@ figcaption {
   font-size: var(--step-2);
   line-height: 1.2;
   margin-top: 0.25rem;
+  /* Reserviert zwei Zeilen, damit alle vier Phone-Mockups auf gleicher Höhe
+     starten — ohne das würde ein zweizeiliger Titel (z. B. "Produkt-
+     Empfehlung") seinen Mockup nach unten schieben, während die einzeiligen
+     daneben höher ansetzen. Nur auf dem Desktop nötig, wo mehrere Karten
+     nebeneinanderstehen; auf dem Handy hebt die Media Query es wieder auf. */
+  min-height: 2.4em;
 }
 
 .phone {
