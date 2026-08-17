@@ -26,7 +26,7 @@ export const problemZitate = [
  * ein einzelner sachlicher Satz statt einer Drohkulisse.
  */
 export const problemText = {
-  lead: "Die meisten Marken, mit denen ich spreche, sagen ungefähr dasselbe:",
+  lead: "Die meisten Marken, mit denen ich spreche, sagen ungefähr das gleiche:",
   schluss:
     "Es fehlt selten an Ideen. Es fehlt an Kapazität, an einem Plan und an jemandem, der beides zusammenhält. Und je länger ein Kanal nebenbei mitläuft, desto weiter entfernt er sich von der Marke, für die du eigentlich stehst.",
 };
