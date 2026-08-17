@@ -75,7 +75,7 @@ der Held, Tina ist der Guide.
 | `#erfahrung` | track record. | Guide | Empathie-Zeile, dann Werkzeuge, Kennzahlen, Stationen |
 | `#plan` | the plan. | Plan + Handlung | Drei Schritte, „was sich ändert", CTA, kleiner Einstieg |
 | `#leistungen` | what I do. | Angebot | Drei Disziplinen **und** die vier Pakete mit Preisen |
-| `#arbeiten` | creative work. | Beleg | Drei Content-Beispiele in Telefonrahmen, darunter „feed transformations." (3 Vorher/Nachher-Plätze, noch offen) |
+| `#arbeiten` | creative work. | Beleg | Vier Content-Beispiele kompakt nebeneinander (13 rem), darunter „feed transformations." (2 große Vorher/Nachher-Plätze à 24 rem, noch offen) |
 | `#about` | hi, I'm Tina. | Person hinter dem Guide | Positionierung und Anspruch, Porträt |
 | `#kontakt` | contact. | Abschluss | Formular, E-Mail, Telefon/WhatsApp, Social |
 
@@ -142,13 +142,26 @@ beste Türöffner für einen Retainer (es wird bei Abschluss angerechnet).
 **Vier Fotos, zwei Videos.** Die Seite trägt über Farbflächen und Typografie,
 nicht über eine Galerie.
 
-**Feed Transformations.** Neuer Unterabschnitt in „creative work": drei
+**Feed Transformations.** Neuer Unterabschnitt in „creative work": zwei
 Accounts, die Tina einen neuen Feed verpasst — Vorher/Nachher, je Account ein
-Bildpaar. Die Accounts stehen noch nicht fest, deshalb zeigt jeder der sechs
-Plätze bewusst „Folgt" statt eines erfundenen Screenshots (`.phone--platzhalter`
-in global.css). Struktur in `src/data/work.ts` → `feedTransformationen`. Sobald
-ein Account gewählt ist, ersetzt ein echtes Bildpaar (9:16, wie die Reels) den
-Platzhalter — keine neue Komponente nötig, nur Daten und zwei Bilddateien.
+Bildpaar. Bewusst auf zwei statt drei Plätze begrenzt: Die Paare sollen groß
+und gut erkennbar bleiben (`--phone-w: 24rem`), ein dritter hätte den
+Abschnitt nur unnötig in die Länge gezogen. Die Accounts stehen noch nicht
+fest, deshalb zeigt jeder der vier Plätze bewusst „Folgt" statt eines
+erfundenen Screenshots (`.phone--platzhalter` in global.css). Struktur in
+`src/data/work.ts` → `feedTransformationen`. Sobald ein Account gewählt ist,
+ersetzt ein echtes Bildpaar (9:16, wie die Reels) den Platzhalter — keine neue
+Komponente nötig, nur Daten und zwei Bilddateien.
+
+**Zwei Mockup-Größen, bewusst getrennt.** Die vier Content-Beispiele nutzen
+`--phone-w-compact: 13rem`, damit alle vier auf dem Desktop in einer Reihe
+stehen. Die Feed-Transformation-Paare nutzen das größere `--phone-w: 24rem`,
+weil ein Vorher/Nachher-Vergleich gut erkennbar sein muss, um zu überzeugen.
+Beide Werte sind fest (kein `1fr`) — vorher hatte dieselbe Grid-Regel mit
+`1fr` je nach Elementanzahl im Grid unterschiedlich große Mockups erzeugt.
+Auf dem Handy fällt `.beispiele` per Media Query zurück auf volle Breite,
+weil "vier in einer Reihe" ein Desktop-Anliegen ist und die kompakte Breite
+dort sonst nur Leerraum neben jeder Karte hinterlassen hätte.
 
 - `hero-sofa` — Cord-Sofa im Studio (Hero), von Tina ausgewählt. Der Slot nimmt
   auch ein Hintergrundvideo auf: `heroMedia` in `src/data/site.ts` umschalten.

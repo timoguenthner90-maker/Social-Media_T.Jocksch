@@ -41,6 +41,17 @@
   --radius: 14px;
   --radius-lg: 22px;
 
+  /* Feste Breiten für die Phone-Mockups — bewusst zwei verschiedene statt
+     einer gemeinsamen: Die vier Content-Beispiele sollen kompakt zu viert in
+     einer Reihe stehen; die Vorher/Nachher-Paare bei den Feed Transformations
+     müssen dagegen groß und gut erkennbar bleiben, damit der Unterschied
+     sichtbar ist. Beide sind als feste Breite (kein "1fr") definiert, damit
+     sich die Größe nicht mehr danach richtet, wie viele Elemente gerade im
+     jeweiligen Grid stehen — das war vorher das Problem: dieselbe Regel mit
+     "1fr" ergab je nach Elementanzahl unterschiedlich große Mockups. */
+  --phone-w-compact: 13rem;
+  --phone-w: 24rem;
+
   /* ---------- Typografie ---------- */
   --display: "Playfair Display Variable", "Iowan Old Style", Palatino, Georgia,
     serif;
@@ -799,8 +810,26 @@ figcaption {
 
 .beispiele {
   display: grid;
-  gap: clamp(1.5rem, 3vw, 2.5rem);
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  gap: clamp(1.25rem, 2.5vw, 2rem);
+  /* Kompakte, feste Spaltenbreite: Alle vier Beispiele passen so in eine
+     Reihe, statt darunter zu rutschen. justify-content:start verhindert, dass
+     der übrige Platz die Spalten trotzdem auseinanderzieht. */
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(100%, var(--phone-w-compact)), var(--phone-w-compact))
+  );
+  justify-content: start;
+}
+
+/* "4 in einer Reihe" ist ein Desktop-Anliegen — auf dem Handy passt ohnehin
+   nur eine Spalte. Ohne diese Ausnahme bliebe die kompakte Breite auch dort
+   bestehen und ließe neben jeder Karte unnötig Leerraum stehen. Der Wert
+   liegt bewusst über jeder realistischen Mobil-Breite, damit min(100%, …)
+   zuverlässig auf 100% auflöst. */
+@media (max-width: 640px) {
+  .beispiele {
+    --phone-w-compact: 30rem;
+  }
 }
 
 .beispiel__kopf {
@@ -887,17 +916,33 @@ figcaption {
 
 /* ---------- Feed Transformations ---------- */
 
+/* Flex statt Grid: Jeder Account-Block bekommt genau die Breite, die sein
+   Inhalt braucht (zwei Phones + Abstand) — er wird nicht künstlich auf einen
+   Grid-Anteil zusammengestaucht. Dadurch bleiben die Phones hier exakt so
+   groß wie die Beispiele oben in .beispiele, statt sich zu halbieren. */
 .feed__accounts {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
   gap: clamp(1.75rem, 3vw, 2.5rem);
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+}
+
+/* Feste, berechnete Breite statt Größe aus dem Inhalt ableiten: Ein Grid mit
+   auto-fit in einem Flex-Kind ohne definierte Breite weiß beim Berechnen der
+   verfügbaren Spalten nicht, wie breit es werden darf, und fällt oft auf eine
+   einzelne Spalte zurück — Vorher/Nachher stapelten sich dadurch statt
+   nebeneinanderzustehen. Mit einer expliziten Breite hat das Grid darunter
+   eine feste Bezugsgröße und setzt zuverlässig zwei Spalten. */
+.feed__account {
+  width: calc(2 * var(--phone-w) + 0.75rem);
+  max-width: 100%;
 }
 
 .feed__paar {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--phone-w)), var(--phone-w)));
   gap: 0.75rem;
   margin-top: 0.6rem;
+  justify-content: start;
 }
 
 .feed__tag {

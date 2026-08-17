@@ -346,13 +346,17 @@ import { personLd, businessLd, websiteLd } from "../data/jsonld";
                     Dein Browser kann dieses Video nicht abspielen.
                   </video>
                 </div>
-              ) : (
+              ) : b.bild ? (
                 <div class="phone">
                   <Picture
-                    name={b.bild!}
+                    name={b.bild}
                     alt={b.alt!}
                     sizes="(min-width: 900px) 22vw, (min-width: 600px) 45vw, 90vw"
                   />
+                </div>
+              ) : (
+                <div class="phone phone--platzhalter">
+                  <span>Folgt</span>
                 </div>
               )}
 
@@ -388,7 +392,7 @@ import { personLd, businessLd, websiteLd } from "../data/jsonld";
       <div class="feed__accounts">
         {
           feedTransformationen.slots.map((s) => (
-            <div data-reveal>
+            <div class="feed__account" data-reveal>
               <span class="beispiel__num">Account {s.nummer}</span>
               <div class="feed__paar">
                 <div>
