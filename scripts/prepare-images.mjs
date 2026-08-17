@@ -78,9 +78,7 @@ const IMAGES = [
     // die Wirkung kommt aus der ganzen Szene — Licht, Vorhänge, Sofa. Ein
     // Zuschnitt aufs Gesicht würde genau das wegschneiden.
     out: "hero-sofa",
-    // Von Tina zugeschnitten geliefert und bereits im Zielformat 4:5 — es wird
-    // nur noch skaliert, nicht erneut beschnitten.
-    src: c("Ich", "portrait_1080x1350.png"),
+    src: c("Ich", "WhatsApp Image 2026-08-12 at 16.55.59.jpeg"),
     ratio: 4 / 5,
     widths: [1000, 640],
     focus: "centre",
@@ -90,7 +88,7 @@ const IMAGES = [
     // liegt bereits nahe am Zielformat (1122×1402 ≈ 4:5), Zuschnitt von oben
     // hält das Gesicht sicher im Bild.
     out: "tina-portrait",
-    src: c("Ich", "ChatGPT Image 15. Aug. 2026, 17_57_20.png"),
+    src: c("Ich", "Portrait-Tina.png"),
     ratio: 4 / 5,
     widths: [900, 600],
     focus: "top",
