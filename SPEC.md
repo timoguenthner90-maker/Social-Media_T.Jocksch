@@ -82,7 +82,7 @@ Zone inhaltlich steht.
 | `#ueber-mich` | hi, I'm Tina. | Vorstellung/Autorität | Bio-Text (links) und Porträt (rechts), darunter Werkzeuge, Kennzahlen, Stationen als Autoritäts-Beleg (früher „track record", jetzt Teil desselben Blocks), CTA |
 | `#plan` | the plan. | Plan + CTA | Drei Schritte, „was sich ändert", CTA, kleiner Einstieg |
 | `#leistungen` | what I do. | — (Angebot, projektspezifisch ergänzt) | Drei Disziplinen **und** die vier Pakete mit Preisen, CTA |
-| `#arbeiten` | creative work. | — (Beleg, projektspezifisch ergänzt) | Vier Content-Beispiele kompakt nebeneinander (13 rem), darunter „feed transformations." (2 große Vorher/Nachher-Plätze à 24 rem, noch offen) |
+| `#arbeiten` | creative work. | — (Beleg, projektspezifisch ergänzt) | Vier Content-Beispiele kompakt nebeneinander (13 rem) |
 | `#kontakt` | contact. | Weitere Elemente & Footer | Formular, E-Mail, Telefon/WhatsApp, Social |
 
 **Zwei Wireframe-Zonen fehlen bewusst:**
@@ -157,26 +157,20 @@ beste Türöffner für einen Retainer (es wird bei Abschluss angerechnet).
 **Vier Fotos, zwei Videos.** Die Seite trägt über Farbflächen und Typografie,
 nicht über eine Galerie.
 
-**Feed Transformations.** Neuer Unterabschnitt in „creative work": zwei
-Accounts, die Tina einen neuen Feed verpasst — Vorher/Nachher, je Account ein
-Bildpaar. Bewusst auf zwei statt drei Plätze begrenzt: Die Paare sollen groß
-und gut erkennbar bleiben (`--phone-w: 24rem`), ein dritter hätte den
-Abschnitt nur unnötig in die Länge gezogen. Die Accounts stehen noch nicht
-fest, deshalb zeigt jeder der vier Plätze bewusst „Folgt" statt eines
-erfundenen Screenshots (`.phone--platzhalter` in global.css). Struktur in
-`src/data/work.ts` → `feedTransformationen`. Sobald ein Account gewählt ist,
-ersetzt ein echtes Bildpaar (9:16, wie die Reels) den Platzhalter — keine neue
-Komponente nötig, nur Daten und zwei Bilddateien.
+**Feed Transformations — bewusst wieder entfernt.** Der Unterabschnitt zeigte
+zwei leere Vorher/Nachher-Plätze mit „Folgt", solange kein Account feststand.
+Ein leerer Platzhalter beweist aber nichts und wirkt eher wie eine Baustelle —
+dieselbe Logik wie bei Testimonials und Auszeichnungen (Abschnitt 4). Der
+Abschnitt kommt zurück, sobald der erste echte Vorher/Nachher-Case existiert;
+bis dahin trägt ein kurzer Nebensatz in der Leistungsbeschreibung von
+„Content" (`src/data/services.ts`), dass Feed-Neugestaltung angeboten wird.
 
-**Zwei Mockup-Größen, bewusst getrennt.** Die vier Content-Beispiele nutzen
-`--phone-w-compact: 13rem`, damit alle vier auf dem Desktop in einer Reihe
-stehen. Die Feed-Transformation-Paare nutzen das größere `--phone-w: 24rem`,
-weil ein Vorher/Nachher-Vergleich gut erkennbar sein muss, um zu überzeugen.
-Beide Werte sind fest (kein `1fr`) — vorher hatte dieselbe Grid-Regel mit
-`1fr` je nach Elementanzahl im Grid unterschiedlich große Mockups erzeugt.
-Auf dem Handy fällt `.beispiele` per Media Query zurück auf volle Breite,
-weil "vier in einer Reihe" ein Desktop-Anliegen ist und die kompakte Breite
-dort sonst nur Leerraum neben jeder Karte hinterlassen hätte.
+**Eine Mockup-Größe.** Die vier Content-Beispiele nutzen `--phone-w-compact:
+13rem`, damit alle vier auf dem Desktop in einer Reihe stehen (kein `1fr`,
+sonst hätte sich die Größe je nach Elementanzahl im Grid geändert). Auf dem
+Handy fällt `.beispiele` per Media Query zurück auf volle Breite, weil „vier in
+einer Reihe" ein Desktop-Anliegen ist und die kompakte Breite dort sonst nur
+Leerraum neben jeder Karte hinterlassen hätte.
 
 - `hero-sofa` — Cord-Sofa im Studio (Hero), von Tina ausgewählt. Der Slot nimmt
   auch ein Hintergrundvideo auf: `heroMedia` in `src/data/site.ts` umschalten.

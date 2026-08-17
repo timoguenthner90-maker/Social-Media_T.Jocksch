@@ -57,12 +57,13 @@ ist eine ladungsfähige Geschäftsadresse die übliche Alternative.)
   Produkt-Empfehlung (6.300 Views · 143 Likes) und ein Foto-Post. Für den
   Foto-Post liegen mir keine Zahlen vor; wenn du welche hast, trage ich sie
   nach.
-- **Neu: „feed transformations."** — zwei große Vorher/Nachher-Plätze für
-  Accounts, die du noch aussuchst (bewusst nur zwei, damit sie gut erkennbar
-  bleiben). Aktuell zeigt jedes Feld „Folgt", ohne erfundene Screenshots.
-  Sobald du die Accounts hast, schick mir je ein Vorher- und ein Nachher-Bild
-  (Hochformat, wie die Reels) — ich baue sie direkt ein.
-- **Vier Content-Beispiele** stehen jetzt kompakt nebeneinander (Desktop), das
+- **„feed transformations." wieder entfernt** — der Abschnitt zeigte nur leere
+  Vorher/Nachher-Plätze ohne echten Account und wirkte dadurch eher wie eine
+  Baustelle als wie ein Beleg. Ein Nebensatz bei „Content" in „what I do."
+  erwähnt jetzt stattdessen, dass Feed-Neugestaltung angeboten wird. Sobald du
+  einen echten Vorher/Nachher-Case hast, baue ich den Abschnitt wieder ein —
+  dann mit echten Bildern statt Platzhaltern.
+- **Vier Content-Beispiele** stehen kompakt nebeneinander (Desktop), das
   vierte ist ein „Carousel"-Platzhalter.
 - **Du-Form** — die ganze Seite duzt, wie in deinem Entwurf.
 

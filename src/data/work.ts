@@ -69,24 +69,6 @@ export const beispiele: Beispiel[] = [
   },
 ];
 
-/**
- * Feed-Transformationen: Vorher/Nachher für Instagram-Accounts, denen Tina
- * einen neuen Feed verpasst. Bewusst auf zwei Plätze begrenzt statt drei —
- * die Paare bleiben dadurch groß und gut erkennbar, ohne dass der Abschnitt
- * durch viele leere Plätze in die Länge gezogen wird. Die Accounts stehen
- * noch nicht fest, daher zwei leere Plätze statt erfundener Screenshots.
- * Sobald ein Account gewählt ist, bekommt der jeweilige Slot ein `vorher`-
- * und `nachher`-Bild (dieselben Maße wie die Reels, 9:16) und einen
- * Profillink.
- */
-export type FeedSlot = { nummer: string };
-
-export const feedTransformationen = {
-  intro:
-    "Zwei Accounts bekommen einen komplett neuen Feed. Sobald ich sie ausgewählt habe, stehen hier die Vorher/Nachher-Vergleiche — mit Verlinkung zum jeweiligen Profil.",
-  slots: [{ nummer: "01" }, { nummer: "02" }] as FeedSlot[],
-};
-
 /** Kontext zum Account. Bewusst als Fußnote, nicht als eigener Abschnitt. */
 export const accountHinweis = {
   handle: "@pempelhome",

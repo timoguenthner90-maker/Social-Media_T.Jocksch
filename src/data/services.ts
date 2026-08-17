@@ -48,8 +48,8 @@ export const leistungen: Leistung[] = [
   {
     slug: "content-creation",
     name: "Content",
-    text: "Ohne eigenes Material wirkt ein Feed schnell beliebig — professionelle Fotos und Reels fehlen meist an Zeit, nicht an Ideen. Wenn nötig, produziere ich sie selbst, plattformgerecht und im Look der Marke.",
-    tags: ["Reels", "Short Form Video", "Content Planning"],
+    text: "Ohne eigenes Material wirkt ein Feed schnell beliebig — professionelle Fotos und Reels fehlen meist an Zeit, nicht an Ideen. Wenn nötig, produziere ich sie selbst, plattformgerecht und im Look der Marke, bis hin zur kompletten Feed-Neugestaltung.",
+    tags: ["Reels", "Short Form Video", "Content Planning", "Feed-Redesign"],
   },
 ];
 

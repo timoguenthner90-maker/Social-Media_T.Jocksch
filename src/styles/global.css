@@ -41,16 +41,11 @@
   --radius: 14px;
   --radius-lg: 22px;
 
-  /* Feste Breiten für die Phone-Mockups — bewusst zwei verschiedene statt
-     einer gemeinsamen: Die vier Content-Beispiele sollen kompakt zu viert in
-     einer Reihe stehen; die Vorher/Nachher-Paare bei den Feed Transformations
-     müssen dagegen groß und gut erkennbar bleiben, damit der Unterschied
-     sichtbar ist. Beide sind als feste Breite (kein "1fr") definiert, damit
-     sich die Größe nicht mehr danach richtet, wie viele Elemente gerade im
-     jeweiligen Grid stehen — das war vorher das Problem: dieselbe Regel mit
-     "1fr" ergab je nach Elementanzahl unterschiedlich große Mockups. */
+  /* Feste Breite für die Phone-Mockups der Content-Beispiele — kein "1fr",
+     damit sich die Größe nicht danach richtet, wie viele Elemente gerade im
+     Grid stehen, sondern die vier Beispiele kompakt zu viert in einer Reihe
+     stehen. */
   --phone-w-compact: 13rem;
-  --phone-w: 24rem;
 
   /* ---------- Typografie ---------- */
   --display: "Playfair Display Variable", "Iowan Old Style", Palatino, Georgia,
@@ -933,46 +928,6 @@ figcaption {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--ink-2);
-}
-
-/* ---------- Feed Transformations ---------- */
-
-/* Flex statt Grid: Jeder Account-Block bekommt genau die Breite, die sein
-   Inhalt braucht (zwei Phones + Abstand) — er wird nicht künstlich auf einen
-   Grid-Anteil zusammengestaucht. Dadurch bleiben die Phones hier exakt so
-   groß wie die Beispiele oben in .beispiele, statt sich zu halbieren. */
-.feed__accounts {
-  display: flex;
-  flex-wrap: wrap;
-  gap: clamp(1.75rem, 3vw, 2.5rem);
-}
-
-/* Feste, berechnete Breite statt Größe aus dem Inhalt ableiten: Ein Grid mit
-   auto-fit in einem Flex-Kind ohne definierte Breite weiß beim Berechnen der
-   verfügbaren Spalten nicht, wie breit es werden darf, und fällt oft auf eine
-   einzelne Spalte zurück — Vorher/Nachher stapelten sich dadurch statt
-   nebeneinanderzustehen. Mit einer expliziten Breite hat das Grid darunter
-   eine feste Bezugsgröße und setzt zuverlässig zwei Spalten. */
-.feed__account {
-  width: calc(2 * var(--phone-w) + 0.75rem);
-  max-width: 100%;
-}
-
-.feed__paar {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--phone-w)), var(--phone-w)));
-  gap: 0.75rem;
-  margin-top: 0.6rem;
-  justify-content: start;
-}
-
-.feed__tag {
-  font-size: var(--step--2);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--ink-3);
-  text-align: center;
-  margin: 0 0 0.4rem;
 }
 
 /* Kennzahlen unter einem Beispiel. */
