@@ -34,7 +34,8 @@ export type Station = {
   rolle: string;
   /** Das Ergebnis in einem Satz — steht als dunkle Pille über der Beschreibung. */
   ergebnis: string;
-  text: string;
+  /** Hauptaufgaben/Skills als Stichpunkte statt Fließtext — schneller erfassbar. */
+  punkte: string[];
   tags: string[];
 };
 
@@ -44,7 +45,12 @@ export const stationen: Station[] = [
     firma: "vetsak",
     rolle: "Creator Marketing Manager · Premium-Lifestyle-Brand (D2C & B2B)",
     ergebnis: "ca. 30 % Revenue-Anteil über Creator-Kampagnen",
-    text: "Strategie, Konzeption und Umsetzung ganzheitlicher Social- und Kampagnenkonzepte entlang aller digitalen Touchpoints. Ein Creator-Netzwerk mit 200+ aktiven Partnern von Grund auf aufgebaut und end-to-end geführt — Sourcing, Briefing, Budgetsteuerung, Reporting. Dazu Always-on- und Launch-Kampagnen, Affiliate-Partnerschaften und datenbasierte Formatoptimierung für Instagram und TikTok.",
+    punkte: [
+      "Creator-Netzwerk mit 200+ Partnern von Grund auf aufgebaut und end-to-end geführt",
+      "Social- und Kampagnenkonzepte über alle digitalen Touchpoints",
+      "Always-on- und Launch-Kampagnen für Instagram und TikTok",
+      "Affiliate-Partnerschaften und datenbasierte Formatoptimierung",
+    ],
     tags: ["Creator Marketing", "Social Media Management", "Kampagnensteuerung", "Affiliate"],
   },
   {
@@ -52,7 +58,12 @@ export const stationen: Station[] = [
     firma: "Lightspeed HQ",
     rolle: "Associate Content Specialist · SaaS (B2B)",
     ergebnis: "Vier Kanäle, ein durchgängiges Redaktionssystem",
-    text: "Operative Betreuung von Instagram, Facebook, LinkedIn und YouTube inklusive wöchentlicher Redaktionsplanung. Kanalübergreifende Lead-Kampagnen in Abstimmung mit Marketing und Vertrieb, plattformgerechte Content-Formate für das Gastronomie- und Retail-Umfeld sowie Content rund um Messe- und Eventauftritte.",
+    punkte: [
+      "Operative Betreuung von Instagram, Facebook, LinkedIn und YouTube",
+      "Wöchentliche Redaktionsplanung kanalübergreifend",
+      "Lead-Kampagnen in Abstimmung mit Marketing und Vertrieb",
+      "Content für Messe- und Eventauftritte",
+    ],
     tags: ["Social Media Management", "Content-Formate", "Lead-Kampagnen", "B2B"],
   },
 ];

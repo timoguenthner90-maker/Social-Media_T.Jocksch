@@ -139,36 +139,16 @@ import { personLd, businessLd, websiteLd } from "../data/jsonld";
         <div class="stack">
           <p>{guideEmpathie}</p>
           <p>
-            Angefangen habe ich im B2B: Redaktionspläne für ein SaaS-Unternehmen,
-            vier Kanäle, viel Struktur. Danach fünf Jahre bei einer
-            Premium-Lifestyle-Marke, wo ich ein Creator-Netzwerk von null auf über
-            200 Partner aufgebaut habe.
+            Angefangen habe ich im B2B, danach fünf Jahre bei einer
+            Premium-Lifestyle-Marke mit einem Creator-Netzwerk von über 200
+            Partnern. Am liebsten arbeite ich mit Marken, die man sehen muss, um
+            sie zu verstehen — oft Interior, Hospitality und Lifestyle, aber
+            längst nicht nur: Ich betreue auch einen Tennis-Account.
           </p>
           <p>
-            Was ich in beiden gelernt habe: Ein Kanal wird nicht durch
-            <em>mehr</em> Content besser, sondern durch bessere Entscheidungen. Und
-            die trifft man leichter, wenn jemand den Überblick behält.
-          </p>
-          <p>
-            Am liebsten arbeite ich mit Marken, die man sehen muss, um sie zu
-            verstehen. Das sind oft Interior, Hospitality und Lifestyle — aber
-            längst nicht nur: Ich betreue auch einen Tennis-Account, und die
-            spannendsten Aufgaben kommen erfahrungsgemäß aus Branchen, denen man
-            Social Media auf den ersten Blick nicht ansieht.
-          </p>
-          <p>
-            Ob Sofa, Sandplatz oder etwas völlig Unspektakuläres: Es gibt fast
-            immer eine Geschichte, die sich zeigen lässt — man muss sie nur finden.
-            Auf meinem eigenen Interior-Account schneide ich selbst und probiere
-            dort aus, was ich sonst niemandem empfehlen würde. Dazu kommt gerade
-            <strong>Performance Marketing</strong>, damit ich auch die bezahlte
-            Seite mitdenken kann.
-          </p>
-          <p>
-            Mein Anspruch: <strong>weniger Content um des Contents willen und mehr
-            Ideen mit Strategie, Persönlichkeit und Wirkung.</strong> Und wenn etwas
-            nicht funktioniert, sage ich dir das — auch wenn es meine eigene Idee
-            war.
+            Mein Anspruch: <strong>weniger Content um des Contents willen, mehr
+            Ideen mit Strategie und Wirkung.</strong> Und wenn etwas nicht
+            funktioniert, sage ich dir das — auch wenn es meine eigene Idee war.
           </p>
           <p style="font-family:var(--display);font-size:var(--step-2);margin-top:0.5rem">
             Think. Create. Connect.
@@ -226,7 +206,11 @@ import { personLd, businessLd, websiteLd } from "../data/jsonld";
               </div>
               <div>
                 <p class="station__ergebnis">{s.ergebnis}</p>
-                <p>{s.text}</p>
+                <ul class="station__punkte">
+                  {s.punkte.map((p) => (
+                    <li>{p}</li>
+                  ))}
+                </ul>
                 <ul class="chips chips--plain">
                   {s.tags.map((t) => (
                     <li>{t}</li>
