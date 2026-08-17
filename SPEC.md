@@ -1,6 +1,6 @@
 # Spec — Website Tina Jocksch
 
-Stand: 15.08.2026 · Version 4.0 (One-Pager nach StoryBrand)
+Stand: 17.08.2026 · Version 5.0 (One-Pager nach Ecomex-Wireframe)
 
 ## 1. Zweck
 
@@ -63,44 +63,59 @@ Schritt sonst über mehrere Bildschirmhöhen nicht erreichbar.
 
 ## 4. Aufbau — One-Pager
 
-Eine Inhaltsseite mit sechs Abschnitten; die Navigation springt per Anker.
+Eine Inhaltsseite mit fünf Abschnitten (nach der Problem-Sektion); die
+Navigation springt per Anker.
 
-Der Aufbau folgt dem **StoryBrand-Framework** (Donald Miller): Der Kunde ist
-der Held, Tina ist der Guide.
+Der Aufbau folgt jetzt dem **Ecomex-Homepage-Wireframe** (12-Zonen-Checkliste:
+Logo/Nav/CTA, Hero, Painpoints, Vorstellung/Autorität, Plan, Call-to-Action,
+Auszeichnungen, Testimonials, Weitere Elemente & Footer). Die **inhaltliche
+Substanz** der einzelnen Zonen kommt weiterhin aus dem StoryBrand-Framework
+(Donald Miller) — der Kunde bleibt der Held, Tina der Guide. Das Wireframe
+bestimmt Reihenfolge, Struktur und vor allem die **Wiederholung desselben
+CTA-Buttons** an mehreren Stellen; StoryBrand bestimmt weiterhin, was in jeder
+Zone inhaltlich steht.
 
-| Anker | Titel | StoryBrand-Rolle | Inhalt |
+| Anker | Titel | Wireframe-Zone | Inhalt |
 |---|---|---|---|
-| `#start` | — | Held mit Wunsch | Hero („gib den Kanal ab. nicht die Marke."), Medium, Signal-Button; darunter das Laufband |
-| `#problem` | the problem. | Problem | Vier Zitate aus der Empathy Map, ein sachlicher Schlusssatz |
-| `#erfahrung` | track record. | Guide | Empathie-Zeile, dann Werkzeuge, Kennzahlen, Stationen |
-| `#plan` | the plan. | Plan + Handlung | Drei Schritte, „was sich ändert", CTA, kleiner Einstieg |
-| `#leistungen` | what I do. | Angebot | Drei Disziplinen **und** die vier Pakete mit Preisen |
-| `#arbeiten` | creative work. | Beleg | Vier Content-Beispiele kompakt nebeneinander (13 rem), darunter „feed transformations." (2 große Vorher/Nachher-Plätze à 24 rem, noch offen) |
-| `#about` | hi, I'm Tina. | Person hinter dem Guide | Positionierung und Anspruch, Porträt |
-| `#kontakt` | contact. | Abschluss | Formular, E-Mail, Telefon/WhatsApp, Social |
+| `#start` | — | Logo/Nav/CTA + Hero | Kopfzeile mit Logo, Nav, mitscrollendem CTA; Hero („gib den Kanal ab. nicht die Marke."), Medium, Signal-Button; darunter das Laufband |
+| `#problem` | the problem. | Painpoints | Vier Zitate aus der Empathy Map als Kachel-Raster, ein sachlicher Schlusssatz, CTA |
+| `#ueber-mich` | hi, I'm Tina. | Vorstellung/Autorität | Bio-Text (links) und Porträt (rechts), darunter Werkzeuge, Kennzahlen, Stationen als Autoritäts-Beleg (früher „track record", jetzt Teil desselben Blocks), CTA |
+| `#plan` | the plan. | Plan + CTA | Drei Schritte, „was sich ändert", CTA, kleiner Einstieg |
+| `#leistungen` | what I do. | — (Angebot, projektspezifisch ergänzt) | Drei Disziplinen **und** die vier Pakete mit Preisen, CTA |
+| `#arbeiten` | creative work. | — (Beleg, projektspezifisch ergänzt) | Vier Content-Beispiele kompakt nebeneinander (13 rem), darunter „feed transformations." (2 große Vorher/Nachher-Plätze à 24 rem, noch offen) |
+| `#kontakt` | contact. | Weitere Elemente & Footer | Formular, E-Mail, Telefon/WhatsApp, Social |
 
-**Warum StoryBrand.** Bis Version 3 handelte die Seite von Anfang bis Ende von
-Tina — der Besucher kam darin nicht vor, sein Problem wurde nirgends benannt.
-Die Empathy Map liefert die Sätze der Zielgruppe wörtlich; sie standen in
-Version 1 schon einmal auf der Seite und sind beim Straffen herausgefallen.
+**Zwei Wireframe-Zonen fehlen bewusst:**
 
-Der **Plan** ist die zweite Ergänzung. Er beantwortet die Frage, die vor einem
-Retainer über 1.590 € im Monat den Abschluss blockiert: Was passiert
-eigentlich, wenn ich ja sage? Die drei Schritte entsprechen den Paketen —
-Schritt 1 ist das Audit, Schritt 2 und 3 sind der Retainer.
+- **Auszeichnungen/Siegel** — es gibt keine echten Trust-Badges oder
+  Kunden-Logos. Ein erfundenes Siegel wäre irreführend; der Abschnitt kommt,
+  sobald es etwas Echtes zu zeigen gibt.
+- **Testimonials** — Tina hat noch keine eigenen Kunden. Statt Platzhalter mit
+  „Folgt" wurde der Abschnitt ganz weggelassen, damit die Seite nicht wie eine
+  Baustelle wirkt. Nachrüsten, sobald die ersten echten Kundenstimmen da sind.
 
-**Was bewusst NICHT übernommen wurde:** der typische StoryBrand-Ton. Keine
-rhetorischen Fragen („Kennst du das?"), keine Angstmache, kein Ausmalen des
-Scheiterns. Die Zielgruppe sind Marketingverantwortliche und Inhaberinnen; die
-reagieren auf Sachlichkeit. Der Einsatz steht in genau einem Satz am Ende der
-Problem-Sektion.
+**Wiederkehrender CTA.** Der Wireframe verlangt denselben Button-Text an bis zu
+sechs Stellen. Umgesetzt: Kopfzeile, Hero, nach den Painpoints, nach
+Vorstellung/Autorität, nach dem Plan, nach den Paketen — überall identisch
+„Let's work together" → `#kontakt`.
+
+**Vorstellung/Autorität als ein Block.** Der frühere eigene Abschnitt „track
+record." (Kennzahlen, Werkzeuge, Stationen) ist jetzt Teil von `#ueber-mich`
+statt eines separaten Abschnitts davor — der Wireframe sieht für „wer wir sind
+und warum uns vertrauen" genau eine Zone vor, nicht zwei. Die Nav-Punkte
+„experience" und „about" sind deshalb zu einem einzigen „about" verschmolzen.
+
+**Was bewusst NICHT aus dem StoryBrand-Ton übernommen wurde:** rhetorische
+Fragen („Kennst du das?"), Angstmache, Ausmalen des Scheiterns. Die Zielgruppe
+sind Marketingverantwortliche und Inhaberinnen; die reagieren auf Sachlichkeit.
+Der Einsatz steht in genau einem Satz am Ende der Problem-Sektion.
 
 Angebot und Preis stehen weiterhin in **einem** Block. Vorher beschrieben zwei
 Abschnitte dasselbe mit anderen Worten.
 
-Farbflächen: Hero beige → Problem hell → track record beige → **Plan blau** →
-Leistungen hell (Paketkarten blau wie im Entwurf) → Arbeiten beige → about hell
-→ Kontakt beige.
+Farbflächen: Hero beige → Problem hell → Vorstellung/Autorität beige →
+**Plan blau** → Leistungen hell (Paketkarten blau wie im Entwurf) → Arbeiten
+beige → Kontakt beige.
 
 Eigene Seiten nur für `/impressum/`, `/datenschutz/`, `/danke/` und `/404`.
 

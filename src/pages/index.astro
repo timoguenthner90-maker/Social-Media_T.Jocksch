@@ -18,22 +18,28 @@ import { personLd, businessLd, websiteLd } from "../data/jsonld";
 // (~/Desktop/Eigene Website Tina/webseite vorlage): englische Abschnittstitel
 // in Kleinschreibung mit Punkt, deutscher Text, Farbflächen im Wechsel.
 //
-// Der AUFBAU folgt dem StoryBrand-Framework (Donald Miller): Der Kunde ist der
-// Held, Tina ist der Guide.
+// Der AUFBAU folgt jetzt dem Ecomex-Homepage-Wireframe (12-Zonen-Checkliste),
+// mit den StoryBrand-Inhalten (Donald Miller) als Text in diesen Zonen:
 //
-//   Held mit Wunsch      → Hero
-//   Problem              → the problem  (Zitate aus der Empathy Map)
-//   Guide trifft ihn     → track record (Empathie + Autorität)
-//   Guide gibt Plan      → the plan     (drei Schritte) + Handlungsaufruf
-//   Angebot konkret      → services     (Leistungen und Preise)
-//   Beleg                → creative work
-//   Person hinter Guide  → about
-//   Abschluss            → contact
+//   Logo/Nav/CTA          → Header (eigene Komponente)
+//   Hauptbild + Headline
+//   + Einleitung + CTA    → Hero
+//   Painpoints + CTA      → the problem  (Zitate aus der Empathy Map)
+//   Vorstellung/Autorität
+//   + CTA                 → about        (Bio + track record, ein Block)
+//   Plan (3 Schritte)
+//   + CTA                 → the plan
+//   (Angebot konkret)     → services     (Leistungen und Preise)
+//   (Beleg)                → creative work
+//   Weitere Elemente
+//   & Footer               → contact + Footer
 //
-// Ohne die Problem-Sektion handelt die Seite ausschließlich von Tina — der
-// Besucher käme darin nicht vor. Bewusst NICHT im StoryBrand-Ton: keine
-// rhetorischen Fragen, keine Angstmache. Die Zielgruppe reagiert auf
-// Sachlichkeit.
+// Zwei Wireframe-Zonen fehlen bewusst: Auszeichnungen/Siegel (keine
+// vorhanden) und Testimonials (noch keine eigenen Kunden). Beides nachträglich
+// einbauen, sobald es echte Inhalte dafür gibt — siehe GATE.md.
+//
+// Bewusst NICHT im StoryBrand-Ton: keine rhetorischen Fragen, keine
+// Angstmache. Die Zielgruppe reagiert auf Sachlichkeit.
 ---
 
 <Base
@@ -97,11 +103,12 @@ import { personLd, businessLd, websiteLd } from "../data/jsonld";
     </div>
   </div>
 
-  <!-- ================= the problem ================= -->
-  <!-- StoryBrand-Schritt 1: Der Kunde ist der Held und hat ein Problem. Ohne
-       diesen Abschnitt handelt die ganze Seite nur von Tina, und der Besucher
-       erkennt sich nirgends wieder. Die Zitate stehen wörtlich so in der
-       Empathy Map. -->
+  <!-- ================= Painpoints (the problem) ================= -->
+  <!-- Wireframe-Zone 6: Painpoints. StoryBrand-Schritt 1: Der Kunde ist der
+       Held und hat ein Problem. Ohne diesen Abschnitt handelt die ganze
+       Seite nur von Tina, und der Besucher erkennt sich nirgends wieder. Die
+       Zitate stehen wörtlich so in der Empathy Map, die Grid-Kacheln
+       entsprechen den "Painpoint #1–6"-Boxen des Wireframes. -->
   <section class="section" id="problem">
     <div class="wrap">
       <h2 class="title">the problem.</h2>
@@ -112,14 +119,74 @@ import { personLd, businessLd, websiteLd } from "../data/jsonld";
       </ul>
 
       <p style="margin-top:2.25rem;max-width:62ch">{problemText.schluss}</p>
+
+      <div style="margin-top:2.5rem">
+        <a class="btn btn--blue" href={cta.href}>{cta.label}</a>
+      </div>
     </div>
   </section>
 
-  <!-- ================= track record ================= -->
-  <section class="section section--beige" id="erfahrung">
-    <div class="wrap">
-      <h2 class="title">track record.</h2>
-      <p class="lead" style="margin-bottom:1.25rem">{guideEmpathie}</p>
+  <!-- ================= Vorstellung / Autorität (about) ================= -->
+  <!-- Wireframe-Zone 7: "Vorstellung - (Autorität)". Text links (wer ich bin),
+       Bild rechts, darunter die Belege für die Autorität — Kennzahlen,
+       Werkzeuge und Stationen, vormals ein eigener "track record"-Abschnitt.
+       Ein Block statt zwei, weil beides dieselbe Frage beantwortet: warum
+       ausgerechnet Tina. -->
+  <section class="section section--beige" id="ueber-mich">
+    <div class="wrap split split--top">
+      <div>
+        <h2 class="title">hi, I'm Tina.</h2>
+        <div class="stack">
+          <p>{guideEmpathie}</p>
+          <p>
+            Angefangen habe ich im B2B: Redaktionspläne für ein SaaS-Unternehmen,
+            vier Kanäle, viel Struktur. Danach fünf Jahre bei einer
+            Premium-Lifestyle-Marke, wo ich ein Creator-Netzwerk von null auf über
+            200 Partner aufgebaut habe.
+          </p>
+          <p>
+            Was ich in beiden gelernt habe: Ein Kanal wird nicht durch
+            <em>mehr</em> Content besser, sondern durch bessere Entscheidungen. Und
+            die trifft man leichter, wenn jemand den Überblick behält.
+          </p>
+          <p>
+            Am liebsten arbeite ich mit Marken, die man sehen muss, um sie zu
+            verstehen. Das sind oft Interior, Hospitality und Lifestyle — aber
+            längst nicht nur: Ich betreue auch einen Tennis-Account, und die
+            spannendsten Aufgaben kommen erfahrungsgemäß aus Branchen, denen man
+            Social Media auf den ersten Blick nicht ansieht.
+          </p>
+          <p>
+            Ob Sofa, Sandplatz oder etwas völlig Unspektakuläres: Es gibt fast
+            immer eine Geschichte, die sich zeigen lässt — man muss sie nur finden.
+            Auf meinem eigenen Interior-Account schneide ich selbst und probiere
+            dort aus, was ich sonst niemandem empfehlen würde. Dazu kommt gerade
+            <strong>Performance Marketing</strong>, damit ich auch die bezahlte
+            Seite mitdenken kann.
+          </p>
+          <p>
+            Mein Anspruch: <strong>weniger Content um des Contents willen und mehr
+            Ideen mit Strategie, Persönlichkeit und Wirkung.</strong> Und wenn etwas
+            nicht funktioniert, sage ich dir das — auch wenn es meine eigene Idee
+            war.
+          </p>
+          <p style="font-family:var(--display);font-size:var(--step-2);margin-top:0.5rem">
+            Think. Create. Connect.
+          </p>
+        </div>
+      </div>
+
+      <figure class="media media--45" data-reveal>
+        <Picture
+          name="tina-portrait"
+          alt="Porträt von Tina Jocksch"
+          sizes="(min-width: 900px) 45vw, 100vw"
+        />
+      </figure>
+    </div>
+
+    <div class="wrap" style="margin-top:clamp(3rem,6vw,4.5rem)">
+      <p class="eyebrow" style="margin-bottom:1.25rem">track record</p>
       <p style="margin-bottom:2rem;max-width:56ch">
         Was ich in diesen sechs Jahren aufgebaut habe, setze ich jetzt für deine
         Marke ein.
@@ -174,6 +241,10 @@ import { personLd, businessLd, websiteLd } from "../data/jsonld";
       <p class="small muted" style="margin-top:1.75rem">
         {ausbildung.studium} · {ausbildung.weiterbildung}
       </p>
+
+      <div style="margin-top:2.5rem">
+        <a class="btn btn--blue" href={cta.href}>{cta.label}</a>
+      </div>
     </div>
   </section>
 
@@ -307,6 +378,10 @@ import { personLd, businessLd, websiteLd } from "../data/jsonld";
       <p class="small muted" style="margin-top:1.5rem;max-width:62ch">
         {preishinweis}
       </p>
+
+      <div style="margin-top:2.5rem">
+        <a class="btn btn--blue" href={cta.href}>{cta.label}</a>
+      </div>
     </div>
   </section>
 
@@ -412,60 +487,6 @@ import { personLd, businessLd, websiteLd } from "../data/jsonld";
           ))
         }
       </div>
-    </div>
-  </section>
-
-  <!-- ================= about ================= -->
-  <section class="section" id="about">
-    <div class="wrap split split--top">
-      <div>
-        <h2 class="title">hi, I'm Tina.</h2>
-        <div class="stack">
-          <p>
-            Angefangen habe ich im B2B: Redaktionspläne für ein SaaS-Unternehmen,
-            vier Kanäle, viel Struktur. Danach fünf Jahre bei einer
-            Premium-Lifestyle-Marke, wo ich ein Creator-Netzwerk von null auf über
-            200 Partner aufgebaut habe.
-          </p>
-          <p>
-            Was ich in beiden gelernt habe: Ein Kanal wird nicht durch
-            <em>mehr</em> Content besser, sondern durch bessere Entscheidungen. Und
-            die trifft man leichter, wenn jemand den Überblick behält.
-          </p>
-          <p>
-            Am liebsten arbeite ich mit Marken, die man sehen muss, um sie zu
-            verstehen. Das sind oft Interior, Hospitality und Lifestyle — aber
-            längst nicht nur: Ich betreue auch einen Tennis-Account, und die
-            spannendsten Aufgaben kommen erfahrungsgemäß aus Branchen, denen man
-            Social Media auf den ersten Blick nicht ansieht.
-          </p>
-          <p>
-            Ob Sofa, Sandplatz oder etwas völlig Unspektakuläres: Es gibt fast
-            immer eine Geschichte, die sich zeigen lässt — man muss sie nur finden.
-            Auf meinem eigenen Interior-Account schneide ich selbst und probiere
-            dort aus, was ich sonst niemandem empfehlen würde. Dazu kommt gerade
-            <strong>Performance Marketing</strong>, damit ich auch die bezahlte
-            Seite mitdenken kann.
-          </p>
-          <p>
-            Mein Anspruch: <strong>weniger Content um des Contents willen und mehr
-            Ideen mit Strategie, Persönlichkeit und Wirkung.</strong> Und wenn etwas
-            nicht funktioniert, sage ich dir das — auch wenn es meine eigene Idee
-            war.
-          </p>
-          <p style="font-family:var(--display);font-size:var(--step-2);margin-top:0.5rem">
-            Think. Create. Connect.
-          </p>
-        </div>
-      </div>
-
-      <figure class="media media--45" data-reveal>
-        <Picture
-          name="tina-portrait"
-          alt="Porträt von Tina Jocksch"
-          sizes="(min-width: 900px) 45vw, 100vw"
-        />
-      </figure>
     </div>
   </section>
 

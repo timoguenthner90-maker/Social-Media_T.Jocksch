@@ -1,6 +1,6 @@
 # Freigabe-Paket — Website Tina Jocksch
 
-Stand: 15.08.2026 · Version 3.0 (One-Pager, Fokus laufende Betreuung)
+Stand: 17.08.2026 · Version 4.0 (One-Pager nach Ecomex-Wireframe)
 
 ## Status
 
@@ -17,8 +17,17 @@ Ein One-Pager, dazu Impressum, Datenschutz, Danke- und Fehlerseite. Gestaltung
 und Wortlaut stammen aus deinem eigenen Entwurf, Erfahrung und Kontaktdaten aus
 deinem Lebenslauf, die Preise aus der Wettbewerbsanalyse.
 
-Reihenfolge: Hero → track record → services (Angebot **und** Preis) → creative
-work → about → contact.
+Der Aufbau folgt jetzt dem Ecomex-Homepage-Wireframe: Hero → the problem.
+(Painpoints) → about (Vorstellung/Autorität, enthält den früheren track-record-
+Teil) → the plan. → services (Angebot **und** Preis) → creative work →
+contact. Derselbe „Let's work together"-Button taucht dabei an sechs Stellen
+identisch auf: Kopfzeile, Hero, nach den Painpoints, nach der Vorstellung, nach
+dem Plan, nach den Paketen.
+
+Zwei Wireframe-Zonen fehlen bewusst: **Auszeichnungen/Siegel** (keine
+vorhanden) und **Testimonials** (noch keine eigenen Kunden) — beides kommt
+rein, sobald es echte Inhalte dafür gibt, statt mit erfundenen Platzhaltern zu
+arbeiten.
 
 ## Was du prüfen solltest
 

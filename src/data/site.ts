@@ -78,16 +78,15 @@ export const heroMedia = {
  * Anker-Navigation. Die Seite ist ein One-Pager — jeder Punkt springt zu einer
  * Sektion, nicht auf eine Unterseite. Englische Labels wie in Tinas Entwurf.
  *
- * Reihenfolge nach StoryBrand: Problem → Guide (experience) → Plan → Angebot
- * → Beleg → Person → Abschluss. Die Problem-Sektion steht nicht in der
- * Navigation — sie wird gelesen, nicht angesprungen.
+ * Reihenfolge nach dem Ecomex-Wireframe: Problem (nicht in der Nav, wird
+ * gelesen statt angesprungen) → Vorstellung/Autorität (about, enthält auch
+ * den früheren track-record-Teil) → Plan → Angebot → Beleg → Abschluss.
  */
 export const nav = [
-  { href: "#erfahrung", label: "experience" },
+  { href: "#ueber-mich", label: "about" },
   { href: "#plan", label: "the plan" },
   { href: "#leistungen", label: "services" },
   { href: "#arbeiten", label: "work" },
-  { href: "#about", label: "about" },
   { href: "#kontakt", label: "contact" },
 ] as const;
 
