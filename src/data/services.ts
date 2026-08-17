@@ -23,11 +23,14 @@ export type Leistung = {
  * dazukommt, wenn Material fehlt, aber kein eigenständiges Angebot: Tina ist
  * keine UGC-Creatorin, die Assets für fremde Marken produziert.
  */
+// Jeder Text folgt derselben kurzen Form: ein Satz Pain Point, ein Satz
+// Angebot. Bewusst knapp gehalten — die Tags darunter tragen die Prozess-
+// Details, der Fließtext muss das nicht wiederholen.
 export const leistungen: Leistung[] = [
   {
     slug: "social-media-management",
     name: "Social Media Management",
-    text: "Der Kern: Strategie, Audit, Redaktions- und Contentplanung, Posting und Community Management. Ich entwickle Auftritte, die zur Marke passen, klar positioniert sind und langfristig funktionieren — und betreue sie im Alltag.",
+    text: "Social Media läuft bei den meisten Marken nebenbei mit — dabei steckt hinter einem Kanal, der wirklich funktioniert, mehr als eine spontane Idee für die Woche. Ich übernehme Strategie, Redaktionsplanung, Posting und Community, damit daraus ein System wird statt Wochenstress.",
     tags: [
       "Strategy",
       "Audit",
@@ -39,13 +42,13 @@ export const leistungen: Leistung[] = [
   {
     slug: "creator-partnerships",
     name: "Creator Partnerships",
-    text: "Ich verbinde Marken mit den richtigen Creatorn und begleite Kooperationen von der Auswahl bis zur Auswertung — authentisch, strategisch und zielgerichtet.",
+    text: "Die falschen Creator kosten Budget, ohne etwas zu bringen — und die richtige Auswahl braucht Zeit, die selten da ist. Ich übernehme Recherche, Ansprache, Verhandlung und Steuerung, du bekommst passende Kooperationen ohne den Aufwand.",
     tags: ["Creator Research", "Outreach", "Campaign Management", "Reporting"],
   },
   {
     slug: "content-creation",
     name: "Content",
-    text: "Wenn Material fehlt, produziere ich es selbst: Reels, Shortform-Video und Fotos, plattformgerecht und im Look der Marke. Als Ergänzung zur Betreuung, nicht als Einzelleistung.",
+    text: "Ohne eigenes Material wirkt ein Feed schnell beliebig — professionelle Fotos und Reels fehlen meist an Zeit, nicht an Ideen. Wenn nötig, produziere ich sie selbst, plattformgerecht und im Look der Marke.",
     tags: ["Reels", "Short Form Video", "Content Planning"],
   },
 ];
